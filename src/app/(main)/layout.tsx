@@ -1,4 +1,5 @@
 import Navbar from "@/components/shared/Navbar";
+import "leaflet/dist/leaflet.css"
 
 export default function MainLayout({
   children,
