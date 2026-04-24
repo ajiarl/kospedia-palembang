@@ -1,5 +1,6 @@
 import Navbar from "@/components/shared/Navbar";
-import "leaflet/dist/leaflet.css"
+import Footer from "@/components/shared/Footer";
+import "leaflet/dist/leaflet.css";
 
 export default function MainLayout({
   children,
@@ -7,9 +8,10 @@ export default function MainLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="flex min-h-screen flex-col">
       <Navbar />
       <main className="flex-1">{children}</main>
+      <Footer />
     </div>
   );
 }

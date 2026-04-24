@@ -120,30 +120,36 @@ export default async function HalamanDetailKos({ params }: { params: Params }) {
 
   return (
     <div className="container py-8">
-      {/* Breadcrumb */}
-      <nav className="mb-5 flex items-center gap-1.5 text-sm text-muted-foreground">
-        <Link href="/" className="hover:text-foreground transition-colors">Beranda</Link>
+      {/* Breadcrumb — truncate aman di mobile */}
+      <nav className="mb-5 flex flex-wrap items-center gap-1.5 text-sm text-muted-foreground">
+        <Link href="/" className="shrink-0 hover:text-foreground transition-colors">Beranda</Link>
         <span>/</span>
-        <Link href="/kos" className="hover:text-foreground transition-colors">Cari Kos</Link>
+        <Link href="/kos" className="shrink-0 hover:text-foreground transition-colors">Cari Kos</Link>
         {kos.kampus && (
           <>
             <span>/</span>
-            <Link href={`/kos?kampus=${kos.kampus.slug}`} className="hover:text-foreground transition-colors">
+            <Link
+              href={`/kos?kampus=${kos.kampus.slug}`}
+              className="max-w-[120px] truncate hover:text-foreground transition-colors sm:max-w-none"
+              title={kos.kampus.nama}
+            >
               {kos.kampus.nama}
             </Link>
           </>
         )}
         <span>/</span>
-        <span className="max-w-48 truncate font-medium text-foreground">{kos.nama}</span>
+        <span className="max-w-[120px] truncate font-semibold text-foreground sm:max-w-xs" title={kos.nama}>
+          {kos.nama}
+        </span>
       </nav>
 
       <div className="grid gap-8 lg:grid-cols-[1fr_360px]">
         <main className="space-y-6">
           {/* Foto + Info Utama */}
-          <section className="overflow-hidden rounded-xl border bg-white shadow-sm">
+          <section className="overflow-hidden rounded-xl border bg-card shadow-sm">
             <div className="relative h-72">
               <KosFoto foto={kos.foto} nama={kos.nama} jenis={kos.jenis} className="h-full w-full" />
-              <span className="absolute left-4 top-4 rounded-full bg-white/95 px-3 py-1 text-xs font-bold capitalize shadow-sm">
+              <span className="absolute left-4 top-4 rounded-full bg-card/95 px-3 py-1 text-xs font-bold capitalize shadow-sm">
                 {kos.jenis}
               </span>
             </div>
@@ -162,7 +168,7 @@ export default async function HalamanDetailKos({ params }: { params: Params }) {
           </section>
 
           {/* Fasilitas — grid dengan ikon */}
-          <section className="rounded-xl border bg-white p-6 shadow-sm">
+          <section className="rounded-xl border bg-card p-6 shadow-sm">
             <h2 className="text-xl font-bold">Fasilitas</h2>
             <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
               {kos.fasilitas.map((f) => (
@@ -190,7 +196,7 @@ export default async function HalamanDetailKos({ params }: { params: Params }) {
           </section>
 
           {/* Lokasi */}
-          <section className="rounded-xl border bg-white p-6 shadow-sm">
+          <section className="rounded-xl border bg-card p-6 shadow-sm">
             <h2 className="text-xl font-bold">Lokasi</h2>
             <div className="mt-4">
               <MapViewClient
@@ -203,7 +209,7 @@ export default async function HalamanDetailKos({ params }: { params: Params }) {
           </section>
 
           {/* Review */}
-          <section className="rounded-xl border bg-white p-6 shadow-sm">
+          <section className="rounded-xl border bg-card p-6 shadow-sm">
             <div className="flex items-center justify-between gap-4">
               <h2 className="text-xl font-bold">Review Mahasiswa</h2>
               {averageRating ? (
@@ -257,7 +263,7 @@ export default async function HalamanDetailKos({ params }: { params: Params }) {
         </main>
 
         {/* Sticky Sidebar Harga */}
-        <aside className="h-fit rounded-xl border bg-white p-6 shadow-sm lg:sticky lg:top-24">
+        <aside className="h-fit rounded-xl border bg-card p-6 shadow-sm lg:sticky lg:top-24">
           <p className="text-sm text-muted-foreground">Harga mulai dari</p>
           <p className="mt-1 text-4xl font-black text-primary leading-none">{harga}</p>
           <p className="mt-1 text-sm text-muted-foreground">per bulan</p>
