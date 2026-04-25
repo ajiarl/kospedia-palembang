@@ -23,7 +23,7 @@ type MapViewProps = {
 
 function createPinIcon(type: MapMarker["type"]) {
   const isKos = type === "kos";
-  const color = isKos ? "#E85D04" : "#1A4E5F";
+  const color = isKos ? "#1E6B5A" : "#1A2B3C";   // primary teal vs navy
   const innerColor = "white";
 
   // Teardrop SVG pin

@@ -44,20 +44,22 @@ export default async function HalamanUtama() {
     <div>
       {/* ── Hero ── */}
       <section className="hero-pattern relative overflow-hidden py-20 md:py-28">
+        {/* Overlay gelap untuk kontras text */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/50" />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background to-transparent" />
 
         <div className="container relative z-10 flex flex-col items-center gap-8 text-center">
-          <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-1.5 text-sm font-medium text-white ring-1 ring-white/20 backdrop-blur-sm">
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-white" />
+          <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-sm font-medium text-white ring-1 ring-white/20 backdrop-blur-sm">
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-teal-400" />
             Platform kos mahasiswa Palembang
           </span>
 
-          <h1 className="max-w-3xl text-4xl font-black text-white md:text-5xl lg:text-6xl">
+          <h1 className="max-w-3xl text-5xl font-black text-white drop-shadow-lg md:text-6xl lg:text-7xl">
             Temukan Kos Terbaikmu{" "}
-            <span className="text-white/75">di Palembang</span>
+            <span className="text-teal-400">di Palembang</span>
           </h1>
 
-          <p className="max-w-lg text-base text-white/80 md:text-lg">
+          <p className="max-w-lg text-base text-white/85 drop-shadow md:text-lg">
             Dekat kampus, sesuai budget, langsung hubungi pemilik. Tanpa perantara.
           </p>
 
@@ -69,7 +71,7 @@ export default async function HalamanUtama() {
               <Link
                 key={chip.value}
                 href={`/kos?jenis=${chip.value}`}
-                className={`rounded-full px-3 py-1 text-xs font-semibold backdrop-blur-sm transition-all ${chip.cls}`}
+                className="rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-white ring-1 ring-white/20 backdrop-blur-sm transition-all hover:bg-white/25"
               >
                 {chip.label}
               </Link>
@@ -79,10 +81,10 @@ export default async function HalamanUtama() {
           <div className="flex flex-wrap items-center justify-center gap-6 pt-1">
             {statsItems.map((item) => (
               <div key={item.label} className="flex items-center gap-2">
-                <svg className="h-4 w-4 text-white/60" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="h-4 w-4 text-teal-400" fill="currentColor" viewBox="0 0 24 24">
                   <path d={item.icon} />
                 </svg>
-                <span className="text-sm font-medium text-white/85">{item.label}</span>
+                <span className="text-sm font-medium text-white/90 drop-shadow">{item.label}</span>
               </div>
             ))}
           </div>

@@ -16,24 +16,40 @@ const config: Config = {
     },
     extend: {
       colors: {
-        // Terracotta — primary brand color
+        // Primary — dark teal green #1E6B5A
         primary: {
-          DEFAULT: "#C1440E",
+          DEFAULT: "#1E6B5A",
           foreground: "#FFFFFF",
-          50:  "#FBF1EC",
-          100: "#F5DDD3",
-          500: "#C1440E",
-          600: "#A83A0C",
-          700: "#8B2F09",
+          50:  "#E6F4F0",
+          100: "#C0E3D9",
+          500: "#1E6B5A",
+          600: "#175849",
+          700: "#104038",
         },
-        // Forest green — accent/kampus color
+        // Teal — bright mint accent #25C48A
         teal: {
-          DEFAULT: "#2D4A3E",
+          DEFAULT: "#25C48A",
           foreground: "#FFFFFF",
-          50:  "#EDF3F0",
-          100: "#C8DDD6",
-          500: "#2D4A3E",
-          600: "#243D33",
+          50:  "#E1F9F0",
+          100: "#A3EDD0",
+          400: "#2FD99A",
+          500: "#25C48A",
+          600: "#1DA872",
+        },
+        // Accent — orange CTA #FF8C42
+        accent: {
+          DEFAULT: "#FF8C42",
+          foreground: "#FFFFFF",
+          50:  "#FFF3EA",
+          100: "#FFD9B8",
+          500: "#FF8C42",
+          600: "#E6702A",
+        },
+        // Navy — hero background
+        navy: {
+          DEFAULT: "#1A2B3C",
+          dark:    "#0F1C2B",
+          light:   "#1E3347",
         },
         border:     "hsl(var(--border))",
         input:      "hsl(var(--input))",
@@ -55,10 +71,6 @@ const config: Config = {
         muted: {
           DEFAULT:    "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT:    "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
         },
         popover: {
           DEFAULT:    "hsl(var(--popover))",

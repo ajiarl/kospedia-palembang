@@ -6,52 +6,48 @@
 
 @layer base {
   :root {
-    /* Warm white system — Terracotta + Slate */
-    --background: 40 25% 98%;          /* #FAFAF8 warm white */
-    --foreground: 24 10% 10%;          /* #1C1917 warm black */
-    --card: 30 30% 95%;                /* #F5F0EB warm sand */
-    --card-foreground: 24 10% 10%;
-    --popover: 30 30% 97%;
-    --popover-foreground: 24 10% 10%;
-    --primary: 18 87% 40%;             /* #C1440E terracotta */
+    --background: 210 20% 98%;          /* #F5F8FA */
+    --foreground: 215 25% 12%;          /* #161E2A */
+    --card: 210 20% 100%;
+    --card-foreground: 215 25% 12%;
+    --popover: 210 20% 100%;
+    --popover-foreground: 215 25% 12%;
+    --primary: 161 57% 27%;             /* #1E6B5A teal gelap */
     --primary-foreground: 0 0% 100%;
-    --secondary: 35 20% 90%;
-    --secondary-foreground: 24 10% 15%;
-    --muted: 35 18% 91%;
-    --muted-foreground: 24 5% 46%;
-    --accent: 155 25% 23%;             /* #2D4A3E forest green */
+    --secondary: 210 15% 94%;
+    --secondary-foreground: 215 25% 20%;
+    --muted: 210 15% 93%;
+    --muted-foreground: 215 10% 50%;
+    --accent: 24 100% 63%;              /* #FF8C42 orange CTA */
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 35 15% 87%;
-    --input: 35 15% 87%;
-    --ring: 18 87% 40%;
+    --border: 210 15% 88%;
+    --input: 210 15% 88%;
+    --ring: 161 57% 27%;
     --radius: 0.625rem;
-    --teal: 155 25% 23%;
-    --teal-foreground: 0 0% 100%;
   }
 
   .dark {
-    --background: 24 10% 8%;
-    --foreground: 40 20% 95%;
-    --card: 24 10% 12%;
-    --card-foreground: 40 20% 95%;
-    --popover: 24 10% 10%;
-    --popover-foreground: 40 20% 95%;
-    --primary: 18 87% 50%;
+    --background: 215 30% 8%;
+    --foreground: 210 20% 95%;
+    --card: 215 28% 12%;
+    --card-foreground: 210 20% 95%;
+    --popover: 215 28% 10%;
+    --popover-foreground: 210 20% 95%;
+    --primary: 161 57% 37%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 24 8% 18%;
-    --secondary-foreground: 40 20% 90%;
-    --muted: 24 8% 18%;
-    --muted-foreground: 35 10% 60%;
-    --accent: 155 25% 33%;
+    --secondary: 215 20% 18%;
+    --secondary-foreground: 210 20% 90%;
+    --muted: 215 20% 18%;
+    --muted-foreground: 210 10% 60%;
+    --accent: 24 100% 63%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 62% 40%;
     --destructive-foreground: 0 0% 100%;
-    --border: 24 8% 20%;
-    --input: 24 8% 20%;
-    --ring: 18 87% 40%;
-    --teal: 155 25% 35%;
+    --border: 215 20% 20%;
+    --input: 215 20% 20%;
+    --ring: 161 57% 37%;
   }
 }
 
@@ -67,16 +63,16 @@
   h1, h2, h3 { letter-spacing: -0.02em; }
 }
 
-/* Songket geometric — terracotta */
+/* Dark navy hero dengan songket pattern */
 .hero-pattern {
-  background-color: #C1440E;
+  background-color: #1A2B3C;
   background-image:
-    linear-gradient(160deg, #A83A0C 0%, #C1440E 50%, #D4520F 100%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56'%3E%3Cg fill='none' stroke='white' stroke-width='0.6' opacity='0.1'%3E%3Cpath d='M28 6 L50 28 L28 50 L6 28 Z'/%3E%3Cpath d='M28 14 L42 28 L28 42 L14 28 Z'/%3E%3Cline x1='28' y1='6' x2='28' y2='50'/%3E%3Cline x1='6' y1='28' x2='50' y2='28'/%3E%3C/g%3E%3C/svg%3E");
+    linear-gradient(160deg, #0F1C2B 0%, #1A2B3C 50%, #1E3347 100%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56'%3E%3Cg fill='none' stroke='white' stroke-width='0.6' opacity='0.07'%3E%3Cpath d='M28 6 L50 28 L28 50 L6 28 Z'/%3E%3Cpath d='M28 14 L42 28 L28 42 L14 28 Z'/%3E%3Cline x1='28' y1='6' x2='28' y2='50'/%3E%3Cline x1='6' y1='28' x2='50' y2='28'/%3E%3C/g%3E%3C/svg%3E");
   background-blend-mode: overlay, normal;
 }
 
-/* Range sliders */
+/* Range sliders — primary color */
 input[type="range"] {
   -webkit-appearance: none;
   appearance: none;
@@ -89,7 +85,7 @@ input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   width: 18px; height: 18px;
   border-radius: 50%;
-  background: #C1440E;
+  background: #1E6B5A;
   cursor: pointer;
   border: 2px solid white;
   box-shadow: 0 1px 4px rgba(0,0,0,0.2);
@@ -97,7 +93,33 @@ input[type="range"]::-webkit-slider-thumb {
 input[type="range"]::-moz-range-thumb {
   width: 18px; height: 18px;
   border-radius: 50%;
-  background: #C1440E;
+  background: #1E6B5A;
   cursor: pointer;
   border: 2px solid white;
+}
+
+/* Shimmer animation untuk skeleton loading */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--muted))  25%,
+    hsl(var(--border)) 50%,
+    hsl(var(--muted))  75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.8s ease-in-out infinite;
+}
+
+/* NProgress loading bar — teal brand */
+#nprogress .bar {
+  background: #25C48A !important;
+  height: 3px !important;
+}
+#nprogress .peg {
+  box-shadow: 0 0 10px #25C48A, 0 0 5px #25C48A !important;
 }

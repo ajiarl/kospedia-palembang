@@ -30,11 +30,11 @@ function getFasilitasIcon(nama: string): string | null {
   return null;
 }
 
-// Earthy jenis badge — selaras dengan Terracotta + Forest palette
+// Jenis badge — aligned dengan Navy+Teal palette
 const jenisColors = {
-  putra:  "bg-teal-50 text-teal-500",
-  putri:  "bg-primary-50 text-primary-600",
-  campur: "bg-[#F5F0EB] text-[#5C4A3A]",
+  putra:  "bg-teal-50 text-teal-600",
+  putri:  "bg-accent-50 text-accent-600",
+  campur: "bg-secondary text-secondary-foreground",
 };
 
 export default function KosCard({
