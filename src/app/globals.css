@@ -6,48 +6,48 @@
 
 @layer base {
   :root {
-    --background: 210 20% 98%;          /* #F5F8FA */
-    --foreground: 215 25% 12%;          /* #161E2A */
-    --card: 210 20% 100%;
-    --card-foreground: 215 25% 12%;
-    --popover: 210 20% 100%;
-    --popover-foreground: 215 25% 12%;
-    --primary: 161 57% 27%;             /* #1E6B5A teal gelap */
+    --background: 30 15% 97%;           /* #F5F0EB warm sand */
+    --foreground: 20 10% 10%;           /* #1C1714 warm black */
+    --card: 0 0% 100%;
+    --card-foreground: 20 10% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 10% 10%;
+    --primary: 13 62% 48%;              /* #C84B31 coral-red */
     --primary-foreground: 0 0% 100%;
-    --secondary: 210 15% 94%;
-    --secondary-foreground: 215 25% 20%;
-    --muted: 210 15% 93%;
-    --muted-foreground: 215 10% 50%;
-    --accent: 24 100% 63%;              /* #FF8C42 orange CTA */
+    --secondary: 30 20% 92%;
+    --secondary-foreground: 20 10% 15%;
+    --muted: 30 15% 91%;
+    --muted-foreground: 20 5% 46%;
+    --accent: 155 25% 23%;              /* #2D4A3E forest green */
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 210 15% 88%;
-    --input: 210 15% 88%;
-    --ring: 161 57% 27%;
+    --border: 30 15% 87%;
+    --input: 30 15% 87%;
+    --ring: 13 62% 48%;
     --radius: 0.625rem;
   }
 
   .dark {
-    --background: 215 30% 8%;
-    --foreground: 210 20% 95%;
-    --card: 215 28% 12%;
-    --card-foreground: 210 20% 95%;
-    --popover: 215 28% 10%;
-    --popover-foreground: 210 20% 95%;
-    --primary: 161 57% 37%;
+    --background: 20 10% 8%;
+    --foreground: 30 15% 94%;
+    --card: 20 10% 12%;
+    --card-foreground: 30 15% 94%;
+    --popover: 20 10% 10%;
+    --popover-foreground: 30 15% 94%;
+    --primary: 13 62% 55%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 215 20% 18%;
-    --secondary-foreground: 210 20% 90%;
-    --muted: 215 20% 18%;
-    --muted-foreground: 210 10% 60%;
-    --accent: 24 100% 63%;
+    --secondary: 20 8% 18%;
+    --secondary-foreground: 30 15% 88%;
+    --muted: 20 8% 18%;
+    --muted-foreground: 30 8% 58%;
+    --accent: 155 25% 33%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 62% 40%;
     --destructive-foreground: 0 0% 100%;
-    --border: 215 20% 20%;
-    --input: 215 20% 20%;
-    --ring: 161 57% 37%;
+    --border: 20 8% 22%;
+    --input: 20 8% 22%;
+    --ring: 13 62% 48%;
   }
 }
 
@@ -63,16 +63,16 @@
   h1, h2, h3 { letter-spacing: -0.02em; }
 }
 
-/* Dark navy hero dengan songket pattern */
+/* Hero — foto kamar kos nyata dengan overlay charcoal */
 .hero-pattern {
-  background-color: #1A2B3C;
-  background-image:
-    linear-gradient(160deg, #0F1C2B 0%, #1A2B3C 50%, #1E3347 100%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56'%3E%3Cg fill='none' stroke='white' stroke-width='0.6' opacity='0.07'%3E%3Cpath d='M28 6 L50 28 L28 50 L6 28 Z'/%3E%3Cpath d='M28 14 L42 28 L28 42 L14 28 Z'/%3E%3Cline x1='28' y1='6' x2='28' y2='50'/%3E%3Cline x1='6' y1='28' x2='50' y2='28'/%3E%3C/g%3E%3C/svg%3E");
-  background-blend-mode: overlay, normal;
+  background-color: #1C1917;
+  background-image: url("https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=1920&q=80");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
-/* Range sliders — primary color */
+/* Range sliders — coral primary */
 input[type="range"] {
   -webkit-appearance: none;
   appearance: none;
@@ -85,7 +85,7 @@ input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   width: 18px; height: 18px;
   border-radius: 50%;
-  background: #1E6B5A;
+  background: #C84B31;
   cursor: pointer;
   border: 2px solid white;
   box-shadow: 0 1px 4px rgba(0,0,0,0.2);
@@ -93,7 +93,7 @@ input[type="range"]::-webkit-slider-thumb {
 input[type="range"]::-moz-range-thumb {
   width: 18px; height: 18px;
   border-radius: 50%;
-  background: #1E6B5A;
+  background: #C84B31;
   cursor: pointer;
   border: 2px solid white;
 }
@@ -115,11 +115,11 @@ input[type="range"]::-moz-range-thumb {
   animation: shimmer 1.8s ease-in-out infinite;
 }
 
-/* NProgress loading bar — teal brand */
+/* NProgress loading bar — coral warm */
 #nprogress .bar {
-  background: #25C48A !important;
+  background: #F08060 !important;
   height: 3px !important;
 }
 #nprogress .peg {
-  box-shadow: 0 0 10px #25C48A, 0 0 5px #25C48A !important;
+  box-shadow: 0 0 10px #F08060, 0 0 5px #F08060 !important;
 }

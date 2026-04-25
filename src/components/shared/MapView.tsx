@@ -23,7 +23,7 @@ type MapViewProps = {
 
 function createPinIcon(type: MapMarker["type"]) {
   const isKos = type === "kos";
-  const color = isKos ? "#1E6B5A" : "#1A2B3C";   // primary teal vs navy
+  const color = isKos ? "#C84B31" : "#1C1917";   // coral vs charcoal
   const innerColor = "white";
 
   // Teardrop SVG pin
@@ -99,7 +99,7 @@ export default function MapView({
                 permanent
                 direction="top"
                 offset={[0, -44]}
-                className="!border-0 !bg-teal-500 !text-white !text-xs !font-semibold !rounded-md !shadow-md !px-2 !py-1"
+                className="!border-0 !bg-[#2D4A3E] !text-white !text-xs !font-semibold !rounded-md !shadow-md !px-2 !py-1"
               >
                 {marker.nama}
               </Tooltip>
@@ -132,7 +132,7 @@ export default function MapView({
           Kos
         </span>
         <span className="flex items-center gap-1.5">
-          <span className="inline-block h-2.5 w-2.5 rounded-full bg-teal-500" />
+          <span className="inline-block h-2.5 w-2.5 rounded-full bg-[#2D4A3E]" />
           Kampus
         </span>
       </div>

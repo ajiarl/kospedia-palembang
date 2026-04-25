@@ -9,14 +9,14 @@ type KosFotoProps = {
 
 // Gradient aligned dengan Navy+Teal palette
 const jenisGradient = {
-  putra:  "from-[#E6F4F0] via-[#C0E3D9] to-[#E6F4F0]",  // primary-50/100 teal
-  putri:  "from-[#FFF3EA] via-[#FFD9B8] to-[#FFF3EA]",  // accent-50/100 orange
-  campur: "from-[#EEF2F6] via-[#DCE4ED] to-[#EEF2F6]",  // cool blue-grey neutral
+  putra:  "from-[#FDEBD6] via-[#FAD0B8] to-[#FDEBD6]",  // coral warm
+  putri:  "from-[#EDF3F0] via-[#C8DDD6] to-[#EDF3F0]",  // forest green
+  campur: "from-[#F5F0EB] via-[#EAE2D8] to-[#F5F0EB]",  // warm sand
 };
 
 function KosFotoPlaceholder({ jenis }: { jenis: KosFotoProps["jenis"] }) {
-  const strokeColor = jenis === "putri" ? "#FF8C42" : "#1E6B5A";
-  const roofColor   = jenis === "putri" ? "#E6702A" : "#175849";
+  const strokeColor = jenis === "putra" ? "#C84B31" : jenis === "putri" ? "#2D4A3E" : "#7C6A5A";
+  const roofColor   = jenis === "putra" ? "#A83A24" : jenis === "putri" ? "#243D33" : "#5C4A3A";
 
   return (
     <div className={cn("relative flex h-full w-full items-center justify-center bg-gradient-to-br", jenisGradient[jenis])}>

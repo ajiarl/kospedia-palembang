@@ -30,11 +30,11 @@ function getFasilitasIcon(nama: string): string | null {
   return null;
 }
 
-// Jenis badge — aligned dengan Navy+Teal palette
+// Jenis badge — Charcoal+Coral palette
 const jenisColors = {
-  putra:  "bg-teal-50 text-teal-600",
-  putri:  "bg-accent-50 text-accent-600",
-  campur: "bg-secondary text-secondary-foreground",
+  putra:  "bg-[#FDEBD6] text-[#882E1B]",
+  putri:  "bg-[#EDF3F0] text-[#243D33]",
+  campur: "bg-[#F5F0EB] text-[#5C4A3A]",
 };
 
 export default function KosCard({

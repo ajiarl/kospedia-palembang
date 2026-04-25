@@ -43,20 +43,23 @@ export default async function HalamanUtama() {
   return (
     <div>
       {/* ── Hero ── */}
-      <section className="hero-pattern relative overflow-hidden py-20 md:py-28">
-        {/* Overlay gelap untuk kontras text */}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/50" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background to-transparent" />
+      <section className="hero-pattern relative overflow-hidden py-14 md:py-20">
+        {/* Overlay charcoal berlapis untuk kontras teks */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/70 via-black/55 to-black/75" />
+        {/* Fade ke background body di bagian bawah */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background to-transparent" />
 
-        <div className="container relative z-10 flex flex-col items-center gap-8 text-center">
+        <div className="container relative z-10 flex flex-col items-center gap-6 text-center">
+          {/* Badge */}
           <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-sm font-medium text-white ring-1 ring-white/20 backdrop-blur-sm">
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-teal-400" />
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-coral-400" />
             Platform kos mahasiswa Palembang
           </span>
 
+          {/* Heading */}
           <h1 className="max-w-3xl text-5xl font-black text-white drop-shadow-lg md:text-6xl lg:text-7xl">
             Temukan Kos Terbaikmu{" "}
-            <span className="text-teal-400">di Palembang</span>
+            <span className="text-coral-400">di Palembang</span>
           </h1>
 
           <p className="max-w-lg text-base text-white/85 drop-shadow md:text-lg">
@@ -65,6 +68,7 @@ export default async function HalamanUtama() {
 
           <HeroSearch kampus={kampusForSearch} />
 
+          {/* Filter cepat */}
           <div className="flex flex-wrap items-center justify-center gap-2">
             <span className="text-xs font-medium text-white/50">Filter cepat:</span>
             {jenisChips.map((chip) => (
@@ -78,10 +82,11 @@ export default async function HalamanUtama() {
             ))}
           </div>
 
+          {/* Stats */}
           <div className="flex flex-wrap items-center justify-center gap-6 pt-1">
             {statsItems.map((item) => (
               <div key={item.label} className="flex items-center gap-2">
-                <svg className="h-4 w-4 text-teal-400" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="h-4 w-4 text-coral-400" fill="currentColor" viewBox="0 0 24 24">
                   <path d={item.icon} />
                 </svg>
                 <span className="text-sm font-medium text-white/90 drop-shadow">{item.label}</span>
@@ -91,6 +96,7 @@ export default async function HalamanUtama() {
         </div>
       </section>
 
+
       {/* ── Map Preview ── */}
       <section className="container py-12">
         <div className="mb-5 flex items-end justify-between gap-4">
@@ -99,7 +105,7 @@ export default async function HalamanUtama() {
             <h2 className="text-2xl font-bold">Jelajahi Lokasi Kos</h2>
           </div>
           <Link href="/kos" className="rounded-lg bg-primary px-4 py-2 text-sm font-bold text-white transition hover:bg-primary-600">
-            Lihat semua kos →
+            Lihat semua kos
           </Link>
         </div>
         <MapViewClient markers={mapMarkers} className="h-72 md:h-96" />

@@ -16,40 +16,39 @@ const config: Config = {
     },
     extend: {
       colors: {
-        // Primary — dark teal green #1E6B5A
         primary: {
-          DEFAULT: "#1E6B5A",
+          DEFAULT: "#C84B31",
           foreground: "#FFFFFF",
-          50:  "#E6F4F0",
-          100: "#C0E3D9",
-          500: "#1E6B5A",
-          600: "#175849",
-          700: "#104038",
+          50:  "#FDEBD6",
+          100: "#FAD0B8",
+          500: "#C84B31",
+          600: "#A83A24",
+          700: "#882E1B",
         },
-        // Teal — bright mint accent #25C48A
-        teal: {
-          DEFAULT: "#25C48A",
+        coral: {
+          DEFAULT: "#F08060",
           foreground: "#FFFFFF",
-          50:  "#E1F9F0",
-          100: "#A3EDD0",
-          400: "#2FD99A",
-          500: "#25C48A",
-          600: "#1DA872",
+          50:  "#FEF0EB",
+          100: "#FBBDAD",
+          400: "#F08060",
+          500: "#E86840",
         },
-        // Accent — orange CTA #FF8C42
-        accent: {
-          DEFAULT: "#FF8C42",
+        forest: {
+          DEFAULT: "#2D4A3E",
           foreground: "#FFFFFF",
-          50:  "#FFF3EA",
-          100: "#FFD9B8",
-          500: "#FF8C42",
-          600: "#E6702A",
+          50:  "#EDF3F0",
+          100: "#C8DDD6",
+          500: "#2D4A3E",
+          600: "#243D33",
         },
-        // Navy — hero background
-        navy: {
-          DEFAULT: "#1A2B3C",
-          dark:    "#0F1C2B",
-          light:   "#1E3347",
+        sand: {
+          DEFAULT: "#F5F0EB",
+          dark:    "#EAE2D8",
+        },
+        charcoal: {
+          DEFAULT: "#1C1917",
+          dark:    "#111110",
+          light:   "#25201D",
         },
         border:     "hsl(var(--border))",
         input:      "hsl(var(--input))",
@@ -71,6 +70,10 @@ const config: Config = {
         muted: {
           DEFAULT:    "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT:    "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
         },
         popover: {
           DEFAULT:    "hsl(var(--popover))",
