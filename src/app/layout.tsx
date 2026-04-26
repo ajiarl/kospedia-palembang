@@ -1,11 +1,7 @@
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
+import AppClientShell from "@/components/shared/AppClientShell";
 import { getMetadataBase, SITE_DESCRIPTION, SITE_NAME } from "@/lib/seo";
 import "./globals.css";
-
-const AppClientShell = dynamic(() => import("@/components/shared/AppClientShell"), {
-  ssr: false,
-});
 
 export const metadata: Metadata = {
   metadataBase: getMetadataBase(),

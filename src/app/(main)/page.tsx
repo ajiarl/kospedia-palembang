@@ -131,7 +131,7 @@ export default async function HalamanUtama() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(homeJsonLd) }}
       />
-      <section className="hero-pattern relative overflow-hidden py-14 md:py-20">
+      <section className="hero-pattern relative -mt-14 overflow-hidden pt-28 md:-mt-16 md:pt-32">
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/70 via-black/55 to-black/75" />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background to-transparent" />
 

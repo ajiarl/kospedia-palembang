@@ -3,6 +3,7 @@ import Link from "next/link";
 import LogoutButton from "@/components/auth/LogoutButton";
 import MobileNav from "@/components/shared/MobileNav";
 import NavLinks from "@/components/shared/NavLinks";
+import NavbarShell from "@/components/shared/NavbarShell";
 import { getCurrentUser } from "@/lib/auth";
 
 function HomeIcon() {
@@ -18,7 +19,7 @@ export default async function Navbar() {
   const user = await getCurrentUser();
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur-md shadow-sm">
+    <NavbarShell>
       <div className="container flex h-14 items-center justify-between gap-3 md:h-16 md:gap-4">
         <Link href="/" className="flex items-center gap-1.5 text-lg font-bold text-primary md:text-xl">
           <HomeIcon />
@@ -29,8 +30,8 @@ export default async function Navbar() {
           <NavLinks />
 
           {user ? (
-            <div className="flex items-center gap-3">
-              <span className="hidden max-w-40 truncate text-sm text-muted-foreground sm:inline">
+            <div className="flex items-center gap-2">
+              <span className="hidden max-w-28 truncate text-sm text-muted-foreground lg:inline">
                 {user.email}
               </span>
               <LogoutButton />
@@ -38,7 +39,7 @@ export default async function Navbar() {
           ) : (
             <Link
               href="/login"
-              className="rounded-lg bg-primary px-4 py-1.5 text-sm font-semibold text-white transition hover:bg-primary-600"
+              className="rounded-lg bg-primary px-4 py-1.5 text-sm font-semibold text-white shadow-sm transition hover:bg-primary-600"
             >
               Masuk
             </Link>
@@ -47,6 +48,6 @@ export default async function Navbar() {
 
         <MobileNav isLoggedIn={Boolean(user)} userEmail={user?.email} />
       </div>
-    </header>
+    </NavbarShell>
   );
 }

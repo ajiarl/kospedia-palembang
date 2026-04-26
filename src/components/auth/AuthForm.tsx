@@ -29,8 +29,14 @@ function getAuthErrorMessage(message: string) {
   if (normalizedMessage.includes("signup is disabled")) {
     return "Pendaftaran akun sedang dinonaktifkan sementara.";
   }
+  if (normalizedMessage.includes("redirect url") || normalizedMessage.includes("redirect_to")) {
+    return "Redirect URL untuk login belum diizinkan di Supabase. Tambahkan URL callback aplikasi ke pengaturan Auth.";
+  }
+  if (normalizedMessage.includes("error sending confirmation email")) {
+    return "Supabase gagal mengirim email konfirmasi. Cek pengaturan email/auth di dashboard Supabase.";
+  }
 
-  return "Terjadi kendala saat memproses akunmu. Coba lagi sebentar.";
+  return `Terjadi kendala saat memproses akunmu. Detail: ${message}`;
 }
 
 function KosPediaLogo() {
@@ -61,12 +67,13 @@ export default function AuthForm({ mode }: { mode: Mode }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const supabase = createSupabaseBrowserClient();
-  const next = searchParams.get("next") ?? "/kos";
+  const next = searchParams.get("next") ?? "/";
   const initialError = searchParams.get("error");
+  const initialSuccess = searchParams.get("success");
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [pesan, setPesan] = useState<string | null>(null);
+  const [pesan, setPesan] = useState<string | null>(initialSuccess);
   const [error, setError] = useState<string | null>(initialError);
   const [loading, setLoading] = useState(false);
   const isLogin = mode === "login";
@@ -100,7 +107,15 @@ export default function AuthForm({ mode }: { mode: Mode }) {
       return;
     }
 
-    setPesan("Akun dibuat. Cek email jika Supabase meminta konfirmasi akun.");
+    if (result.data.session) {
+      router.replace(next);
+      router.refresh();
+      return;
+    }
+
+    router.replace(
+      `/login?success=${encodeURIComponent("Akun berhasil dibuat. Sekarang kamu bisa masuk.")}&next=${encodeURIComponent(next)}`
+    );
   }
 
   async function handleGoogleAuth() {

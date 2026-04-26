@@ -47,13 +47,13 @@ export default function MobileNav({
         type="button"
         onClick={() => setOpen((current) => !current)}
         aria-label={open ? "Tutup menu" : "Buka menu"}
-        className="rounded-lg border p-2 text-foreground/80 transition hover:bg-muted"
+        className="rounded-lg border border-white/20 bg-white/55 p-2 text-foreground/80 shadow-sm backdrop-blur-md transition hover:bg-white/70"
       >
         <MenuIcon open={open} />
       </button>
 
       {open ? (
-        <div className="absolute inset-x-0 top-14 z-50 border-b border-border bg-background/95 px-4 py-4 shadow-lg backdrop-blur-md">
+        <div className="absolute inset-x-0 top-14 z-50 border-b border-white/15 bg-background/80 px-4 py-4 shadow-lg backdrop-blur-xl">
           <nav className="space-y-2">
             {navLinks.map((link) => {
               const isActive = pathname.startsWith(link.href);
