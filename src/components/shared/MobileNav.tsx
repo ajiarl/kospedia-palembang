@@ -63,7 +63,7 @@ export default function MobileNav({
           className={cn(
             "absolute inset-x-0 top-14 z-50 px-4 py-4 shadow-lg backdrop-blur-xl",
             isHomePage
-              ? "border-b border-white/10 bg-primary/95 text-white"
+              ? "border-b border-white/10 bg-black/80 text-white"
               : "border-b border-white/15 bg-background/80"
           )}
         >
@@ -79,10 +79,10 @@ export default function MobileNav({
                     "block rounded-lg px-3 py-2 text-sm font-medium transition",
                     isActive
                       ? isHomePage
-                        ? "bg-white/15 text-white"
+                        ? "bg-primary/12 text-primary"
                         : "bg-primary/10 text-primary"
                       : isHomePage
-                        ? "text-white/80 hover:bg-white/10 hover:text-white"
+                        ? "text-primary hover:bg-primary/10 hover:text-primary-600"
                         : "text-foreground/75 hover:bg-muted hover:text-foreground"
                   )}
                 >
@@ -95,13 +95,13 @@ export default function MobileNav({
           <div className="mt-4 border-t pt-4">
             {isLoggedIn ? (
               <div className="space-y-3">
-                <p className={cn("truncate text-sm", isHomePage ? "text-white/80" : "text-muted-foreground")}>
+                <p className={cn("truncate text-sm", isHomePage ? "text-primary" : "text-muted-foreground")}>
                   {userEmail}
                 </p>
                 <LogoutButton
                   className={cn(
                     isHomePage
-                      ? "border-white/30 bg-white/10 text-white hover:bg-white/20"
+                      ? "border-primary/55 bg-primary/10 text-primary hover:bg-primary/20 hover:text-primary-600"
                       : "hover:bg-muted"
                   )}
                 />
@@ -113,7 +113,7 @@ export default function MobileNav({
                 className={cn(
                   "inline-flex rounded-lg px-4 py-2 text-sm font-semibold transition",
                   isHomePage
-                    ? "bg-white text-primary hover:bg-white/90"
+                    ? "bg-primary text-white hover:bg-primary-600"
                     : "bg-primary text-white hover:bg-primary-600"
                 )}
               >
