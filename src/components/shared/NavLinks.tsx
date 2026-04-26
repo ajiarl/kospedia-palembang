@@ -12,6 +12,7 @@ const navLinks = [
 
 export default function NavLinks() {
   const pathname = usePathname();
+  const isHomePage = pathname === "/";
 
   return (
     <>
@@ -24,13 +25,22 @@ export default function NavLinks() {
             className={cn(
               "relative py-1 text-sm font-medium transition-colors",
               isActive
-                ? "text-primary"
-                : "text-foreground/70 hover:text-foreground"
+                ? isHomePage
+                  ? "text-primary hover:text-primary-600"
+                  : "text-primary"
+                : isHomePage
+                  ? "text-primary hover:text-primary-600"
+                  : "text-foreground/70 hover:text-foreground"
             )}
           >
             {link.label}
             {isActive && (
-              <span className="absolute -bottom-px left-0 right-0 h-0.5 rounded-full bg-primary" />
+              <span
+                className={cn(
+                  "absolute -bottom-px left-0 right-0 h-0.5 rounded-full",
+                  isHomePage ? "bg-primary" : "bg-primary"
+                )}
+              />
             )}
           </Link>
         );
