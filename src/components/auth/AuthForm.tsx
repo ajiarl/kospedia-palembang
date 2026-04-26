@@ -8,6 +8,31 @@ import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 
 type Mode = "login" | "register";
 
+function getAuthErrorMessage(message: string) {
+  const normalizedMessage = message.toLowerCase();
+
+  if (normalizedMessage.includes("invalid login credentials")) {
+    return "Email atau password yang kamu masukkan belum cocok.";
+  }
+  if (normalizedMessage.includes("email not confirmed")) {
+    return "Email belum dikonfirmasi. Cek inbox atau folder spam kamu.";
+  }
+  if (normalizedMessage.includes("user already registered")) {
+    return "Email ini sudah terdaftar. Coba masuk atau gunakan email lain.";
+  }
+  if (normalizedMessage.includes("password should be at least")) {
+    return "Password minimal 6 karakter.";
+  }
+  if (normalizedMessage.includes("unable to validate email address")) {
+    return "Format email belum valid.";
+  }
+  if (normalizedMessage.includes("signup is disabled")) {
+    return "Pendaftaran akun sedang dinonaktifkan sementara.";
+  }
+
+  return "Terjadi kendala saat memproses akunmu. Coba lagi sebentar.";
+}
+
 function KosPediaLogo() {
   return (
     <div className="flex flex-col items-center gap-2 mb-2">
@@ -37,11 +62,12 @@ export default function AuthForm({ mode }: { mode: Mode }) {
   const searchParams = useSearchParams();
   const supabase = createSupabaseBrowserClient();
   const next = searchParams.get("next") ?? "/kos";
+  const initialError = searchParams.get("error");
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [pesan, setPesan] = useState<string | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(initialError);
   const [loading, setLoading] = useState(false);
   const isLogin = mode === "login";
 
@@ -64,7 +90,7 @@ export default function AuthForm({ mode }: { mode: Mode }) {
     setLoading(false);
 
     if (result.error) {
-      setError(result.error.message);
+      setError(getAuthErrorMessage(result.error.message));
       return;
     }
 
@@ -89,7 +115,7 @@ export default function AuthForm({ mode }: { mode: Mode }) {
     });
 
     if (oauthError) {
-      setError(oauthError.message);
+      setError(getAuthErrorMessage(oauthError.message));
       setLoading(false);
     }
   }
@@ -114,6 +140,7 @@ export default function AuthForm({ mode }: { mode: Mode }) {
         type="button"
         onClick={handleGoogleAuth}
         disabled={loading}
+        suppressHydrationWarning
         className="flex w-full items-center justify-center gap-3 rounded-xl border px-4 py-2.5 text-sm font-semibold transition hover:bg-muted disabled:cursor-not-allowed disabled:opacity-60"
       >
         <GoogleIcon />
@@ -139,6 +166,7 @@ export default function AuthForm({ mode }: { mode: Mode }) {
             required
             className="mt-1.5 w-full rounded-xl border bg-background px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
             placeholder="nama@email.com"
+            suppressHydrationWarning
           />
         </div>
 
@@ -153,11 +181,15 @@ export default function AuthForm({ mode }: { mode: Mode }) {
             minLength={6}
             className="mt-1.5 w-full rounded-xl border bg-background px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
             placeholder="Minimal 6 karakter"
+            suppressHydrationWarning
           />
         </div>
 
         {error && (
-          <p className="rounded-xl border border-destructive/40 bg-destructive/5 px-3 py-2.5 text-sm text-destructive">
+          <p
+            role="alert"
+            className="rounded-xl border border-destructive/40 bg-destructive/5 px-3 py-2.5 text-sm text-destructive"
+          >
             {error}
           </p>
         )}
@@ -171,6 +203,7 @@ export default function AuthForm({ mode }: { mode: Mode }) {
         <button
           type="submit"
           disabled={loading}
+          suppressHydrationWarning
           className="w-full rounded-xl bg-primary px-4 py-2.5 text-sm font-bold text-white transition hover:bg-primary-600 disabled:cursor-not-allowed disabled:opacity-60 active:scale-[0.98]"
         >
           {loading ? "Memproses..." : isLogin ? "Masuk" : "Daftar Sekarang"}

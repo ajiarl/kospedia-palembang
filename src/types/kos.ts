@@ -9,5 +9,5 @@ export type KosWithKampus = KosRow & {
 };
 
 export type KosDetail = KosWithKampus & {
-  review: Pick<ReviewRow, "id" | "rating" | "komentar" | "created_at">[];
+  review: Pick<ReviewRow, "id" | "user_id" | "rating" | "komentar" | "created_at">[];
 };

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useDeferredValue, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 
 type Kampus = { nama: string; slug: string };
@@ -8,27 +8,21 @@ type Kampus = { nama: string; slug: string };
 export default function HeroSearch({ kampus }: { kampus: Kampus[] }) {
   const router = useRouter();
   const [query, setQuery] = useState("");
-  const [suggestions, setSuggestions] = useState<Kampus[]>([]);
-  const [open, setOpen] = useState(false);
+  const [isDismissed, setIsDismissed] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (query.length >= 1) {
-      const filtered = kampus.filter((k) =>
-        k.nama.toLowerCase().includes(query.toLowerCase())
-      );
-      setSuggestions(filtered);
-      setOpen(filtered.length > 0);
-    } else {
-      setSuggestions([]);
-      setOpen(false);
-    }
-  }, [query, kampus]);
+  const deferredQuery = useDeferredValue(query);
+  const suggestions =
+    deferredQuery.length >= 1
+      ? kampus.filter((k) =>
+          k.nama.toLowerCase().includes(deferredQuery.toLowerCase())
+        )
+      : [];
+  const open = !isDismissed && deferredQuery.length >= 1 && suggestions.length > 0;
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
       if (wrapperRef.current && !wrapperRef.current.contains(e.target as Node)) {
-        setOpen(false);
+        setIsDismissed(true);
       }
     }
     document.addEventListener("mousedown", handleClickOutside);
@@ -36,7 +30,7 @@ export default function HeroSearch({ kampus }: { kampus: Kampus[] }) {
   }, []);
 
   function selectKampus(slug: string) {
-    setOpen(false);
+    setIsDismissed(true);
     setQuery("");
     router.push(`/kos?kampus=${slug}`);
   }
@@ -50,7 +44,7 @@ export default function HeroSearch({ kampus }: { kampus: Kampus[] }) {
     } else {
       router.push("/kos");
     }
-    setOpen(false);
+    setIsDismissed(true);
   }
 
   return (
@@ -68,13 +62,18 @@ export default function HeroSearch({ kampus }: { kampus: Kampus[] }) {
           <input
             type="text"
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={(e) => {
+              setQuery(e.target.value);
+              setIsDismissed(false);
+            }}
             placeholder="Cari kos dekat kampus mana?"
             className="flex-1 bg-transparent py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
             autoComplete="off"
+            suppressHydrationWarning
           />
           <button
             type="submit"
+            suppressHydrationWarning
             className="rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-primary-600 active:scale-95"
           >
             Cari
@@ -82,7 +81,6 @@ export default function HeroSearch({ kampus }: { kampus: Kampus[] }) {
         </div>
       </form>
 
-      {/* Autocomplete Dropdown */}
       {open && suggestions.length > 0 && (
         <div className="absolute left-0 right-0 top-full z-50 mt-2 overflow-hidden rounded-xl border bg-white shadow-xl">
           {suggestions.map((k) => (
@@ -101,10 +99,13 @@ export default function HeroSearch({ kampus }: { kampus: Kampus[] }) {
           <div className="border-t px-4 py-2.5">
             <button
               type="button"
-              onClick={() => { router.push("/kos"); setOpen(false); }}
+              onClick={() => {
+                router.push("/kos");
+                setIsDismissed(true);
+              }}
               className="text-xs font-medium text-primary hover:underline"
             >
-              Lihat semua kos →
+              Lihat semua kos {"->"}
             </button>
           </div>
         </div>

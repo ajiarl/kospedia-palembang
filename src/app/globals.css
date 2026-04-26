@@ -1,24 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..900;1,14..32,300..900&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 30 15% 97%;           /* #F5F0EB warm sand */
-    --foreground: 20 10% 10%;           /* #1C1714 warm black */
+    --background: 30 15% 97%;
+    --foreground: 20 10% 10%;
     --card: 0 0% 100%;
     --card-foreground: 20 10% 10%;
     --popover: 0 0% 100%;
     --popover-foreground: 20 10% 10%;
-    --primary: 13 62% 48%;              /* #C84B31 coral-red */
+    --primary: 13 62% 48%;
     --primary-foreground: 0 0% 100%;
     --secondary: 30 20% 92%;
     --secondary-foreground: 20 10% 15%;
     --muted: 30 15% 91%;
-    --muted-foreground: 20 5% 46%;
-    --accent: 155 25% 23%;              /* #2D4A3E forest green */
+    --muted-foreground: 20 8% 34%;
+    --accent: 155 25% 23%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
@@ -52,27 +50,41 @@
 }
 
 @layer base {
-  * { @apply border-border; }
-  html { scroll-behavior: smooth; }
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', sans-serif;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: clip;
   }
-  h1, h2, h3 { letter-spacing: -0.02em; }
+
+  h1,
+  h2,
+  h3 {
+    letter-spacing: -0.02em;
+  }
 }
 
-/* Hero — foto kamar kos nyata dengan overlay charcoal */
 .hero-pattern {
-  background-color: #1C1917;
-  background-image: url("https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=1920&q=80");
+  background-color: #1c1917;
+  background-image: url("/images/hero-kospedia.avif");
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
+  background-attachment: scroll;
 }
 
-/* Range sliders — coral primary */
+.leaflet-container {
+  touch-action: pan-y pinch-zoom;
+}
+
 input[type="range"] {
   -webkit-appearance: none;
   appearance: none;
@@ -81,45 +93,57 @@ input[type="range"] {
   background: hsl(var(--border));
   outline: none;
 }
+
+input[type="range"]:focus-visible {
+  box-shadow: 0 0 0 4px hsl(var(--primary) / 0.22);
+}
+
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 18px; height: 18px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
-  background: #C84B31;
+  background: #c84b31;
   cursor: pointer;
   border: 2px solid white;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
 }
+
 input[type="range"]::-moz-range-thumb {
-  width: 18px; height: 18px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
-  background: #C84B31;
+  background: #c84b31;
   cursor: pointer;
   border: 2px solid white;
 }
 
-/* Shimmer animation untuk skeleton loading */
 @keyframes shimmer {
-  0%   { background-position: -200% center; }
-  100% { background-position:  200% center; }
+  0% {
+    background-position: -200% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
 }
 
 .skeleton-shimmer {
   background: linear-gradient(
     90deg,
-    hsl(var(--muted))  25%,
+    hsl(var(--muted)) 25%,
     hsl(var(--border)) 50%,
-    hsl(var(--muted))  75%
+    hsl(var(--muted)) 75%
   );
   background-size: 200% 100%;
   animation: shimmer 1.8s ease-in-out infinite;
 }
 
-/* NProgress loading bar — coral warm */
 #nprogress .bar {
-  background: #F08060 !important;
+  background: #f08060 !important;
   height: 3px !important;
 }
+
 #nprogress .peg {
-  box-shadow: 0 0 10px #F08060, 0 0 5px #F08060 !important;
+  box-shadow: 0 0 10px #f08060, 0 0 5px #f08060 !important;
 }

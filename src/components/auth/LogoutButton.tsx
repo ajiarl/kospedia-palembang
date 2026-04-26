@@ -22,6 +22,7 @@ export default function LogoutButton() {
       type="button"
       onClick={handleLogout}
       disabled={loading}
+      suppressHydrationWarning
       className="rounded-md border px-3 py-1.5 text-sm font-medium transition hover:bg-muted disabled:cursor-not-allowed disabled:opacity-60"
     >
       {loading ? "Keluar..." : "Keluar"}

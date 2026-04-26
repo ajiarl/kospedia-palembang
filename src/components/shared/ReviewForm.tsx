@@ -4,13 +4,16 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
+import { trackEvent } from "@/lib/analytics";
 import { StarPicker } from "@/components/shared/StarPicker";
 
 export default function ReviewForm({
   kosId,
+  kosPath,
   isLoggedIn,
 }: {
   kosId: string;
+  kosPath: string;
   isLoggedIn: boolean;
 }) {
   const router = useRouter();
@@ -19,6 +22,7 @@ export default function ReviewForm({
   const [error, setError] = useState<string | null>(null);
   const [pesan, setPesan] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const komentarCounterId = "komentar-counter";
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -45,7 +49,12 @@ export default function ReviewForm({
     }
 
     setKomentar("");
-    setPesan("Review kamu sudah tersimpan. Terima kasih!");
+    setPesan("Review kamu berhasil ditambahkan atau diperbarui. Terima kasih!");
+    trackEvent("review_submit", {
+      kos_id: kosId,
+      rating,
+      has_comment: Boolean(komentar.trim()),
+    });
     router.refresh();
   }
 
@@ -56,7 +65,7 @@ export default function ReviewForm({
           Masuk dulu untuk menulis review kos ini.
         </p>
         <Link
-          href={`/login?next=/kos/${kosId}`}
+          href={`/login?next=${encodeURIComponent(kosPath)}`}
           className="mt-3 inline-flex rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white transition hover:bg-primary-600"
         >
           Masuk
@@ -81,6 +90,7 @@ export default function ReviewForm({
           </label>
           <textarea
             id="komentar"
+            aria-describedby={komentarCounterId}
             value={komentar}
             onChange={(e) => setKomentar(e.target.value)}
             rows={3}
@@ -88,14 +98,17 @@ export default function ReviewForm({
             className="w-full resize-none rounded-lg border bg-background px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
             placeholder="Ceritakan pengalaman atau kesanmu tentang kos ini."
           />
-          <p className="mt-1 text-right text-xs text-muted-foreground">
+          <p id={komentarCounterId} className="mt-1 text-right text-xs text-muted-foreground">
             {komentar.length}/500
           </p>
         </div>
       </div>
 
       {error && (
-        <p className="mt-3 rounded-lg border border-destructive/40 bg-destructive/5 px-3 py-2 text-sm text-destructive">
+        <p
+          role="alert"
+          className="mt-3 rounded-lg border border-destructive/40 bg-destructive/5 px-3 py-2 text-sm text-destructive"
+        >
           {error}
         </p>
       )}

@@ -23,10 +23,9 @@ type MapViewProps = {
 
 function createPinIcon(type: MapMarker["type"]) {
   const isKos = type === "kos";
-  const color = isKos ? "#C84B31" : "#1C1917";   // coral vs charcoal
+  const color = isKos ? "#C84B31" : "#1C1917";
   const innerColor = "white";
 
-  // Teardrop SVG pin
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 40" width="28" height="40">
     <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
       <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.25"/>
@@ -68,6 +67,7 @@ export default function MapView({
   const mapCenter =
     center ??
     (markers[0] ? ([markers[0].lat, markers[0].lng] as [number, number]) : fallbackCenter);
+  const visibleLocations = markers.filter((marker) => marker.type === "kos");
 
   const kosIcon = useMemo(() => createPinIcon("kos"), []);
   const kampusIcon = useMemo(() => createPinIcon("kampus"), []);
@@ -75,6 +75,7 @@ export default function MapView({
   return (
     <div className={`relative overflow-hidden rounded-xl border bg-muted shadow-sm ${className}`}>
       <MapContainer
+        aria-hidden="true"
         center={mapCenter}
         zoom={zoom}
         scrollWheelZoom={false}
@@ -93,7 +94,6 @@ export default function MapView({
             position={[marker.lat, marker.lng]}
             icon={marker.type === "kos" ? kosIcon : kampusIcon}
           >
-            {/* Kampus: tooltip permanent selalu terlihat */}
             {marker.type === "kampus" && (
               <Tooltip
                 permanent
@@ -106,17 +106,15 @@ export default function MapView({
             )}
 
             <Popup>
-              <div className="space-y-1 min-w-32">
-                <p className="font-semibold text-sm">{marker.nama}</p>
-                {marker.alamat && (
-                  <p className="text-xs text-gray-500">{marker.alamat}</p>
-                )}
+              <div className="min-w-32 space-y-1">
+                <p className="text-sm font-semibold">{marker.nama}</p>
+                {marker.alamat && <p className="text-xs text-gray-500">{marker.alamat}</p>}
                 {marker.href && (
                   <a
                     href={marker.href}
-                    className="block text-xs font-medium text-primary mt-1 hover:underline"
+                    className="mt-1 block text-xs font-medium text-primary hover:underline"
                   >
-                    Lihat detail →
+                    Lihat detail {"->"}
                   </a>
                 )}
               </div>
@@ -125,7 +123,6 @@ export default function MapView({
         ))}
       </MapContainer>
 
-      {/* Legend */}
       <div className="absolute bottom-3 right-3 z-[400] flex items-center gap-3 rounded-lg border bg-white/95 px-3 py-1.5 text-xs font-medium shadow-sm backdrop-blur-sm">
         <span className="flex items-center gap-1.5">
           <span className="inline-block h-2.5 w-2.5 rounded-full bg-primary" />
@@ -135,6 +132,22 @@ export default function MapView({
           <span className="inline-block h-2.5 w-2.5 rounded-full bg-[#2D4A3E]" />
           Kampus
         </span>
+      </div>
+
+      <div className="sr-only" role="note" aria-label="Ringkasan peta lokasi kos">
+        <p>Peta menampilkan lokasi kos dan kampus terdekat.</p>
+        {visibleLocations.length > 0 ? (
+          <ul>
+            {visibleLocations.slice(0, 10).map((marker) => (
+              <li key={marker.id}>
+                {marker.nama}
+                {marker.alamat ? `, ${marker.alamat}` : ""}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>Tidak ada lokasi kos yang ditampilkan pada peta ini.</p>
+        )}
       </div>
     </div>
   );

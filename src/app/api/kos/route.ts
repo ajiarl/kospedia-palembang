@@ -10,9 +10,27 @@ export async function GET(request: Request) {
   const hargaMax = searchParams.get("hargaMax");
 
   const supabase = await createSupabaseServerClient();
+  const { data: maxHargaData } = await supabase
+    .from("kos")
+    .select("harga_max")
+    .eq("tersedia", true)
+    .order("harga_max", { ascending: false })
+    .limit(1)
+    .maybeSingle();
   const selectedKampus = kampus
     ? await supabase.from("kampus").select("id").eq("slug", kampus).maybeSingle()
     : null;
+  const hargaMaxTersedia = Math.max(2_500_000, maxHargaData?.harga_max ?? 0);
+  const parsedMin = Number(hargaMin);
+  const parsedMax = Number(hargaMax);
+  const normalizedMin =
+    Number.isFinite(parsedMin) && parsedMin >= 0
+      ? Math.min(parsedMin, hargaMaxTersedia)
+      : null;
+  const normalizedMax =
+    Number.isFinite(parsedMax) && parsedMax >= 0
+      ? Math.min(parsedMax, hargaMaxTersedia)
+      : null;
 
   let query = supabase
     .from("kos")
@@ -28,18 +46,21 @@ export async function GET(request: Request) {
     query = query.eq("jenis", jenis);
   }
 
-  if (hargaMin) {
-    query = query.gte("harga_max", Number(hargaMin));
+  if (normalizedMin !== null) {
+    query = query.gte("harga_max", normalizedMin);
   }
 
-  if (hargaMax) {
-    query = query.lte("harga_min", Number(hargaMax));
+  if (normalizedMax !== null) {
+    query = query.lte("harga_min", normalizedMax);
   }
 
   const { data, error } = await query;
 
   if (error) {
-    return NextResponse.json({ pesan: error.message }, { status: 500 });
+    return NextResponse.json(
+      { pesan: "Daftar kos belum berhasil dimuat." },
+      { status: 500 }
+    );
   }
 
   return NextResponse.json({ data });

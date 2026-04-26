@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import LogoutButton from "@/components/auth/LogoutButton";
+import MobileNav from "@/components/shared/MobileNav";
 import NavLinks from "@/components/shared/NavLinks";
 import { getCurrentUser } from "@/lib/auth";
 
@@ -18,13 +19,13 @@ export default async function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur-md shadow-sm">
-      <div className="container flex h-16 items-center justify-between gap-4">
-        <Link href="/" className="flex items-center gap-1.5 text-xl font-bold text-primary">
+      <div className="container flex h-14 items-center justify-between gap-3 md:h-16 md:gap-4">
+        <Link href="/" className="flex items-center gap-1.5 text-lg font-bold text-primary md:text-xl">
           <HomeIcon />
           KosPedia
         </Link>
 
-        <nav className="flex items-center gap-5">
+        <nav className="hidden items-center gap-5 md:flex">
           <NavLinks />
 
           {user ? (
@@ -43,6 +44,8 @@ export default async function Navbar() {
             </Link>
           )}
         </nav>
+
+        <MobileNav isLoggedIn={Boolean(user)} userEmail={user?.email} />
       </div>
     </header>
   );

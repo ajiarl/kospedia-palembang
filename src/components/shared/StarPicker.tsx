@@ -32,7 +32,7 @@ export function StarPicker({
             onMouseEnter={() => setHovered(star)}
             onMouseLeave={() => setHovered(0)}
             className={cn(
-              "transition-all duration-100 hover:scale-110 active:scale-95",
+              "flex h-11 w-11 items-center justify-center rounded-full transition-all duration-100 hover:scale-110 hover:bg-amber-50 active:scale-95",
               star <= active ? "text-amber-400" : "text-muted-foreground/25 hover:text-amber-300"
             )}
             aria-label={`Rating ${star}`}

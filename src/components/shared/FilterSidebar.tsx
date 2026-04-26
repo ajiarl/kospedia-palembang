@@ -1,10 +1,10 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-import { cn } from "@/lib/utils";
-import { formatRupiah } from "@/lib/utils";
+import { trackEvent } from "@/lib/analytics";
+import { cn, formatRupiah } from "@/lib/utils";
 import type { KampusRow } from "@/types/kos";
 
 const HARGA_MAX_DEFAULT = 2_500_000;
@@ -17,7 +17,6 @@ const jenisOptions = [
   { value: "campur", label: "Campur" },
 ];
 
-// Singkatan nama kampus yang panjang
 function singkatNama(nama: string): string {
   const map: Record<string, string> = {
     "Universitas Sriwijaya": "Unsri",
@@ -29,72 +28,116 @@ function singkatNama(nama: string): string {
     "Universitas Bina Darma": "Bina Darma",
     "Universitas IBA": "IBA",
   };
-  // Cek exact match dulu
+
   if (map[nama]) return map[nama];
-  // Potong kalau >20 karakter
-  if (nama.length > 20) return nama.slice(0, 18) + "…";
+  if (nama.length > 20) return `${nama.slice(0, 18)}...`;
   return nama;
 }
 
-export default function FilterSidebar({ kampus }: { kampus: KampusRow[] }) {
+export default function FilterSidebar({
+  kampus,
+  maxHarga = HARGA_MAX_DEFAULT,
+}: {
+  kampus: KampusRow[];
+  maxHarga?: number;
+}) {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const effectiveMaxHarga = Math.max(HARGA_STEP, maxHarga);
 
   const currentKampus = searchParams.get("kampus") ?? "";
-  const currentJenis  = searchParams.get("jenis") ?? "";
-  const currentMin    = Number(searchParams.get("hargaMin")) || 0;
-  const currentMax    = Number(searchParams.get("hargaMax")) || HARGA_MAX_DEFAULT;
+  const currentJenis = searchParams.get("jenis") ?? "";
+  const currentMin = Number(searchParams.get("hargaMin")) || 0;
+  const currentMax = Math.min(
+    Number(searchParams.get("hargaMax")) || effectiveMaxHarga,
+    effectiveMaxHarga
+  );
 
   const [localMin, setLocalMin] = useState(currentMin);
   const [localMax, setLocalMax] = useState(currentMax);
 
-  useEffect(() => {
-    setLocalMin(Number(searchParams.get("hargaMin")) || 0);
-    setLocalMax(Number(searchParams.get("hargaMax")) || HARGA_MAX_DEFAULT);
-  }, [searchParams]);
-
   function pushFilter(key: string, value: string) {
     const params = new URLSearchParams(searchParams.toString());
-    if (value) params.set(key, value); else params.delete(key);
+    if (value) params.set(key, value);
+    else params.delete(key);
+    if (key === "kampus") {
+      trackEvent("filter_kampus_select", {
+        kampus_slug: value || "all",
+        source: "listing_sidebar",
+      });
+    }
+    if (window.innerWidth < 1024) setMobileOpen(false);
     router.push(`/kos?${params.toString()}`);
   }
 
   function applyHarga() {
     const params = new URLSearchParams(searchParams.toString());
-    if (localMin > 0) params.set("hargaMin", String(localMin)); else params.delete("hargaMin");
-    if (localMax < HARGA_MAX_DEFAULT) params.set("hargaMax", String(localMax)); else params.delete("hargaMax");
+    if (localMin > 0) params.set("hargaMin", String(localMin));
+    else params.delete("hargaMin");
+
+    if (localMax < effectiveMaxHarga) params.set("hargaMax", String(localMax));
+    else params.delete("hargaMax");
+
+    if (window.innerWidth < 1024) setMobileOpen(false);
     router.push(`/kos?${params.toString()}`);
   }
 
   function reset() {
     setLocalMin(0);
-    setLocalMax(HARGA_MAX_DEFAULT);
+    setLocalMax(effectiveMaxHarga);
+    if (window.innerWidth < 1024) setMobileOpen(false);
     router.push("/kos");
   }
 
-  const hasFilter = currentKampus || currentJenis || currentMin > 0 || currentMax < HARGA_MAX_DEFAULT;
+  const hasFilter =
+    currentKampus || currentJenis || currentMin > 0 || currentMax < effectiveMaxHarga;
+  const minValue = localMin === currentMin ? currentMin : localMin;
+  const maxValue = localMax === currentMax ? currentMax : localMax;
+  const selectedWidth = ((maxValue - minValue) / effectiveMaxHarga) * 100;
+  const selectedLeft = (minValue / effectiveMaxHarga) * 100;
+  const minimumValueText = minValue > 0 ? formatRupiah(minValue) : "Bebas";
+  const maximumValueText =
+    maxValue < effectiveMaxHarga ? formatRupiah(maxValue) : "Bebas";
+  const focusRingClass =
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2";
 
-  return (
-    <aside className="rounded-xl border bg-card p-5 shadow-sm">
-      <div className="mb-4 flex items-center justify-between">
+  const filterContent = (
+    <>
+      <div className="mb-4 flex items-center justify-between px-5 pt-5">
         <h2 className="text-sm font-bold">Filter</h2>
-        {hasFilter && (
-          <button onClick={reset} className="text-xs font-medium text-primary hover:underline">
-            Reset semua
+        <div className="flex items-center gap-3">
+          {hasFilter ? (
+            <button
+              type="button"
+              onClick={reset}
+              className={`text-xs font-medium text-primary hover:underline ${focusRingClass}`}
+            >
+              Reset semua
+            </button>
+          ) : null}
+          <button
+            type="button"
+            onClick={() => setMobileOpen(false)}
+            className={`rounded-lg px-2 py-1 text-xs font-medium text-muted-foreground hover:bg-muted lg:hidden ${focusRingClass}`}
+          >
+            Tutup
           </button>
-        )}
+        </div>
       </div>
 
-      <div className="space-y-5">
-        {/* Filter Kampus — pill chips dengan singkatan */}
+      <div className="space-y-5 px-5 pb-5">
         <div>
-          <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">Kampus</p>
+          <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+            Kampus
+          </p>
           <div className="flex flex-wrap gap-2">
             <button
+              type="button"
               onClick={() => pushFilter("kampus", "")}
               title="Semua kampus"
               className={cn(
-                "rounded-full px-3 py-1 text-xs font-semibold transition-all",
+                `min-h-10 rounded-full px-3 py-2 text-xs font-semibold transition-all ${focusRingClass}`,
                 currentKampus === ""
                   ? "bg-primary text-white shadow-sm"
                   : "bg-muted text-muted-foreground hover:bg-primary/10 hover:text-primary"
@@ -102,34 +145,39 @@ export default function FilterSidebar({ kampus }: { kampus: KampusRow[] }) {
             >
               Semua
             </button>
-            {kampus.map((k) => (
+            {kampus.map((item) => (
               <button
-                key={k.id}
-                onClick={() => pushFilter("kampus", currentKampus === k.slug ? "" : k.slug)}
-                title={k.nama}
+                key={item.id}
+                type="button"
+                onClick={() =>
+                  pushFilter("kampus", currentKampus === item.slug ? "" : item.slug)
+                }
+                title={item.nama}
                 className={cn(
-                  "max-w-[130px] truncate rounded-full px-3 py-1 text-xs font-semibold transition-all",
-                  currentKampus === k.slug
+                  `min-h-10 max-w-[130px] truncate rounded-full px-3 py-2 text-xs font-semibold transition-all ${focusRingClass}`,
+                  currentKampus === item.slug
                     ? "bg-primary text-white shadow-sm"
                     : "bg-muted text-muted-foreground hover:bg-primary/10 hover:text-primary"
                 )}
               >
-                {singkatNama(k.nama)}
+                {singkatNama(item.nama)}
               </button>
             ))}
           </div>
         </div>
 
-        {/* Filter Jenis */}
         <div>
-          <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">Jenis Kos</p>
+          <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+            Jenis Kos
+          </p>
           <div className="flex gap-2">
             {jenisOptions.map((opt) => (
               <button
                 key={opt.value}
+                type="button"
                 onClick={() => pushFilter("jenis", opt.value)}
                 className={cn(
-                  "flex-1 rounded-lg py-1.5 text-xs font-bold transition-all",
+                  `min-h-11 flex-1 rounded-lg px-3 py-2 text-xs font-bold transition-all ${focusRingClass}`,
                   currentJenis === opt.value
                     ? "bg-primary text-white shadow-sm"
                     : "bg-muted text-muted-foreground hover:bg-primary/10 hover:text-primary"
@@ -141,39 +189,116 @@ export default function FilterSidebar({ kampus }: { kampus: KampusRow[] }) {
           </div>
         </div>
 
-        {/* Filter Harga — dual slider */}
         <div>
-          <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">Rentang Harga</p>
+          <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+            Rentang Harga
+          </p>
           <div className="space-y-4">
+            <div className="px-1">
+              <div className="relative h-2 rounded-full bg-muted">
+                <div
+                  className="absolute h-2 rounded-full bg-primary"
+                  style={{
+                    left: `${selectedLeft}%`,
+                    width: `${selectedWidth}%`,
+                  }}
+                />
+              </div>
+            </div>
+
             <div>
               <div className="mb-1 flex justify-between">
                 <span className="text-xs text-muted-foreground">Minimum</span>
-                <span className="text-xs font-bold">{localMin > 0 ? formatRupiah(localMin) : "Bebas"}</span>
+                <span className="text-xs font-bold">
+                  {minimumValueText}
+                </span>
               </div>
               <input
-                type="range" min={0} max={HARGA_MAX_DEFAULT} step={HARGA_STEP}
-                value={localMin}
-                onChange={(e) => setLocalMin(Number(e.target.value))}
-                onMouseUp={applyHarga} onTouchEnd={applyHarga}
+                type="range"
+                aria-label="Harga minimum"
+                aria-valuemin={0}
+                aria-valuemax={effectiveMaxHarga}
+                aria-valuenow={minValue}
+                aria-valuetext={minimumValueText}
+                min={0}
+                max={effectiveMaxHarga}
+                step={HARGA_STEP}
+                value={minValue}
+                onChange={(e) => {
+                  const val = Number(e.target.value);
+                  setLocalMin(Math.min(val, maxValue - HARGA_STEP));
+                }}
+                onKeyUp={applyHarga}
+                onMouseUp={applyHarga}
+                onTouchEnd={applyHarga}
                 className="w-full"
               />
             </div>
+
             <div>
               <div className="mb-1 flex justify-between">
                 <span className="text-xs text-muted-foreground">Maksimum</span>
-                <span className="text-xs font-bold">{localMax < HARGA_MAX_DEFAULT ? formatRupiah(localMax) : "Bebas"}</span>
+                <span className="text-xs font-bold">
+                  {maximumValueText}
+                </span>
               </div>
               <input
-                type="range" min={0} max={HARGA_MAX_DEFAULT} step={HARGA_STEP}
-                value={localMax}
-                onChange={(e) => setLocalMax(Number(e.target.value))}
-                onMouseUp={applyHarga} onTouchEnd={applyHarga}
+                type="range"
+                aria-label="Harga maksimum"
+                aria-valuemin={0}
+                aria-valuemax={effectiveMaxHarga}
+                aria-valuenow={maxValue}
+                aria-valuetext={maximumValueText}
+                min={0}
+                max={effectiveMaxHarga}
+                step={HARGA_STEP}
+                value={maxValue}
+                onChange={(e) => {
+                  const val = Number(e.target.value);
+                  setLocalMax(Math.max(val, minValue + HARGA_STEP));
+                }}
+                onKeyUp={applyHarga}
+                onMouseUp={applyHarga}
+                onTouchEnd={applyHarga}
                 className="w-full"
               />
             </div>
           </div>
         </div>
       </div>
-    </aside>
+    </>
+  );
+
+  return (
+    <>
+      <button
+        type="button"
+        onClick={() => setMobileOpen((current) => !current)}
+        className={`sticky top-20 z-30 flex w-full items-center justify-between rounded-xl border bg-card px-5 py-4 text-left shadow-sm lg:hidden ${focusRingClass}`}
+      >
+        <span className="text-sm font-bold">Filter</span>
+        <span className="text-xs font-medium text-primary">
+          {hasFilter ? "Ada filter aktif" : "Buka"}
+        </span>
+      </button>
+
+      {mobileOpen ? (
+        <div className="fixed inset-0 z-50 bg-black/45 lg:hidden">
+          <button
+            type="button"
+            aria-label="Tutup filter"
+            onClick={() => setMobileOpen(false)}
+            className="absolute inset-0"
+          />
+          <div className="absolute inset-x-0 bottom-0 max-h-[85vh] overflow-y-auto rounded-t-3xl bg-card shadow-2xl">
+            {filterContent}
+          </div>
+        </div>
+      ) : null}
+
+      <aside className="hidden rounded-xl border bg-card shadow-sm lg:block">
+        {filterContent}
+      </aside>
+    </>
   );
 }

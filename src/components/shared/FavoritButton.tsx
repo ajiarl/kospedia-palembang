@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { trackEvent } from "@/lib/analytics";
 import { useFavorit } from "@/hooks/useFavorit";
 
 function HeartIcon({ filled }: { filled: boolean }) {
@@ -21,7 +22,7 @@ function HeartIcon({ filled }: { filled: boolean }) {
 }
 
 export default function FavoritButton({ kosId }: { kosId: string }) {
-  const { hapusFavorit, isFavorit, loading, tambahFavorit } = useFavorit();
+  const { hapusFavorit, isFavorit, loading, tambahFavorit, error } = useFavorit();
   const [pending, setPending] = useState(false);
   const [justToggled, setJustToggled] = useState(false);
   const tersimpan = isFavorit(kosId);
@@ -32,8 +33,10 @@ export default function FavoritButton({ kosId }: { kosId: string }) {
 
     if (tersimpan) {
       await hapusFavorit(kosId);
+      trackEvent("favorite_remove", { kos_id: kosId });
     } else {
       await tambahFavorit(kosId);
+      trackEvent("favorite_add", { kos_id: kosId });
     }
 
     setPending(false);
@@ -47,8 +50,9 @@ export default function FavoritButton({ kosId }: { kosId: string }) {
       onClick={handleClick}
       disabled={loading || pending}
       aria-label={tersimpan ? "Hapus dari favorit" : "Simpan ke favorit"}
+      title={error ?? undefined}
       className={[
-        "relative shrink-0 rounded-full p-2 transition-all duration-200",
+        "relative flex h-11 w-11 shrink-0 items-center justify-center rounded-full transition-all duration-200",
         "disabled:cursor-not-allowed disabled:opacity-50",
         tersimpan
           ? "text-red-500 hover:text-red-600"

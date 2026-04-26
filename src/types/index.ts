@@ -1,58 +1,19 @@
-// TypeScript interfaces utama KosPedia.
+// Re-export domain types from database-backed modules to avoid duplicate entity models.
 
-export type JenisKos = "putra" | "putri" | "campur";
-export type SumberDataKos = "manual" | "seed" | "places";
+export type {
+  KampusRow as Kampus,
+  KosRow as Kos,
+  ReviewRow as Review,
+} from "@/types/kos";
 
-export interface Kos {
-  id: string;
-  kampusId: string | null;
-  nama: string;
-  deskripsi: string;
-  alamat: string;
-  lat: number;
-  lng: number;
-  hargaMin: number;
-  hargaMax: number;
-  jenis: JenisKos;
-  fasilitas: string[];
-  foto: string[];
-  kontak: string;
-  sumberData: SumberDataKos;
-  tersedia: boolean;
-  createdAt: string;
-  updatedAt: string;
-}
+export type JenisKos = import("@/types/database").Database["public"]["Enums"]["jenis_kos"];
+export type SumberDataKos =
+  import("@/types/database").Database["public"]["Enums"]["sumber_data_kos"];
 
-export interface Kampus {
-  id: string;
-  nama: string;
-  slug: string;
-  lat: number;
-  lng: number;
-  createdAt: string;
-}
-
-export interface Favorit {
-  id: string;
-  userId: string;
-  kosId: string;
-  createdAt: string;
-}
-
-export interface Review {
-  id: string;
-  userId: string;
-  kosId: string;
-  rating: number;
-  komentar: string | null;
-  createdAt: string;
-  updatedAt: string;
-}
-
-export interface FilterKos {
+export type FilterKos = {
   kampus?: string;
   hargaMin?: number;
   hargaMax?: number;
   jenis?: JenisKos;
   fasilitas?: string[];
-}
+};

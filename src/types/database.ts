@@ -40,6 +40,7 @@ export type Database = {
         Row: {
           id: string;
           kampus_id: string | null;
+          slug: string;
           nama: string;
           deskripsi: string;
           alamat: string;
@@ -59,6 +60,7 @@ export type Database = {
         Insert: {
           id?: string;
           kampus_id?: string | null;
+          slug: string;
           nama: string;
           deskripsi: string;
           alamat: string;
@@ -78,6 +80,7 @@ export type Database = {
         Update: {
           id?: string;
           kampus_id?: string | null;
+          slug?: string;
           nama?: string;
           deskripsi?: string;
           alamat?: string;

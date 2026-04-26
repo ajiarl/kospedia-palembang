@@ -1,12 +1,30 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
+import AnalyticsProvider from "@/components/shared/AnalyticsProvider";
+import CookieConsentBanner from "@/components/shared/CookieConsentBanner";
 import NavigationProgress from "@/components/shared/NavigationProgress";
+import { getMetadataBase, SITE_DESCRIPTION, SITE_NAME } from "@/lib/seo";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "KosPedia Palembang - Cari Kos Dekat Kampus",
-  description:
-    "Platform pencari kos untuk mahasiswa di sekitar kampus-kampus kota Palembang.",
+  metadataBase: getMetadataBase(),
+  title: {
+    default: "Direktori Kos Mahasiswa Palembang",
+    template: `%s | ${SITE_NAME}`,
+  },
+  description: SITE_DESCRIPTION,
+  openGraph: {
+    type: "website",
+    locale: "id_ID",
+    siteName: SITE_NAME,
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
+  },
 };
 
 export default function RootLayout({
@@ -15,12 +33,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="id">
-      <body>
+    <html lang="id" data-scroll-behavior="smooth" suppressHydrationWarning>
+      <body suppressHydrationWarning>
+        <AnalyticsProvider />
         <Suspense fallback={null}>
           <NavigationProgress />
         </Suspense>
         {children}
+        <CookieConsentBanner />
       </body>
     </html>
   );

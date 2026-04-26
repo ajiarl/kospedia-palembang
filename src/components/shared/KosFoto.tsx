@@ -1,3 +1,8 @@
+"use client";
+
+import Image from "next/image";
+import { useState } from "react";
+
 import { cn } from "@/lib/utils";
 
 type KosFotoProps = {
@@ -7,11 +12,10 @@ type KosFotoProps = {
   className?: string;
 };
 
-// Gradient aligned dengan Navy+Teal palette
 const jenisGradient = {
-  putra:  "from-[#FDEBD6] via-[#FAD0B8] to-[#FDEBD6]",  // coral warm
-  putri:  "from-[#EDF3F0] via-[#C8DDD6] to-[#EDF3F0]",  // forest green
-  campur: "from-[#F5F0EB] via-[#EAE2D8] to-[#F5F0EB]",  // warm sand
+  putra:  "from-[#FDEBD6] via-[#FAD0B8] to-[#FDEBD6]",
+  putri:  "from-[#EDF3F0] via-[#C8DDD6] to-[#EDF3F0]",
+  campur: "from-[#F5F0EB] via-[#EAE2D8] to-[#F5F0EB]",
 };
 
 function KosFotoPlaceholder({ jenis }: { jenis: KosFotoProps["jenis"] }) {
@@ -20,7 +24,6 @@ function KosFotoPlaceholder({ jenis }: { jenis: KosFotoProps["jenis"] }) {
 
   return (
     <div className={cn("relative flex h-full w-full items-center justify-center bg-gradient-to-br", jenisGradient[jenis])}>
-      {/* Pattern songket tipis */}
       <svg className="absolute inset-0 h-full w-full opacity-[0.06]" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <pattern id={`songket-${jenis}`} x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
@@ -33,7 +36,6 @@ function KosFotoPlaceholder({ jenis }: { jenis: KosFotoProps["jenis"] }) {
         <rect width="100%" height="100%" fill={`url(#songket-${jenis})`} />
       </svg>
 
-      {/* Siluet gedung */}
       <svg viewBox="0 0 120 100" className="relative z-10 h-24 w-28 opacity-20" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="20" y="35" width="80" height="65" rx="2" fill={strokeColor} />
         <path d="M10 38 L60 10 L110 38 Z" fill={roofColor} />
@@ -49,15 +51,20 @@ function KosFotoPlaceholder({ jenis }: { jenis: KosFotoProps["jenis"] }) {
 }
 
 export default function KosFoto({ foto, nama, jenis, className }: KosFotoProps) {
-  const hasFoto = foto && foto.length > 0;
+  const [failedSrc, setFailedSrc] = useState<string | null>(null);
+  const primaryFoto = foto?.[0];
+  const hasFoto = Boolean(primaryFoto) && failedSrc !== primaryFoto;
+
   return (
     <div className={cn("relative overflow-hidden", className)}>
       {hasFoto ? (
-        <img
-          src={foto[0]}
+        <Image
+          src={primaryFoto!}
           alt={nama}
+          fill
+          sizes="(max-width: 768px) 100vw, 33vw"
+          onError={() => setFailedSrc(primaryFoto!)}
           className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-          loading="lazy"
         />
       ) : (
         <KosFotoPlaceholder jenis={jenis} />

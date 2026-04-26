@@ -1,0 +1,60 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1C1917"/>
+      <stop offset="0.55" stop-color="#2F3A2F"/>
+      <stop offset="1" stop-color="#C86445"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#FFF8F2" stop-opacity="0.94"/>
+      <stop offset="1" stop-color="#F0E0D2" stop-opacity="0.82"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#F39A7A"/>
+      <stop offset="1" stop-color="#C84B31"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+
+  <circle cx="1260" cy="174" r="132" fill="#F08060" fill-opacity="0.18"/>
+  <circle cx="1368" cy="248" r="78" fill="#F8C9A8" fill-opacity="0.14"/>
+  <circle cx="278" cy="146" r="96" fill="#6A8E6F" fill-opacity="0.16"/>
+
+  <path d="M0 650C122 606 234 594 336 614C430 632 520 683 628 683C774 683 842 574 1000 574C1128 574 1214 639 1318 666C1410 690 1498 682 1600 620V900H0V650Z" fill="#F5E7D8" fill-opacity="0.16"/>
+
+  <g opacity="0.95">
+    <rect x="904" y="164" width="370" height="460" rx="18" fill="#FFF7EE" fill-opacity="0.16" stroke="#FFE1C8" stroke-opacity="0.32"/>
+    <rect x="944" y="202" width="290" height="184" rx="14" fill="url(#card)"/>
+    <rect x="970" y="228" width="110" height="82" rx="12" fill="#D9A77A"/>
+    <rect x="1098" y="228" width="110" height="82" rx="12" fill="#EED5BF"/>
+    <rect x="970" y="326" width="238" height="16" rx="8" fill="#D48B67"/>
+    <rect x="970" y="354" width="180" height="14" rx="7" fill="#E5B896"/>
+
+    <rect x="944" y="412" width="290" height="84" rx="14" fill="url(#card)"/>
+    <rect x="970" y="438" width="74" height="30" rx="15" fill="url(#accent)"/>
+    <rect x="1060" y="438" width="148" height="14" rx="7" fill="#D49E7A"/>
+    <rect x="1060" y="462" width="116" height="12" rx="6" fill="#E6C7AA"/>
+
+    <rect x="944" y="518" width="290" height="70" rx="14" fill="url(#card)"/>
+    <rect x="970" y="542" width="94" height="16" rx="8" fill="#33543D"/>
+    <rect x="1080" y="542" width="128" height="12" rx="6" fill="#D2A17B"/>
+  </g>
+
+  <g opacity="0.88">
+    <rect x="236" y="202" width="388" height="260" rx="24" fill="#FFF8F0" fill-opacity="0.12" stroke="#FFE9D5" stroke-opacity="0.3"/>
+    <rect x="270" y="236" width="142" height="142" rx="18" fill="#F4B28F" fill-opacity="0.28"/>
+    <path d="M318 330C336 286 370 270 394 270C426 270 458 296 476 342C456 362 424 378 384 378C356 378 332 362 318 330Z" fill="#FCF0E6" fill-opacity="0.9"/>
+    <rect x="434" y="246" width="154" height="18" rx="9" fill="#FFE0C3" fill-opacity="0.85"/>
+    <rect x="434" y="276" width="118" height="14" rx="7" fill="#F1C7A1" fill-opacity="0.92"/>
+    <rect x="434" y="322" width="154" height="14" rx="7" fill="#E2A57F" fill-opacity="0.88"/>
+    <rect x="434" y="350" width="128" height="14" rx="7" fill="#F6D4B5" fill-opacity="0.84"/>
+    <rect x="270" y="400" width="318" height="22" rx="11" fill="#33543D" fill-opacity="0.78"/>
+  </g>
+
+  <g opacity="0.42" stroke="#FFE8D1" stroke-width="10">
+    <path d="M1248 100C1290 126 1316 168 1316 214"/>
+    <path d="M1218 84C1272 118 1306 172 1306 232"/>
+    <path d="M1184 68C1252 112 1294 184 1294 262"/>
+  </g>
+</svg>

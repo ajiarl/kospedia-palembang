@@ -15,6 +15,7 @@ create table public.kampus (
 create table public.kos (
   id uuid primary key default gen_random_uuid(),
   kampus_id uuid references public.kampus(id) on delete set null,
+  slug text not null unique,
   nama text not null,
   deskripsi text not null,
   alamat text not null,
@@ -52,6 +53,7 @@ create table public.review (
 );
 
 create index kampus_slug_idx on public.kampus(slug);
+create index kos_slug_idx on public.kos(slug);
 create index kos_kampus_id_idx on public.kos(kampus_id);
 create index kos_jenis_idx on public.kos(jenis);
 create index kos_harga_idx on public.kos(harga_min, harga_max);

@@ -1,3 +1,7 @@
+-- Bootstrap seed awal untuk development lokal.
+-- Data aktif aplikasi sekarang dikelola manual di Supabase, jadi file ini
+-- tidak selalu identik dengan isi database terbaru.
+
 insert into public.kampus (nama, slug, lat, lng) values
   ('Universitas Sriwijaya Kampus Palembang', 'unsri-palembang', -2.9763, 104.7249),
   ('Universitas Muhammadiyah Palembang', 'ump', -2.9901, 104.7561),
@@ -8,6 +12,7 @@ on conflict (slug) do nothing;
 
 insert into public.kos (
   kampus_id,
+  slug,
   nama,
   deskripsi,
   alamat,
@@ -23,6 +28,7 @@ insert into public.kos (
 )
 select
   kampus.id,
+  data.slug,
   data.nama,
   data.deskripsi,
   data.alamat,
@@ -39,6 +45,7 @@ from (
   values
     (
       'polsri',
+      'kos-bukit-ceria',
       'Kos Bukit Ceria',
       'Kos nyaman untuk mahasiswa dengan akses cepat ke area Bukit Besar dan Polsri.',
       'Jl. Srijaya Negara, Bukit Besar, Palembang',
@@ -53,6 +60,7 @@ from (
     ),
     (
       'polsri',
+      'kos-putri-lunjuk-jaya',
       'Kos Putri Lunjuk Jaya',
       'Kos putri dengan lingkungan tenang, cocok untuk mahasiswa yang ingin dekat kampus.',
       'Jl. Lunjuk Jaya, Bukit Lama, Palembang',
@@ -67,6 +75,7 @@ from (
     ),
     (
       'ump',
+      'kos-ahmad-yani-residence',
       'Kos Ahmad Yani Residence',
       'Pilihan kos campur dekat koridor utama Plaju dengan akses transportasi mudah.',
       'Jl. Jenderal Ahmad Yani, 13 Ulu, Palembang',
@@ -81,6 +90,7 @@ from (
     ),
     (
       'uin-raden-fatah',
+      'kos-putra-sudirman',
       'Kos Putra Sudirman',
       'Kos sederhana dekat pusat kota dan akses angkot ke area kampus.',
       'Jl. Jend. Sudirman, Palembang',
@@ -95,6 +105,7 @@ from (
     ),
     (
       'mdp',
+      'kos-mdp-executive',
       'Kos MDP Executive',
       'Kos modern dengan kamar mandi dalam dan akses cepat ke area Rajawali.',
       'Jl. Rajawali, Palembang',
@@ -109,6 +120,7 @@ from (
     ),
     (
       'unsri-palembang',
+      'kos-bukit-lama-hemat',
       'Kos Bukit Lama Hemat',
       'Kos ekonomis untuk mahasiswa yang mencari kamar bersih dengan harga terjangkau.',
       'Jl. Padang Selasa, Bukit Lama, Palembang',
@@ -123,6 +135,7 @@ from (
     )
 ) as data(
   kampus_slug,
+  slug,
   nama,
   deskripsi,
   alamat,
