@@ -1,10 +1,11 @@
-import { Suspense } from "react";
 import type { Metadata } from "next";
-import AnalyticsProvider from "@/components/shared/AnalyticsProvider";
-import CookieConsentBanner from "@/components/shared/CookieConsentBanner";
-import NavigationProgress from "@/components/shared/NavigationProgress";
+import dynamic from "next/dynamic";
 import { getMetadataBase, SITE_DESCRIPTION, SITE_NAME } from "@/lib/seo";
 import "./globals.css";
+
+const AppClientShell = dynamic(() => import("@/components/shared/AppClientShell"), {
+  ssr: false,
+});
 
 export const metadata: Metadata = {
   metadataBase: getMetadataBase(),
@@ -35,14 +36,8 @@ export default function RootLayout({
   return (
     <html lang="id" data-scroll-behavior="smooth" suppressHydrationWarning>
       <body suppressHydrationWarning>
-        <Suspense fallback={null}>
-          <AnalyticsProvider />
-        </Suspense>
-        <Suspense fallback={null}>
-          <NavigationProgress />
-        </Suspense>
+        <AppClientShell />
         {children}
-        <CookieConsentBanner />
       </body>
     </html>
   );
