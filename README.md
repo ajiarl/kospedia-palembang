@@ -49,6 +49,7 @@ Schema lokal ada di:
 
 - `supabase/schema.sql`
 - `supabase/migrations/20260427_add_kos_slug.sql`
+- `supabase/migrations/20260429_add_kos_geocode_fields.sql`
 - `supabase/seed.sql`
 
 Jika database aktif belum sinkron dengan code terbaru, pastikan migration slug sudah dijalankan sebelum membuka halaman detail kos.
@@ -64,7 +65,28 @@ npm run dev
 npm run build
 npm run start
 npm run lint
+npm run audit:coords
+npm run geocode:prepare
+npm run geocode:batch
 ```
+
+## Geocoding Workflow
+
+Untuk audit dan koreksi koordinat kos secara batch:
+
+1. Jalankan migration geocode di Supabase:
+   `supabase/migrations/20260429_add_kos_geocode_fields.sql`
+2. Siapkan input dari data aktif Supabase:
+   `npm run geocode:prepare`
+3. Jalankan batch geocoder:
+   `npm run geocode:batch`
+
+File input akan dibuat di `reports/geocode-input/`.
+Hasil geocode dan SQL output akan dibuat di `reports/geocode-output/`.
+
+Catatan:
+- Pipeline ini memakai provider gratis, jadi hasil `exact` lebih aman untuk auto-apply daripada `approximate`.
+- `approximate`, `area`, dan `needs_review` sebaiknya tetap direview sebelum dipakai sebagai titik publik.
 
 ## Catatan Implementasi
 

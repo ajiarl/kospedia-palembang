@@ -1,0 +1,3 @@
+-- sql_kos_exact_v4.sql
+-- 0 baris EXACT
+-- Generated: 2026-04-28T20:22:17.505Z

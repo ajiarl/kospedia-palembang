@@ -28,7 +28,7 @@ export default function KosSortSelect({ defaultValue }: KosSortSelectProps) {
       id="sort"
       name="sort"
       defaultValue={defaultValue}
-      className="rounded-lg border bg-background px-3 py-2 text-sm"
+      className="min-w-[168px] rounded-full border border-black/5 bg-white/85 px-4 py-2.5 text-sm font-medium text-charcoal shadow-sm outline-none transition focus:border-primary/30 focus:ring-4 focus:ring-primary/10"
       onChange={(event) => handleChange(event.currentTarget.value)}
     >
       <option value="termurah">Termurah</option>

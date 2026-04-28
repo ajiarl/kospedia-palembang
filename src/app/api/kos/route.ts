@@ -1,3 +1,5 @@
+import { haversineKm } from "@/lib/haversine";
+import { applyKosCoordinateOverrides } from "@/lib/kosCoordinates";
 import { NextResponse } from "next/server";
 
 import { createSupabaseServerClient } from "@/lib/supabase/server";
@@ -8,6 +10,7 @@ export async function GET(request: Request) {
   const jenis = searchParams.get("jenis");
   const hargaMin = searchParams.get("hargaMin");
   const hargaMax = searchParams.get("hargaMax");
+  const jarakMax = searchParams.get("jarakMax");
 
   const supabase = await createSupabaseServerClient();
   const { data: maxHargaData } = await supabase
@@ -18,11 +21,12 @@ export async function GET(request: Request) {
     .limit(1)
     .maybeSingle();
   const selectedKampus = kampus
-    ? await supabase.from("kampus").select("id").eq("slug", kampus).maybeSingle()
+    ? await supabase.from("kampus").select("id, lat, lng").eq("slug", kampus).maybeSingle()
     : null;
   const hargaMaxTersedia = Math.max(2_500_000, maxHargaData?.harga_max ?? 0);
   const parsedMin = Number(hargaMin);
   const parsedMax = Number(hargaMax);
+  const parsedJarakMax = Number(jarakMax);
   const normalizedMin =
     Number.isFinite(parsedMin) && parsedMin >= 0
       ? Math.min(parsedMin, hargaMaxTersedia)
@@ -31,6 +35,8 @@ export async function GET(request: Request) {
     Number.isFinite(parsedMax) && parsedMax >= 0
       ? Math.min(parsedMax, hargaMaxTersedia)
       : null;
+  const normalizedJarakMax =
+    Number.isFinite(parsedJarakMax) && parsedJarakMax > 0 ? parsedJarakMax : null;
 
   let query = supabase
     .from("kos")
@@ -63,5 +69,16 @@ export async function GET(request: Request) {
     );
   }
 
-  return NextResponse.json({ data });
+  const normalizedData = applyKosCoordinateOverrides(data ?? []);
+  const filteredData =
+    selectedKampus?.data && normalizedJarakMax !== null
+      ? normalizedData.filter(
+          (kos) =>
+            kos.locationMeta.isDistanceReliable &&
+            haversineKm(kos.lat, kos.lng, selectedKampus.data.lat, selectedKampus.data.lng) <=
+            normalizedJarakMax
+        )
+      : normalizedData;
+
+  return NextResponse.json({ data: filteredData });
 }

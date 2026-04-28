@@ -60,16 +60,26 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Plus Jakarta Sans", "Aptos", "Segoe UI", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: clip;
+    background-image:
+      radial-gradient(circle at top left, rgba(240, 128, 96, 0.08), transparent 28%),
+      radial-gradient(circle at top right, rgba(45, 74, 62, 0.08), transparent 24%),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.55));
   }
 
   h1,
   h2,
   h3 {
+    font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
     letter-spacing: -0.02em;
+  }
+
+  ::selection {
+    background: rgba(200, 75, 49, 0.18);
+    color: #1c1917;
   }
 }
 
@@ -81,8 +91,52 @@
   background-attachment: scroll;
 }
 
+.surface-panel {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.92)),
+    linear-gradient(135deg, rgba(240, 128, 96, 0.08), transparent 40%),
+    linear-gradient(315deg, rgba(45, 74, 62, 0.08), transparent 36%);
+}
+
+.section-wash {
+  background:
+    radial-gradient(circle at top, rgba(240, 128, 96, 0.08), transparent 32%),
+    linear-gradient(180deg, rgba(44, 34, 29, 0.18), rgba(245, 240, 235, 0.18) 24%, rgba(245, 240, 235, 0));
+}
+
 .leaflet-container {
   touch-action: pan-y pinch-zoom;
+}
+
+.leaflet-top.leaflet-right .leaflet-control-zoom {
+  margin-top: 12px;
+  margin-right: 12px;
+  border: 0 !important;
+  box-shadow: 0 10px 24px rgba(17, 17, 16, 0.12) !important;
+}
+
+.leaflet-control-zoom a {
+  width: 38px !important;
+  height: 38px !important;
+  line-height: 38px !important;
+  border: 0 !important;
+  background: rgba(255, 255, 255, 0.94) !important;
+  color: #1c1917 !important;
+  font-weight: 700;
+}
+
+.leaflet-control-zoom a:hover {
+  background: rgba(255, 255, 255, 1) !important;
+}
+
+.leaflet-control-zoom-in {
+  border-top-left-radius: 12px !important;
+  border-top-right-radius: 12px !important;
+}
+
+.leaflet-control-zoom-out {
+  border-bottom-left-radius: 12px !important;
+  border-bottom-right-radius: 12px !important;
 }
 
 input[type="range"] {

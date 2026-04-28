@@ -1,0 +1,2607 @@
+{
+  "summary": {
+    "generatedAt": "2026-04-28T19:48:20.654Z",
+    "totalKos": 59,
+    "flaggedHigh": 4,
+    "flaggedMedium": 37,
+    "flaggedLow": 0,
+    "unresolved": 0
+  },
+  "entries": [
+    {
+      "id": "99aff160-1cd3-4d35-9782-858acd405ed5",
+      "slug": "kost-amanda-vvip",
+      "nama": "Kost Amanda VVIP",
+      "alamat": "Sukarami, Palembang",
+      "kampus": "UIN Raden Fatah Palembang",
+      "current": {
+        "lat": -2.9642,
+        "lng": 104.7481
+      },
+      "suggested": {
+        "lat": -2.930972711693,
+        "lng": 104.726598391696,
+        "provider": "arcgis",
+        "label": "Sukarami, Sumatera Selatan",
+        "score": 136.65
+      },
+      "displacementKm": 4.399,
+      "providerAgreementKm": 0.344,
+      "confidence": "high",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.930972711693,
+          "lng": 104.726598391696,
+          "score": 136.65,
+          "label": "Sukarami, Sumatera Selatan",
+          "tokenCoverage": 1,
+          "campusDistanceKm": 4.349
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.9295112,
+          "lng": 104.7195129,
+          "score": 136.06,
+          "label": "Sukarami, Sumatera Selatan",
+          "tokenCoverage": 1,
+          "campusDistanceKm": 4.944
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.9255,
+          "lng": 104.7236,
+          "score": 118.96,
+          "label": "Palembang",
+          "tokenCoverage": 0,
+          "campusDistanceKm": 5.041
+        },
+        {
+          "provider": "nominatim",
+          "lat": -2.9301499,
+          "lng": 104.7225419,
+          "score": 53.86,
+          "label": "Sukarami, Palembang, Sumatera Selatan, Sumatera, 30151, Indonesia",
+          "tokenCoverage": 1,
+          "campusDistanceKm": 4.681
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "447610b8-f837-4f96-bb91-4ef984d3c974",
+      "slug": "kost-royal-demang-iii",
+      "nama": "Kost Royal Demang III",
+      "alamat": "Jl. Demang III, Ilir Barat I, Palembang",
+      "kampus": "UIN Raden Fatah Palembang",
+      "current": {
+        "lat": -2.9625,
+        "lng": 104.7465
+      },
+      "suggested": {
+        "lat": -2.974628861904,
+        "lng": 104.730866490533,
+        "provider": "arcgis",
+        "label": "Jalan Demang 3, Ilir Barat I, Sumatera Selatan, 30137",
+        "score": 135.44
+      },
+      "displacementKm": 2.198,
+      "providerAgreementKm": null,
+      "confidence": "medium",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.974628861904,
+          "lng": 104.730866490533,
+          "score": 135.44,
+          "label": "Jalan Demang 3, Ilir Barat I, Sumatera Selatan, 30137",
+          "tokenCoverage": 0.67,
+          "campusDistanceKm": 2.226
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "48bbede2-5fbc-46c4-8404-0312eeb89228",
+      "slug": "srikandi-kost",
+      "nama": "SRIKANDI KOST",
+      "alamat": "Lrg. Sikumbang, 9/10 Ulu, Seberang Ulu I, Palembang",
+      "kampus": "Universitas Bina Darma",
+      "current": {
+        "lat": -2.9960984,
+        "lng": 104.7709975
+      },
+      "suggested": {
+        "lat": -3.0087485,
+        "lng": 104.7584171,
+        "provider": "arcgis",
+        "label": "Seberang Ulu I, Sumatera Selatan",
+        "score": 108.34
+      },
+      "displacementKm": 1.982,
+      "providerAgreementKm": null,
+      "confidence": "medium",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -3.0087485,
+          "lng": 104.7584171,
+          "score": 108.34,
+          "label": "Seberang Ulu I, Sumatera Selatan",
+          "tokenCoverage": 0.5,
+          "campusDistanceKm": 1.696
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.99505,
+          "lng": 104.770762,
+          "score": 101.11,
+          "label": "9/10 Ulu, Jakabaring, Sumatera Selatan",
+          "tokenCoverage": 0,
+          "campusDistanceKm": 0.498
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "ed43c3cf-383b-4200-89c5-c28e8cccb371",
+      "slug": "kost-nabila-putri",
+      "nama": "Kost Nabila Putri",
+      "alamat": "Jl. Gub H Bastari, 8 Ulu, Seberang Ulu I, Palembang",
+      "kampus": "UIN Raden Fatah Kampus Jakabaring",
+      "current": {
+        "lat": -3.0095,
+        "lng": 104.7718
+      },
+      "suggested": {
+        "lat": -3.0087485,
+        "lng": 104.7584171,
+        "provider": "arcgis",
+        "label": "Seberang Ulu I, Sumatera Selatan",
+        "score": 104.93
+      },
+      "displacementKm": 1.488,
+      "providerAgreementKm": null,
+      "confidence": "medium",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -3.0087485,
+          "lng": 104.7584171,
+          "score": 104.93,
+          "label": "Seberang Ulu I, Sumatera Selatan",
+          "tokenCoverage": 0.33,
+          "campusDistanceKm": 1.512
+        },
+        {
+          "provider": "arcgis",
+          "lat": -3.0110025,
+          "lng": 104.7749786,
+          "score": 99.92,
+          "label": "8 Ulu, Jakabaring, Sumatera Selatan",
+          "tokenCoverage": 0,
+          "campusDistanceKm": 0.344
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "780d9f2b-d124-4e27-bd91-6665892eb10e",
+      "slug": "kost-rumah-biru",
+      "nama": "Kost Rumah Biru",
+      "alamat": "Sekip, Ilir Timur, Palembang",
+      "kampus": "UIN Raden Fatah Palembang",
+      "current": {
+        "lat": -2.9629,
+        "lng": 104.7472
+      },
+      "suggested": {
+        "lat": -2.974968,
+        "lng": 104.750695,
+        "provider": "arcgis",
+        "label": "Ilir Timur I, Sumatera Selatan",
+        "score": 117.97
+      },
+      "displacementKm": 1.397,
+      "providerAgreementKm": 0.309,
+      "confidence": "high",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.974968,
+          "lng": 104.750695,
+          "score": 117.97,
+          "label": "Ilir Timur I, Sumatera Selatan",
+          "tokenCoverage": 0.5,
+          "campusDistanceKm": 1.276
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.968513,
+          "lng": 104.742955,
+          "score": 109.83,
+          "label": "Palembang",
+          "tokenCoverage": 0,
+          "campusDistanceKm": 0.743
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.959008,
+          "lng": 104.783603,
+          "score": 107.36,
+          "label": "Ilir Timur II, Sumatera Selatan",
+          "tokenCoverage": 0.5,
+          "campusDistanceKm": 4.016
+        },
+        {
+          "provider": "nominatim",
+          "lat": -2.9722521,
+          "lng": 104.7512772,
+          "score": 52.99,
+          "label": "Martabak Har Simpang Sekip, Jalan Jenderal Sudirman, Ilir Timur I, Palembang, Sumatera Selatan, Sumatera, 30127, Indonesia",
+          "tokenCoverage": 1,
+          "campusDistanceKm": 1.01
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "112466cf-24f0-497b-90d1-8dc35fb664d7",
+      "slug": "kost-sister-jakabaring",
+      "nama": "Kost Sister Jakabaring",
+      "alamat": "Jl. Gub H Bastari, 8 Ulu, Seberang Ulu I, Palembang",
+      "kampus": "UIN Raden Fatah Kampus Jakabaring",
+      "current": {
+        "lat": -3.0102,
+        "lng": 104.7709
+      },
+      "suggested": {
+        "lat": -3.0087485,
+        "lng": 104.7584171,
+        "provider": "arcgis",
+        "label": "Seberang Ulu I, Sumatera Selatan",
+        "score": 104.93
+      },
+      "displacementKm": 1.395,
+      "providerAgreementKm": null,
+      "confidence": "medium",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -3.0087485,
+          "lng": 104.7584171,
+          "score": 104.93,
+          "label": "Seberang Ulu I, Sumatera Selatan",
+          "tokenCoverage": 0.33,
+          "campusDistanceKm": 1.512
+        },
+        {
+          "provider": "arcgis",
+          "lat": -3.0110025,
+          "lng": 104.7749786,
+          "score": 99.92,
+          "label": "8 Ulu, Jakabaring, Sumatera Selatan",
+          "tokenCoverage": 0,
+          "campusDistanceKm": 0.344
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "9fba286a-1c17-4c7c-8008-5d8d03a2725e",
+      "slug": "kost-tata-sekip",
+      "nama": "Kost Tata Sekip",
+      "alamat": "Sekip, Ilir Timur, Palembang",
+      "kampus": "UIN Raden Fatah Palembang",
+      "current": {
+        "lat": -2.9635,
+        "lng": 104.747
+      },
+      "suggested": {
+        "lat": -2.974968,
+        "lng": 104.750695,
+        "provider": "arcgis",
+        "label": "Ilir Timur I, Sumatera Selatan",
+        "score": 117.97
+      },
+      "displacementKm": 1.34,
+      "providerAgreementKm": 0.309,
+      "confidence": "high",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.974968,
+          "lng": 104.750695,
+          "score": 117.97,
+          "label": "Ilir Timur I, Sumatera Selatan",
+          "tokenCoverage": 0.5,
+          "campusDistanceKm": 1.276
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.968513,
+          "lng": 104.742955,
+          "score": 109.83,
+          "label": "Palembang",
+          "tokenCoverage": 0,
+          "campusDistanceKm": 0.743
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.959008,
+          "lng": 104.783603,
+          "score": 107.36,
+          "label": "Ilir Timur II, Sumatera Selatan",
+          "tokenCoverage": 0.5,
+          "campusDistanceKm": 4.016
+        },
+        {
+          "provider": "nominatim",
+          "lat": -2.9722521,
+          "lng": 104.7512772,
+          "score": 52.99,
+          "label": "Martabak Har Simpang Sekip, Jalan Jenderal Sudirman, Ilir Timur I, Palembang, Sumatera Selatan, Sumatera, 30127, Indonesia",
+          "tokenCoverage": 1,
+          "campusDistanceKm": 1.01
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "eb1eb618-aadf-4990-9516-feb0fb4ca819",
+      "slug": "kost-nimas",
+      "nama": "Kost Nimas",
+      "alamat": "Sekip Ujung, Palembang",
+      "kampus": "UIN Raden Fatah Palembang",
+      "current": {
+        "lat": -2.964,
+        "lng": 104.7468
+      },
+      "suggested": {
+        "lat": -2.9566554,
+        "lng": 104.7539054,
+        "provider": "arcgis",
+        "label": "Pasar Sekip Ujung",
+        "score": 119.3
+      },
+      "displacementKm": 1.136,
+      "providerAgreementKm": 432.993,
+      "confidence": "medium",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.9566554,
+          "lng": 104.7539054,
+          "score": 119.3,
+          "label": "Pasar Sekip Ujung",
+          "tokenCoverage": 1,
+          "campusDistanceKm": 1.053
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.95422,
+          "lng": 104.75087,
+          "score": 119.22,
+          "label": "Pasar Sekip Ujung",
+          "tokenCoverage": 1,
+          "campusDistanceKm": 1.127
+        },
+        {
+          "provider": "arcgis",
+          "lat": -6.81712,
+          "lng": 105.23544,
+          "score": 88.12,
+          "label": "Udjung Palembang",
+          "tokenCoverage": 0,
+          "campusDistanceKm": 431.853
+        },
+        {
+          "provider": "nominatim",
+          "lat": -2.9526573,
+          "lng": 104.754888,
+          "score": 55.99,
+          "label": "Jalan Layang Sekip Ujung, Kemuning, Palembang, Sumatera Selatan, Sumatera, 30164, Indonesia",
+          "tokenCoverage": 1,
+          "campusDistanceKm": 1.477
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "14ddd0ee-b190-4e6d-95ea-99357ed21674",
+      "slug": "kost-amelia-putri",
+      "nama": "Kost Amelia Putri",
+      "alamat": "Jl. Parameswara, Bukit Baru, Ilir Barat I, Palembang",
+      "kampus": "Politeknik Negeri Sriwijaya",
+      "current": {
+        "lat": -2.9815,
+        "lng": 104.7298
+      },
+      "suggested": {
+        "lat": -2.986910067195,
+        "lng": 104.721673515944,
+        "provider": "arcgis",
+        "label": "Jalan Parameswara, Ilir Barat I, Sumatera Selatan, 30961",
+        "score": 132.24
+      },
+      "displacementKm": 1.085,
+      "providerAgreementKm": null,
+      "confidence": "medium",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.986910067195,
+          "lng": 104.721673515944,
+          "score": 132.24,
+          "label": "Jalan Parameswara, Ilir Barat I, Sumatera Selatan, 30961",
+          "tokenCoverage": 0.5,
+          "campusDistanceKm": 1.261
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "7105ffe2-1471-4981-b468-f58828681a1f",
+      "slug": "kost-unique-ilir-barat",
+      "nama": "Kost Unique Ilir Barat",
+      "alamat": "Jl. Muhajirin, Ilir Barat I, Palembang",
+      "kampus": "Politeknik Negeri Sriwijaya",
+      "current": {
+        "lat": -2.9841,
+        "lng": 104.7324
+      },
+      "suggested": {
+        "lat": -2.976288347939,
+        "lng": 104.736949927787,
+        "provider": "arcgis",
+        "label": "Lorong Muhajirin, Ilir Barat I, Sumatera Selatan, 30137",
+        "score": 141.71
+      },
+      "displacementKm": 1.005,
+      "providerAgreementKm": 0.253,
+      "confidence": "high",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.976288347939,
+          "lng": 104.736949927787,
+          "score": 141.71,
+          "label": "Lorong Muhajirin, Ilir Barat I, Sumatera Selatan, 30137",
+          "tokenCoverage": 1,
+          "campusDistanceKm": 0.984
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.98076,
+          "lng": 104.716876,
+          "score": 112.04,
+          "label": "Ilir Barat I, Sumatera Selatan",
+          "tokenCoverage": 0.5,
+          "campusDistanceKm": 1.79
+        },
+        {
+          "provider": "nominatim",
+          "lat": -2.9770878,
+          "lng": 104.7348166,
+          "score": 56.66,
+          "label": "Lorong Muhajirin, Ilir Barat I, Palembang, Sumatera Selatan, Sumatera, 30121, Indonesia",
+          "tokenCoverage": 1,
+          "campusDistanceKm": 0.808
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "c1c2b271-4144-4c19-9639-83ab93b623a7",
+      "slug": "kost-bunga-halimah",
+      "nama": "Kost Bunga Halimah",
+      "alamat": "Kemuning, Palembang",
+      "kampus": "UIN Raden Fatah Palembang",
+      "current": {
+        "lat": -2.9618,
+        "lng": 104.7459
+      },
+      "suggested": {
+        "lat": -2.9613,
+        "lng": 104.7548,
+        "provider": "arcgis",
+        "label": "Kemuning: Palembang",
+        "score": 148.17
+      },
+      "displacementKm": 0.99,
+      "providerAgreementKm": 0.478,
+      "confidence": "medium",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.9613,
+          "lng": 104.7548,
+          "score": 148.17,
+          "label": "Kemuning: Palembang",
+          "tokenCoverage": 1,
+          "campusDistanceKm": 0.832
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.954427,
+          "lng": 104.74801,
+          "score": 139.95,
+          "label": "Kemuning, Sumatera Selatan",
+          "tokenCoverage": 1,
+          "campusDistanceKm": 1.051
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.9688538,
+          "lng": 104.7595914,
+          "score": 122.58,
+          "label": "Palembang",
+          "tokenCoverage": 0,
+          "campusDistanceKm": 1.425
+        },
+        {
+          "provider": "nominatim",
+          "lat": -2.9505602,
+          "lng": 104.7498822,
+          "score": 64.71,
+          "label": "Kemuning, Palembang, Sumatera Selatan, Sumatera, Indonesia",
+          "tokenCoverage": 1,
+          "campusDistanceKm": 1.499
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "5c381c7e-619c-492c-a9a4-2550e561bbb6",
+      "slug": "kos-bukit-khusus-pria-dekat-unsri-bukit",
+      "nama": "Kos Bukit khusus Pria dekat UNSRI BUKIT",
+      "alamat": "Gg. II, 30 Ilir, Ilir Bar. II, Palembang",
+      "kampus": "Politeknik Negeri Sriwijaya",
+      "current": {
+        "lat": -2.9904611,
+        "lng": 104.7389508
+      },
+      "suggested": {
+        "lat": -2.995768437841,
+        "lng": 104.733158653431,
+        "provider": "arcgis",
+        "label": "Gang 2, Ilir Barat I, Sumatera Selatan, 30137",
+        "score": 134.81
+      },
+      "displacementKm": 0.873,
+      "providerAgreementKm": null,
+      "confidence": "medium",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.995768437841,
+          "lng": 104.733158653431,
+          "score": 134.81,
+          "label": "Gang 2, Ilir Barat I, Sumatera Selatan, 30137",
+          "tokenCoverage": 1,
+          "campusDistanceKm": 1.306
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.9942068,
+          "lng": 104.7457271,
+          "score": 133.45,
+          "label": "30 Ilir, Ilir Barat II, Sumatera Selatan",
+          "tokenCoverage": 1,
+          "campusDistanceKm": 1.84
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.99839,
+          "lng": 104.745727,
+          "score": 124.55,
+          "label": "Ilir Barat II, Sumatera Selatan",
+          "tokenCoverage": 1,
+          "campusDistanceKm": 2.157
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "bd1c2bd1-0c3e-407d-9774-b1fb68f9e734",
+      "slug": "kost-sheva-tipe-a",
+      "nama": "Kost Sheva Tipe A",
+      "alamat": "Jl. Srijaya Negara, Bukit Besar, Ilir Barat I, Palembang",
+      "kampus": "Politeknik Negeri Sriwijaya",
+      "current": {
+        "lat": -2.9832,
+        "lng": 104.7318
+      },
+      "suggested": {
+        "lat": -2.9901,
+        "lng": 104.7291,
+        "provider": "arcgis",
+        "label": "Mixue Srijaya Negara Bukit",
+        "score": 113.83
+      },
+      "displacementKm": 0.824,
+      "providerAgreementKm": null,
+      "confidence": "medium",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.9901,
+          "lng": 104.7291,
+          "score": 113.83,
+          "label": "Mixue Srijaya Negara Bukit",
+          "tokenCoverage": 0.6,
+          "campusDistanceKm": 0.782
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.951671110177,
+          "lng": 104.728495504225,
+          "score": 106.99,
+          "label": "Jalan Srijaya, Alang Alang Lebar, Sumatera Selatan, 30151",
+          "tokenCoverage": 0.2,
+          "campusDistanceKm": 3.628
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.9864,
+          "lng": 104.7287,
+          "score": 106.77,
+          "label": "Sma Srijaya Negara",
+          "tokenCoverage": 0.4,
+          "campusDistanceKm": 0.513
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "ed649ac5-44c4-46f0-a412-0f0657e74d20",
+      "slug": "kost-3-behadeng",
+      "nama": "Kost 3 Behadeng",
+      "alamat": "Lorong Usaha I No.2149, 5 Ulu, Seberang Ulu I, Palembang",
+      "kampus": "UIN Raden Fatah Kampus Jakabaring",
+      "current": {
+        "lat": -3.0108,
+        "lng": 104.7732
+      },
+      "suggested": {
+        "lat": -3.016761189936,
+        "lng": 104.76882873778,
+        "provider": "arcgis",
+        "label": "Lorong Usaha, Seberang Ulu I, Sumatera Selatan, 30267",
+        "score": 131.18
+      },
+      "displacementKm": 0.822,
+      "providerAgreementKm": 0.451,
+      "confidence": "medium",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -3.016761189936,
+          "lng": 104.76882873778,
+          "score": 131.18,
+          "label": "Lorong Usaha, Seberang Ulu I, Sumatera Selatan, 30267",
+          "tokenCoverage": 0.67,
+          "campusDistanceKm": 0.782
+        },
+        {
+          "provider": "arcgis",
+          "lat": -3.019621816007,
+          "lng": 104.765421452357,
+          "score": 121.07,
+          "label": "Lorong Usaha, Seberang Ulu I, Sumatera Selatan, 30122",
+          "tokenCoverage": 0.67,
+          "campusDistanceKm": 1.25
+        },
+        {
+          "provider": "arcgis",
+          "lat": -3.006996,
+          "lng": 104.767311,
+          "score": 106.95,
+          "label": "5 Ulu, Seberang Ulu I, Sumatera Selatan",
+          "tokenCoverage": 0.33,
+          "campusDistanceKm": 0.64
+        },
+        {
+          "provider": "nominatim",
+          "lat": -3.0131978,
+          "lng": 104.7681711,
+          "score": 48.62,
+          "label": "Lorong Usaha 2, Seberang Ulu I, Palembang, Sumatera Selatan, Sumatera, 30252, Indonesia",
+          "tokenCoverage": 0.67,
+          "campusDistanceKm": 0.518
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "e736f7ae-3362-432d-869a-ee9e100cd95c",
+      "slug": "kost-gardena",
+      "nama": "Kost Gardena",
+      "alamat": "Jl. Srijaya Negara, Lorok Pakjo, Ilir Barat I, Palembang",
+      "kampus": "Politeknik Negeri Sriwijaya",
+      "current": {
+        "lat": -2.9828,
+        "lng": 104.7312
+      },
+      "suggested": {
+        "lat": -2.977485,
+        "lng": 104.735534,
+        "provider": "arcgis",
+        "label": "Lorok Pakjo, Ilir Barat I, Sumatera Selatan",
+        "score": 116.57
+      },
+      "displacementKm": 0.762,
+      "providerAgreementKm": 1.239,
+      "confidence": "medium",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.977485,
+          "lng": 104.735534,
+          "score": 116.57,
+          "label": "Lorok Pakjo, Ilir Barat I, Sumatera Selatan",
+          "tokenCoverage": 0.6,
+          "campusDistanceKm": 0.795
+        },
+        {
+          "provider": "nominatim",
+          "lat": -2.9872797,
+          "lng": 104.7302128,
+          "score": 47.02,
+          "label": "Jalan Srijaya Negara, Ilir Barat I, Palembang, Sumatera Selatan, Sumatera, 30144, Indonesia",
+          "tokenCoverage": 0.6,
+          "campusDistanceKm": 0.452
+        },
+        {
+          "provider": "nominatim",
+          "lat": -2.993532,
+          "lng": 104.7265248,
+          "score": 46.21,
+          "label": "Jalan Srijaya Negara, Ilir Barat I, Palembang, Sumatera Selatan, Sumatera, 30144, Indonesia",
+          "tokenCoverage": 0.6,
+          "campusDistanceKm": 1.257
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "f220f03b-5268-4a41-822e-b0f6d56c2c1e",
+      "slug": "tiara-kost",
+      "nama": "Tiara Kost",
+      "alamat": "Pahlawan, Kemuning, Palembang",
+      "kampus": "UIN Raden Fatah Palembang",
+      "current": {
+        "lat": -2.9632832,
+        "lng": 104.7514321
+      },
+      "suggested": {
+        "lat": -2.960773,
+        "lng": 104.746349,
+        "provider": "arcgis",
+        "label": "Pahlawan, Kemuning, Sumatera Selatan",
+        "score": 140.62
+      },
+      "displacementKm": 0.63,
+      "providerAgreementKm": 0.481,
+      "confidence": "medium",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.960773,
+          "lng": 104.746349,
+          "score": 140.62,
+          "label": "Pahlawan, Kemuning, Sumatera Selatan",
+          "tokenCoverage": 1,
+          "campusDistanceKm": 0.379
+        },
+        {
+          "provider": "nominatim",
+          "lat": -2.9624654,
+          "lng": 104.7472342,
+          "score": 53.84,
+          "label": "Grand Tara Homestay Pahlawan, Jalan Rawa Jaya, Kemuning, Palembang, Sumatera Selatan, Sumatera, 30128, Indonesia",
+          "tokenCoverage": 1,
+          "campusDistanceKm": 0.167
+        },
+        {
+          "provider": "nominatim",
+          "lat": -2.962203,
+          "lng": 104.7519865,
+          "score": 48.5,
+          "label": "Masjid Mukmin Pahlawan, Lebak Rejo, Kemuning, Palembang, Sumatera Selatan, Sumatera, 30164, Indonesia",
+          "tokenCoverage": 1,
+          "campusDistanceKm": 0.504
+        },
+        {
+          "provider": "nominatim",
+          "lat": -2.9626658,
+          "lng": 104.7424552,
+          "score": 48.4,
+          "label": "Taman Makam Pahlawan, Tribrata, Kemuning, Palembang, Sumatera Selatan, Sumatera, 30128, Indonesia",
+          "tokenCoverage": 1,
+          "campusDistanceKm": 0.605
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "7de8fb9d-81e2-4156-8f89-d53130a82c84",
+      "slug": "kost-kamaran-putri",
+      "nama": "Kost Kamaran Putri",
+      "alamat": "Jl. Muhajirin IV, Ilir Barat I, Palembang",
+      "kampus": "Politeknik Negeri Sriwijaya",
+      "current": {
+        "lat": -2.9839,
+        "lng": 104.7315
+      },
+      "suggested": {
+        "lat": -2.978694446073,
+        "lng": 104.733572475266,
+        "provider": "arcgis",
+        "label": "Jalan Muhajirin 4, Ilir Barat I, Sumatera Selatan, 30137",
+        "score": 145.4
+      },
+      "displacementKm": 0.623,
+      "providerAgreementKm": null,
+      "confidence": "medium",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.978694446073,
+          "lng": 104.733572475266,
+          "score": 145.4,
+          "label": "Jalan Muhajirin 4, Ilir Barat I, Sumatera Selatan, 30137",
+          "tokenCoverage": 1,
+          "campusDistanceKm": 0.602
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.977274740178,
+          "lng": 104.733744922906,
+          "score": 141.93,
+          "label": "Lorong Muhajirin 4, Ilir Barat I, Sumatera Selatan, 30137",
+          "tokenCoverage": 1,
+          "campusDistanceKm": 0.761
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "77831733-f803-4110-a1c3-c6842f6a2e6c",
+      "slug": "kost-rame-inn-palembang",
+      "nama": "Kost Rame-inn Palembang",
+      "alamat": "Gg. Keluarga, Lorok Pakjo, Ilir Bar. I, Palembang",
+      "kampus": "Politeknik Negeri Sriwijaya",
+      "current": {
+        "lat": -2.9811671,
+        "lng": 104.7385136
+      },
+      "suggested": {
+        "lat": -2.980376341162,
+        "lng": 104.732985332225,
+        "provider": "arcgis",
+        "label": "Lorong Keluarga, Ilir Barat I, Sumatera Selatan, 30137",
+        "score": 130.65
+      },
+      "displacementKm": 0.62,
+      "providerAgreementKm": null,
+      "confidence": "medium",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.980376341162,
+          "lng": 104.732985332225,
+          "score": 130.65,
+          "label": "Lorong Keluarga, Ilir Barat I, Sumatera Selatan, 30137",
+          "tokenCoverage": 0.5,
+          "campusDistanceKm": 0.408
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.977485,
+          "lng": 104.735534,
+          "score": 123.15,
+          "label": "Lorok Pakjo, Ilir Barat I, Sumatera Selatan",
+          "tokenCoverage": 0.75,
+          "campusDistanceKm": 0.795
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.989964259748,
+          "lng": 104.722357051999,
+          "score": 110.96,
+          "label": "Gang Keluarga, Ilir Barat I, Sumatera Selatan, 30961",
+          "tokenCoverage": 0.5,
+          "campusDistanceKm": 1.321
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "20745775-63df-464c-bfb5-87d86fd1c425",
+      "slug": "melati-kost-putri",
+      "nama": "Melati Kost Putri",
+      "alamat": "Jl. Sungai Sahang Ujung, Lorok Pakjo, Ilir Bar. I, Palembang",
+      "kampus": "Politeknik Negeri Sriwijaya",
+      "current": {
+        "lat": -2.9815605,
+        "lng": 104.7329358
+      },
+      "suggested": {
+        "lat": -2.978871300575,
+        "lng": 104.728594922115,
+        "provider": "arcgis",
+        "label": "Jalan Sungai Sahang, Ilir Barat I, Sumatera Selatan, 30137",
+        "score": 128.97
+      },
+      "displacementKm": 0.567,
+      "providerAgreementKm": null,
+      "confidence": "medium",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.978871300575,
+          "lng": 104.728594922115,
+          "score": 128.97,
+          "label": "Jalan Sungai Sahang, Ilir Barat I, Sumatera Selatan, 30137",
+          "tokenCoverage": 0.5,
+          "campusDistanceKm": 0.73
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.977485,
+          "lng": 104.735534,
+          "score": 111.19,
+          "label": "Lorok Pakjo, Ilir Barat I, Sumatera Selatan",
+          "tokenCoverage": 0.5,
+          "campusDistanceKm": 0.795
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "2edde618-fc6e-49b4-a818-ed9df923d833",
+      "slug": "la-kost-palembang",
+      "nama": "LA Kost Palembang",
+      "alamat": "Perumahan Top 100, Jl. Pangeran Ratu, Jakabaring, Palembang",
+      "kampus": "UIN Raden Fatah Kampus Jakabaring",
+      "current": {
+        "lat": -3.0115,
+        "lng": 104.7725
+      },
+      "suggested": {
+        "lat": -3.016066637441,
+        "lng": 104.774439758878,
+        "provider": "arcgis",
+        "label": "Jalan Pangeran Ratu, Jakabaring, Sumatera Selatan, 30252",
+        "score": 124.38
+      },
+      "displacementKm": 0.552,
+      "providerAgreementKm": null,
+      "confidence": "medium",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -3.016066637441,
+          "lng": 104.774439758878,
+          "score": 124.38,
+          "label": "Jalan Pangeran Ratu, Jakabaring, Sumatera Selatan, 30252",
+          "tokenCoverage": 0.6,
+          "campusDistanceKm": 0.685
+        },
+        {
+          "provider": "arcgis",
+          "lat": -3.02096052157,
+          "lng": 104.774325801524,
+          "score": 123.86,
+          "label": "Jalan Pangeran Ratu, Jakabaring, Sumatera Selatan, 30521",
+          "tokenCoverage": 0.6,
+          "campusDistanceKm": 1.2
+        },
+        {
+          "provider": "arcgis",
+          "lat": -3.0224963,
+          "lng": 104.7751115,
+          "score": 100.86,
+          "label": "Jakabaring",
+          "tokenCoverage": 0.2,
+          "campusDistanceKm": 1.386
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "922a29d6-4525-4fa6-8955-ff5400853413",
+      "slug": "kostanisa-2-0",
+      "nama": "Kostanisa 2.0",
+      "alamat": "Jl. Panca Usaha No.2334, 5 Ulu, Seberang Ulu I, Palembang",
+      "kampus": "UIN Raden Fatah Kampus Jakabaring",
+      "current": {
+        "lat": -3.011,
+        "lng": 104.7728
+      },
+      "suggested": {
+        "lat": -3.010764544023,
+        "lng": 104.768028009028,
+        "provider": "arcgis",
+        "label": "Jalan Panca Usaha, Seberang Ulu I, Sumatera Selatan, 30267",
+        "score": 134.44
+      },
+      "displacementKm": 0.531,
+      "providerAgreementKm": null,
+      "confidence": "medium",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -3.010764544023,
+          "lng": 104.768028009028,
+          "score": 134.44,
+          "label": "Jalan Panca Usaha, Seberang Ulu I, Sumatera Selatan, 30267",
+          "tokenCoverage": 0.75,
+          "campusDistanceKm": 0.434
+        },
+        {
+          "provider": "arcgis",
+          "lat": -3.006996,
+          "lng": 104.767311,
+          "score": 104.87,
+          "label": "5 Ulu, Seberang Ulu I, Sumatera Selatan",
+          "tokenCoverage": 0.25,
+          "campusDistanceKm": 0.64
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "bc2e8dc6-6bd4-4a5b-bd73-54cdc19da262",
+      "slug": "kost-dee-balcon-tipe-a",
+      "nama": "Kost Dee Balcon Tipe A",
+      "alamat": "Jl. Srijaya Negara, Ilir Barat I, Palembang",
+      "kampus": "Politeknik Negeri Sriwijaya",
+      "current": {
+        "lat": -2.9845,
+        "lng": 104.7329
+      },
+      "suggested": {
+        "lat": -2.9864,
+        "lng": 104.7287,
+        "provider": "arcgis",
+        "label": "Sma Srijaya Negara",
+        "score": 119.43
+      },
+      "displacementKm": 0.512,
+      "providerAgreementKm": 3.964,
+      "confidence": "medium",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.9864,
+          "lng": 104.7287,
+          "score": 119.43,
+          "label": "Sma Srijaya Negara",
+          "tokenCoverage": 0.67,
+          "campusDistanceKm": 0.513
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.951671110177,
+          "lng": 104.728495504225,
+          "score": 116.68,
+          "label": "Jalan Srijaya, Alang Alang Lebar, Sumatera Selatan, 30151",
+          "tokenCoverage": 0.33,
+          "campusDistanceKm": 3.628
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.98076,
+          "lng": 104.716876,
+          "score": 104.89,
+          "label": "Ilir Barat I, Sumatera Selatan",
+          "tokenCoverage": 0.33,
+          "campusDistanceKm": 1.79
+        },
+        {
+          "provider": "nominatim",
+          "lat": -2.9872797,
+          "lng": 104.7302128,
+          "score": 57.02,
+          "label": "Jalan Srijaya Negara, Ilir Barat I, Palembang, Sumatera Selatan, Sumatera, 30144, Indonesia",
+          "tokenCoverage": 1,
+          "campusDistanceKm": 0.452
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "85228bb0-3c4a-4dcd-b144-d66e1a9e3cd3",
+      "slug": "kost-putri-sriwijaya-homestay-fk-unsri-madang",
+      "nama": "Kost Putri Sriwijaya Homestay - FK Unsri Madang",
+      "alamat": "Jl. Lb. Rejo No.939, Sekip Jaya, Kemuning, Palembang",
+      "kampus": "UIN Raden Fatah Palembang",
+      "current": {
+        "lat": -2.9620582,
+        "lng": 104.7552036
+      },
+      "suggested": {
+        "lat": -2.9665,
+        "lng": 104.755011,
+        "provider": "arcgis",
+        "label": "Sekip Jaya, Kemuning, Sumatera Selatan",
+        "score": 116.81
+      },
+      "displacementKm": 0.494,
+      "providerAgreementKm": null,
+      "confidence": "medium",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.9665,
+          "lng": 104.755011,
+          "score": 116.81,
+          "label": "Sekip Jaya, Kemuning, Sumatera Selatan",
+          "tokenCoverage": 0.6,
+          "campusDistanceKm": 0.856
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "ac1c2e5b-cf70-4bf6-a857-a3b05ca9d8a2",
+      "slug": "ps-45-kost",
+      "nama": "Ps 45 Kost",
+      "alamat": "Jl. Puncak Sekuning, 26 Ilir D. I, Ilir Bar. I, Palembang",
+      "kampus": "Politeknik Negeri Sriwijaya",
+      "current": {
+        "lat": -2.9857346,
+        "lng": 104.7404973
+      },
+      "suggested": {
+        "lat": -2.987560022162,
+        "lng": 104.736562169123,
+        "provider": "arcgis",
+        "label": "Jalan Puncak Sekuning, Ilir Barat I, Sumatera Selatan, 30121",
+        "score": 145.41
+      },
+      "displacementKm": 0.482,
+      "providerAgreementKm": null,
+      "confidence": "medium",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.987560022162,
+          "lng": 104.736562169123,
+          "score": 145.41,
+          "label": "Jalan Puncak Sekuning, Ilir Barat I, Sumatera Selatan, 30121",
+          "tokenCoverage": 1,
+          "campusDistanceKm": 0.585
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.988152496335,
+          "lng": 104.736057670622,
+          "score": 133.7,
+          "label": "Jalan Puncak Sekuning, Ilir Barat I, Sumatera Selatan, 30137",
+          "tokenCoverage": 1,
+          "campusDistanceKm": 0.594
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.9865,
+          "lng": 104.7422,
+          "score": 124.22,
+          "label": "Multazam Kost 21 - Jl. Puncak Sekuning",
+          "tokenCoverage": 0.67,
+          "campusDistanceKm": 1.094
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "07f84609-e43d-4155-808c-e40fc45b4966",
+      "slug": "kost-barokah-jakabaring",
+      "nama": "Kost Barokah Jakabaring",
+      "alamat": "Blok E Komplek Jaka Permai, Jl. Gub H Bastari No.11, 8 Ulu, Seberang Ulu I, Palembang",
+      "kampus": "UIN Raden Fatah Kampus Jakabaring",
+      "current": {
+        "lat": -3.0098,
+        "lng": 104.7712
+      },
+      "suggested": {
+        "lat": -3.0110025,
+        "lng": 104.7749786,
+        "provider": "arcgis",
+        "label": "8 Ulu, Jakabaring, Sumatera Selatan",
+        "score": 98.76
+      },
+      "displacementKm": 0.44,
+      "providerAgreementKm": null,
+      "confidence": "medium",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -3.0110025,
+          "lng": 104.7749786,
+          "score": 98.76,
+          "label": "8 Ulu, Jakabaring, Sumatera Selatan",
+          "tokenCoverage": 0.2,
+          "campusDistanceKm": 0.344
+        },
+        {
+          "provider": "arcgis",
+          "lat": -3.0087485,
+          "lng": 104.7584171,
+          "score": 94.49,
+          "label": "Seberang Ulu I, Sumatera Selatan",
+          "tokenCoverage": 0.2,
+          "campusDistanceKm": 1.512
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.91673,
+          "lng": 104.7458,
+          "score": 86.18,
+          "label": "Palembang, Sumatera Selatan",
+          "tokenCoverage": 0,
+          "campusDistanceKm": 10.817
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "92b0391d-e054-4401-8dad-34634cd9e705",
+      "slug": "kost-shukuhaku",
+      "nama": "Kost Shukuhaku",
+      "alamat": "13 Ulu, Seberang Ulu II, Palembang",
+      "kampus": "Universitas Muhammadiyah Palembang",
+      "current": {
+        "lat": -2.9934686,
+        "lng": 104.7782324
+      },
+      "suggested": {
+        "lat": -2.991199,
+        "lng": 104.775255,
+        "provider": "arcgis",
+        "label": "13 Ulu, Seberang Ulu II, Sumatera Selatan",
+        "score": 140.29
+      },
+      "displacementKm": 0.416,
+      "providerAgreementKm": 2.941,
+      "confidence": "medium",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.991199,
+          "lng": 104.775255,
+          "score": 140.29,
+          "label": "13 Ulu, Seberang Ulu II, Sumatera Selatan",
+          "tokenCoverage": 1,
+          "campusDistanceKm": 0.714
+        },
+        {
+          "provider": "nominatim",
+          "lat": -3.0040895,
+          "lng": 104.7983773,
+          "score": 62.91,
+          "label": "Seberang Ulu II, Palembang, Sumatera Selatan, Sumatera, 30265, Indonesia",
+          "tokenCoverage": 1,
+          "campusDistanceKm": 2.39
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "1a0f6d6e-9470-4067-82be-37f1be88f167",
+      "slug": "kost-bulanan-palembang-makmur-lima-kost",
+      "nama": "Kost Bulanan Palembang | Makmur Lima Kost",
+      "alamat": "Lrg. Makmur V No.48, Sekip Jaya, Kemuning, Palembang",
+      "kampus": "UIN Raden Fatah Palembang",
+      "current": {
+        "lat": -2.9645531,
+        "lng": 104.7520798
+      },
+      "suggested": {
+        "lat": -2.9665,
+        "lng": 104.755011,
+        "provider": "arcgis",
+        "label": "Sekip Jaya, Kemuning, Sumatera Selatan",
+        "score": 119.89
+      },
+      "displacementKm": 0.391,
+      "providerAgreementKm": null,
+      "confidence": "medium",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.9665,
+          "lng": 104.755011,
+          "score": 119.89,
+          "label": "Sekip Jaya, Kemuning, Sumatera Selatan",
+          "tokenCoverage": 0.75,
+          "campusDistanceKm": 0.856
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.965396878612,
+          "lng": 104.753243916981,
+          "score": 119.58,
+          "label": "Lorong Makmur, Kemuning, Sumatera Selatan, 30128",
+          "tokenCoverage": 0.5,
+          "campusDistanceKm": 0.631
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.954427,
+          "lng": 104.74801,
+          "score": 98.2,
+          "label": "Kemuning, Sumatera Selatan",
+          "tokenCoverage": 0.25,
+          "campusDistanceKm": 1.051
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "fc9d77dd-a1e0-42bb-bc35-7567564c4738",
+      "slug": "villa-kost",
+      "nama": "Villa Kost",
+      "alamat": "Jl. Madang, Sekip Jaya, Kemuning, Palembang",
+      "kampus": "UIN Raden Fatah Palembang",
+      "current": {
+        "lat": -2.9645808,
+        "lng": 104.7519117
+      },
+      "suggested": {
+        "lat": -2.96682548541,
+        "lng": 104.754323801759,
+        "provider": "arcgis",
+        "label": "Jalan Madang, Kemuning, Sumatera Selatan, 30128",
+        "score": 132.7
+      },
+      "displacementKm": 0.366,
+      "providerAgreementKm": null,
+      "confidence": "medium",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.96682548541,
+          "lng": 104.754323801759,
+          "score": 132.7,
+          "label": "Jalan Madang, Kemuning, Sumatera Selatan, 30128",
+          "tokenCoverage": 0.5,
+          "campusDistanceKm": 0.799
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "e567b9fb-f029-44e6-b747-e5777d28d33a",
+      "slug": "meutuah-kost-putri",
+      "nama": "Meutuah Kost Putri",
+      "alamat": "Lorok Pakjo, Ilir Barat I, Palembang",
+      "kampus": "Politeknik Negeri Sriwijaya",
+      "current": {
+        "lat": -2.9805256,
+        "lng": 104.7343394
+      },
+      "suggested": {
+        "lat": -2.977485,
+        "lng": 104.735534,
+        "provider": "arcgis",
+        "label": "Lorok Pakjo, Ilir Barat I, Sumatera Selatan",
+        "score": 140.21
+      },
+      "displacementKm": 0.363,
+      "providerAgreementKm": 1.465,
+      "confidence": "medium",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.977485,
+          "lng": 104.735534,
+          "score": 140.21,
+          "label": "Lorok Pakjo, Ilir Barat I, Sumatera Selatan",
+          "tokenCoverage": 1,
+          "campusDistanceKm": 0.795
+        },
+        {
+          "provider": "nominatim",
+          "lat": -2.9855104,
+          "lng": 104.7334676,
+          "score": 37.15,
+          "label": "FISIP UNSRI Bukit Besar Palembang, Jalan Al Ghazali, Ilir Barat I, Palembang, Sumatera Selatan, Sumatera, 30144, Indonesia",
+          "tokenCoverage": 0.33,
+          "campusDistanceKm": 0.187
+        },
+        {
+          "provider": "nominatim",
+          "lat": -2.9900503,
+          "lng": 104.7315582,
+          "score": 36.66,
+          "label": "Fakultas Pertanian UNSRI Kampus Palembang, Jalan Padang Selasa, Ilir Barat I, Palembang, Sumatera Selatan, Sumatera, 30144, Indonesia",
+          "tokenCoverage": 0.33,
+          "campusDistanceKm": 0.68
+        },
+        {
+          "provider": "nominatim",
+          "lat": -2.9927264,
+          "lng": 104.7258145,
+          "score": 36.11,
+          "label": "Universitas Palembang, Jalan Dharmapala, Ilir Barat I, Palembang, Sumatera Selatan, Sumatera, 30153, Indonesia",
+          "tokenCoverage": 0.33,
+          "campusDistanceKm": 1.23
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "80d37aeb-ab85-48f5-8025-a6ff2454b3c2",
+      "slug": "kost-grand-cahaya-mutea",
+      "nama": "Kost Grand Cahaya Mutea",
+      "alamat": "Jl. Jend Ahmad Yani Lrg. Dua Saudara, 13 Ulu, Seberang Ulu II, Palembang",
+      "kampus": "Universitas Muhammadiyah Palembang",
+      "current": {
+        "lat": -2.9928251,
+        "lng": 104.7771841
+      },
+      "suggested": {
+        "lat": -2.995617726164,
+        "lng": 104.777341921525,
+        "provider": "arcgis",
+        "label": "Jalan Jenderal Ahmad Yani, Seberang Ulu II, Sumatera Selatan, 30118",
+        "score": 129.23
+      },
+      "displacementKm": 0.311,
+      "providerAgreementKm": null,
+      "confidence": "medium",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.995617726164,
+          "lng": 104.777341921525,
+          "score": 129.23,
+          "label": "Jalan Jenderal Ahmad Yani, Seberang Ulu II, Sumatera Selatan, 30118",
+          "tokenCoverage": 0.67,
+          "campusDistanceKm": 0.171
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.990467019333,
+          "lng": 104.788043977499,
+          "score": 116.7,
+          "label": "Jalan Jenderal Ahmad Yani, Seberang Ulu II, Sumatera Selatan, 30111",
+          "tokenCoverage": 0.67,
+          "campusDistanceKm": 1.324
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.98997214121,
+          "lng": 104.79227034424,
+          "score": 116.27,
+          "label": "Jalan Jenderal Ahmad Yani, Seberang Ulu II, Sumatera Selatan, 30264",
+          "tokenCoverage": 0.67,
+          "campusDistanceKm": 1.76
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "c1b59721-731e-4a8c-ab59-78eb1f9bcf10",
+      "slug": "arrayan-kost",
+      "nama": "ARRAYAN kost",
+      "alamat": "7 Ulu, Seberang Ulu I, Palembang",
+      "kampus": "Universitas Muhammadiyah Palembang",
+      "current": {
+        "lat": -2.9963207,
+        "lng": 104.7655703
+      },
+      "suggested": {
+        "lat": -2.998895,
+        "lng": 104.764958,
+        "provider": "arcgis",
+        "label": "7 Ulu, Seberang Ulu I, Sumatera Selatan",
+        "score": 139.53
+      },
+      "displacementKm": 0.294,
+      "providerAgreementKm": 1.336,
+      "confidence": "medium",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.998895,
+          "lng": 104.764958,
+          "score": 139.53,
+          "label": "7 Ulu, Seberang Ulu I, Sumatera Selatan",
+          "tokenCoverage": 1,
+          "campusDistanceKm": 1.471
+        },
+        {
+          "provider": "nominatim",
+          "lat": -2.9958163,
+          "lng": 104.778658,
+          "score": 53.86,
+          "label": "SMK Muhammadiyah 3 Palembang, Jalan Kyai Haji Balqi, 06, Seberang Ulu I, Palembang, Sumatera Selatan, Sumatera, 30116, Indonesia",
+          "tokenCoverage": 1,
+          "campusDistanceKm": 0.145
+        },
+        {
+          "provider": "nominatim",
+          "lat": -2.9937221,
+          "lng": 104.7797021,
+          "score": 53.6,
+          "label": "Kantor Pajak Kemenkeu Kota Palembang, Jalan Jaya Indah, RW.07, Kel. 14 Ulu, Kec. Seberang Ulu 2, Palembang, Seberang Ulu I, Palembang, Sumatera Selatan, Sumatera, 30116, Indonesia",
+          "tokenCoverage": 1,
+          "campusDistanceKm": 0.405
+        },
+        {
+          "provider": "nominatim",
+          "lat": -3.0102218,
+          "lng": 104.7689718,
+          "score": 52.22,
+          "label": "Rumah Sakit Umum Daerah Palembang BARI, Jalan Panca Usaha, RW 03, Seberang Ulu I, Palembang, Sumatera Selatan, Sumatera, 30252, Indonesia",
+          "tokenCoverage": 1,
+          "campusDistanceKm": 1.785
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "b85482be-176a-48e5-a2cb-39751bd3271b",
+      "slug": "al-ikhlas-kost-palembang",
+      "nama": "AL-IKHLAS KOST PALEMBANG",
+      "alamat": "Jl. Sungai Sahang Lr. Al Ikhlas 1 No.5335, Lorok Pakjo, Palembang",
+      "kampus": "Politeknik Negeri Sriwijaya",
+      "current": {
+        "lat": -2.9789513,
+        "lng": 104.7309501
+      },
+      "suggested": {
+        "lat": -2.978871300575,
+        "lng": 104.728594922115,
+        "provider": "arcgis",
+        "label": "Jalan Sungai Sahang, Ilir Barat I, Sumatera Selatan, 30137",
+        "score": 108.2
+      },
+      "displacementKm": 0.262,
+      "providerAgreementKm": null,
+      "confidence": "medium",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.978871300575,
+          "lng": 104.728594922115,
+          "score": 108.2,
+          "label": "Jalan Sungai Sahang, Ilir Barat I, Sumatera Selatan, 30137",
+          "tokenCoverage": 0.33,
+          "campusDistanceKm": 0.73
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.979,
+          "lng": 104.731,
+          "score": 104.8,
+          "label": "Al-Ikhlas - Palembang",
+          "tokenCoverage": 0.17,
+          "campusDistanceKm": 0.589
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.977485,
+          "lng": 104.735534,
+          "score": 98.74,
+          "label": "Lorok Pakjo, Ilir Barat I, Sumatera Selatan",
+          "tokenCoverage": 0.33,
+          "campusDistanceKm": 0.795
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "4d3691b3-3253-47e5-a4ea-6a00cdd410c9",
+      "slug": "kost-sumitro",
+      "nama": "Kost Sumitro",
+      "alamat": "Lorong Tembesu No.102, Bukit Lama, Ilir Barat I, Palembang",
+      "kampus": "Politeknik Negeri Sriwijaya",
+      "current": {
+        "lat": -2.985,
+        "lng": 104.733
+      },
+      "suggested": {
+        "lat": -2.986235285628,
+        "lng": 104.731002900035,
+        "provider": "arcgis",
+        "label": "Lorong Tembesu, Ilir Barat I, Sumatera Selatan, 30137",
+        "score": 126.89
+      },
+      "displacementKm": 0.261,
+      "providerAgreementKm": null,
+      "confidence": "medium",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.986235285628,
+          "lng": 104.731002900035,
+          "score": 126.89,
+          "label": "Lorong Tembesu, Ilir Barat I, Sumatera Selatan, 30137",
+          "tokenCoverage": 0.4,
+          "campusDistanceKm": 0.306
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.997172,
+          "lng": 104.726223,
+          "score": 113.72,
+          "label": "Bukit Lama, Ilir Barat I, Sumatera Selatan",
+          "tokenCoverage": 0.6,
+          "campusDistanceKm": 1.627
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "2a1c1520-0d42-4c53-a953-cd8b247308c1",
+      "slug": "kost-wanita-soma",
+      "nama": "KOST WANITA SOMA",
+      "alamat": "Jl. Rajawali No.8, 9 Ilir, Ilir Tim. II, Palembang",
+      "kampus": "Universitas MDP",
+      "current": {
+        "lat": -2.9742962,
+        "lng": 104.7653018
+      },
+      "suggested": {
+        "lat": -2.972165361186,
+        "lng": 104.764322435978,
+        "provider": "arcgis",
+        "label": "Jalan Rajawali, Ilir Timur Tiga, Sumatera Selatan, 30113",
+        "score": 125.83
+      },
+      "displacementKm": 0.261,
+      "providerAgreementKm": null,
+      "confidence": "medium",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.972165361186,
+          "lng": 104.764322435978,
+          "score": 125.83,
+          "label": "Jalan Rajawali, Ilir Timur Tiga, Sumatera Selatan, 30113",
+          "tokenCoverage": 1,
+          "campusDistanceKm": 0.175
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.926939717926,
+          "lng": 104.699599707825,
+          "score": 109.09,
+          "label": "Jalan Rajawali 8, Alang Alang Lebar, Sumatera Selatan, 30155",
+          "tokenCoverage": 0.5,
+          "campusDistanceKm": 8.847
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.970368,
+          "lng": 104.764114,
+          "score": 102.93,
+          "label": "9 Ilir, Ilir Timur Tiga, Sumatera Selatan",
+          "tokenCoverage": 0.5,
+          "campusDistanceKm": 0.372
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "fce1155b-0454-4d89-be79-7366cd01baae",
+      "slug": "kost-amira-executive",
+      "nama": "Kost Amira Executive",
+      "alamat": "Perumahan Griya Poli Indah, Bukit Besar, Ilir Barat I, Palembang",
+      "kampus": "Politeknik Negeri Sriwijaya",
+      "current": {
+        "lat": -2.9819,
+        "lng": 104.7295
+      },
+      "suggested": {
+        "lat": -2.9818,
+        "lng": 104.7317,
+        "provider": "arcgis",
+        "label": "Perumahan Griya Poli Indah",
+        "score": 118.61
+      },
+      "displacementKm": 0.245,
+      "providerAgreementKm": null,
+      "confidence": "medium",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.9818,
+          "lng": 104.7317,
+          "score": 118.61,
+          "label": "Perumahan Griya Poli Indah",
+          "tokenCoverage": 0.5,
+          "campusDistanceKm": 0.27
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "dd71b727-5a0f-4740-b6f8-1d743c843b28",
+      "slug": "kost-atas-putih",
+      "nama": "Kost Atas Putih",
+      "alamat": "Jl. Lunjuk Jaya, Bukit Besar, Ilir Barat I, Palembang",
+      "kampus": "Politeknik Negeri Sriwijaya",
+      "current": {
+        "lat": -2.9837,
+        "lng": 104.7308
+      },
+      "suggested": {
+        "lat": -2.9825,
+        "lng": 104.729,
+        "provider": "arcgis",
+        "label": "Bukit Besar",
+        "score": 125.56
+      },
+      "displacementKm": 0.24,
+      "providerAgreementKm": null,
+      "confidence": "medium",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.9825,
+          "lng": 104.729,
+          "score": 125.56,
+          "label": "Bukit Besar",
+          "tokenCoverage": 0.4,
+          "campusDistanceKm": 0.441
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "3255fb29-6dee-4010-9b70-b9ff8686b00f",
+      "slug": "rinu-kost",
+      "nama": "Rinu Kost",
+      "alamat": "Jl. Dokter Muhammad Ali No.KM 3, Pahlawan, Kemuning, Palembang",
+      "kampus": "UIN Raden Fatah Palembang",
+      "current": {
+        "lat": -2.9637278,
+        "lng": 104.7506613
+      },
+      "suggested": {
+        "lat": -2.964888144502,
+        "lng": 104.748899323899,
+        "provider": "arcgis",
+        "label": "Jalan Doktor Muhammad Ali, Kemuning, Sumatera Selatan, 30128",
+        "score": 132.26
+      },
+      "displacementKm": 0.234,
+      "providerAgreementKm": null,
+      "confidence": "medium",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.964888144502,
+          "lng": 104.748899323899,
+          "score": 132.26,
+          "label": "Jalan Doktor Muhammad Ali, Kemuning, Sumatera Selatan, 30128",
+          "tokenCoverage": 0.6,
+          "campusDistanceKm": 0.169
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "82ff6522-bc61-4dcd-8c6b-b083ad63b139",
+      "slug": "vera-kost",
+      "nama": "VERA KOST",
+      "alamat": "Pahlawan, Kemuning, Palembang",
+      "kampus": "UIN Raden Fatah Palembang",
+      "current": {
+        "lat": -2.9598849,
+        "lng": 104.7482185
+      },
+      "suggested": {
+        "lat": -2.960773,
+        "lng": 104.746349,
+        "provider": "arcgis",
+        "label": "Pahlawan, Kemuning, Sumatera Selatan",
+        "score": 140.62
+      },
+      "displacementKm": 0.23,
+      "providerAgreementKm": 0.481,
+      "confidence": "medium",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.960773,
+          "lng": 104.746349,
+          "score": 140.62,
+          "label": "Pahlawan, Kemuning, Sumatera Selatan",
+          "tokenCoverage": 1,
+          "campusDistanceKm": 0.379
+        },
+        {
+          "provider": "nominatim",
+          "lat": -2.9624654,
+          "lng": 104.7472342,
+          "score": 53.84,
+          "label": "Grand Tara Homestay Pahlawan, Jalan Rawa Jaya, Kemuning, Palembang, Sumatera Selatan, Sumatera, 30128, Indonesia",
+          "tokenCoverage": 1,
+          "campusDistanceKm": 0.167
+        },
+        {
+          "provider": "nominatim",
+          "lat": -2.962203,
+          "lng": 104.7519865,
+          "score": 48.5,
+          "label": "Masjid Mukmin Pahlawan, Lebak Rejo, Kemuning, Palembang, Sumatera Selatan, Sumatera, 30164, Indonesia",
+          "tokenCoverage": 1,
+          "campusDistanceKm": 0.504
+        },
+        {
+          "provider": "nominatim",
+          "lat": -2.9626658,
+          "lng": 104.7424552,
+          "score": 48.4,
+          "label": "Taman Makam Pahlawan, Tribrata, Kemuning, Palembang, Sumatera Selatan, Sumatera, 30128, Indonesia",
+          "tokenCoverage": 1,
+          "campusDistanceKm": 0.605
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "3ca06991-5385-40f8-93ed-fb71d65fddc5",
+      "slug": "dahlia-kost",
+      "nama": "DAHLIA KOST",
+      "alamat": "Lrg. PMD, Pahlawan, Kemuning, Palembang",
+      "kampus": "UIN Raden Fatah Palembang",
+      "current": {
+        "lat": -2.9603659,
+        "lng": 104.7483478
+      },
+      "suggested": {
+        "lat": -2.960773,
+        "lng": 104.746349,
+        "provider": "arcgis",
+        "label": "Pahlawan, Kemuning, Sumatera Selatan",
+        "score": 124.55
+      },
+      "displacementKm": 0.227,
+      "providerAgreementKm": null,
+      "confidence": "medium",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.960773,
+          "lng": 104.746349,
+          "score": 124.55,
+          "label": "Pahlawan, Kemuning, Sumatera Selatan",
+          "tokenCoverage": 0.67,
+          "campusDistanceKm": 0.379
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "c8428868-646d-4dec-8914-b1791a72284c",
+      "slug": "az-zahra-kost",
+      "nama": "Az Zahra Kost",
+      "alamat": "Jl. Padang Selasa, RT 27, Bukit Lama, Ilir Bar. I, Palembang",
+      "kampus": "Politeknik Negeri Sriwijaya",
+      "current": {
+        "lat": -2.9896216,
+        "lng": 104.7314871
+      },
+      "suggested": {
+        "lat": -2.991456692292,
+        "lng": 104.731539817943,
+        "provider": "arcgis",
+        "label": "Jalan Padang Selasa, Ilir Barat I, Sumatera Selatan, 30137",
+        "score": 135.17
+      },
+      "displacementKm": 0.204,
+      "providerAgreementKm": null,
+      "confidence": "medium",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.991456692292,
+          "lng": 104.731539817943,
+          "score": 135.17,
+          "label": "Jalan Padang Selasa, Ilir Barat I, Sumatera Selatan, 30137",
+          "tokenCoverage": 0.6,
+          "campusDistanceKm": 0.835
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "c63099a4-d04c-441a-822b-2c75dcb36b13",
+      "slug": "kostan-ar-rahmah-poltek",
+      "nama": "Kostan Ar-rahmah Poltek",
+      "alamat": "Lrg. Muhajirin IV No.77, Lorok Pakjo, Ilir Bar. I, Palembang",
+      "kampus": "Politeknik Negeri Sriwijaya",
+      "current": {
+        "lat": -2.9804922,
+        "lng": 104.7332936
+      },
+      "suggested": {
+        "lat": -2.978694446073,
+        "lng": 104.733572475266,
+        "provider": "arcgis",
+        "label": "Jalan Muhajirin 4, Ilir Barat I, Sumatera Selatan, 30137",
+        "score": 122.24
+      },
+      "displacementKm": 0.202,
+      "providerAgreementKm": null,
+      "confidence": "medium",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.978694446073,
+          "lng": 104.733572475266,
+          "score": 122.24,
+          "label": "Jalan Muhajirin 4, Ilir Barat I, Sumatera Selatan, 30137",
+          "tokenCoverage": 0.5,
+          "campusDistanceKm": 0.602
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.977274740178,
+          "lng": 104.733744922906,
+          "score": 122.08,
+          "label": "Lorong Muhajirin 4, Ilir Barat I, Sumatera Selatan, 30137",
+          "tokenCoverage": 0.5,
+          "campusDistanceKm": 0.761
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.976288347939,
+          "lng": 104.736949927787,
+          "score": 119.23,
+          "label": "Lorong Muhajirin, Ilir Barat I, Sumatera Selatan, 30137",
+          "tokenCoverage": 0.5,
+          "campusDistanceKm": 0.984
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "2a261641-f381-47fe-a7c9-c484ecfb6e5d",
+      "slug": "kost-melly-tipe-a",
+      "nama": "Kost Melly Tipe A",
+      "alamat": "Jl. Lunjuk Jaya, Bukit Besar, Ilir Barat I, Palembang",
+      "kampus": "Politeknik Negeri Sriwijaya",
+      "current": {
+        "lat": -2.9825,
+        "lng": 104.7302
+      },
+      "suggested": null,
+      "displacementKm": 0.133,
+      "providerAgreementKm": null,
+      "confidence": "keep",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.9825,
+          "lng": 104.729,
+          "score": 125.56,
+          "label": "Bukit Besar",
+          "tokenCoverage": 0.4,
+          "campusDistanceKm": 0.441
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "0cae5806-0b02-4f4f-a811-25f3c744e8ec",
+      "slug": "lunar-kost",
+      "nama": "LUNAR KOST",
+      "alamat": "Pahlawan, Kemuning, Palembang",
+      "kampus": "UIN Raden Fatah Palembang",
+      "current": {
+        "lat": -2.9619401,
+        "lng": 104.7460774
+      },
+      "suggested": null,
+      "displacementKm": 0.133,
+      "providerAgreementKm": 0.481,
+      "confidence": "keep",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.960773,
+          "lng": 104.746349,
+          "score": 140.62,
+          "label": "Pahlawan, Kemuning, Sumatera Selatan",
+          "tokenCoverage": 1,
+          "campusDistanceKm": 0.379
+        },
+        {
+          "provider": "nominatim",
+          "lat": -2.9624654,
+          "lng": 104.7472342,
+          "score": 53.84,
+          "label": "Grand Tara Homestay Pahlawan, Jalan Rawa Jaya, Kemuning, Palembang, Sumatera Selatan, Sumatera, 30128, Indonesia",
+          "tokenCoverage": 1,
+          "campusDistanceKm": 0.167
+        },
+        {
+          "provider": "nominatim",
+          "lat": -2.962203,
+          "lng": 104.7519865,
+          "score": 48.5,
+          "label": "Masjid Mukmin Pahlawan, Lebak Rejo, Kemuning, Palembang, Sumatera Selatan, Sumatera, 30164, Indonesia",
+          "tokenCoverage": 1,
+          "campusDistanceKm": 0.504
+        },
+        {
+          "provider": "nominatim",
+          "lat": -2.9626658,
+          "lng": 104.7424552,
+          "score": 48.4,
+          "label": "Taman Makam Pahlawan, Tribrata, Kemuning, Palembang, Sumatera Selatan, Sumatera, 30128, Indonesia",
+          "tokenCoverage": 1,
+          "campusDistanceKm": 0.605
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "05df2455-edaa-4ded-9d06-0e6f90417ba6",
+      "slug": "kost-davin",
+      "nama": "Kost Davin",
+      "alamat": "Lorong Melati, 9/10 Ulu, Seberang Ulu I, Palembang",
+      "kampus": "Universitas Muhammadiyah Palembang",
+      "current": {
+        "lat": -2.9984853,
+        "lng": 104.7775404
+      },
+      "suggested": null,
+      "displacementKm": 0.099,
+      "providerAgreementKm": 2.495,
+      "confidence": "keep",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.998039069468,
+          "lng": 104.778309459432,
+          "score": 133.07,
+          "label": "Lorong Melati, Seberang Ulu II, Sumatera Selatan, 30118",
+          "tokenCoverage": 1,
+          "campusDistanceKm": 0.121
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.99362512671,
+          "lng": 104.770105141655,
+          "score": 132.23,
+          "label": "Lorong Melati, Seberang Ulu II, Sumatera Selatan, 30267",
+          "tokenCoverage": 1,
+          "campusDistanceKm": 0.959
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.993888543944,
+          "lng": 104.769945091696,
+          "score": 130.3,
+          "label": "Lorong Melati, Jakabaring, Sumatera Selatan, 30521",
+          "tokenCoverage": 0.5,
+          "campusDistanceKm": 0.965
+        },
+        {
+          "provider": "nominatim",
+          "lat": -2.9988921,
+          "lng": 104.7918487,
+          "score": 55.93,
+          "label": "Lorong Melati, RW.13, Kel. 16 Ulu, Kec. Seberang Ulu 2, Palembang, Seberang Ulu I, Palembang, Sumatera Selatan, Sumatera, 30268, Indonesia",
+          "tokenCoverage": 1,
+          "campusDistanceKm": 1.546
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "b3d1cbe0-ecee-4f87-b0d6-f252595e5032",
+      "slug": "kosan-7-saudara",
+      "nama": "Kosan 7 Saudara",
+      "alamat": "Jl. Masjid Al-Ghazali No.176, Bukit Besar, Ilir Bar. I, Palembang",
+      "kampus": "Politeknik Negeri Sriwijaya",
+      "current": {
+        "lat": -2.9841491,
+        "lng": 104.7350608
+      },
+      "suggested": null,
+      "displacementKm": 0.094,
+      "providerAgreementKm": null,
+      "confidence": "keep",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.98331841034,
+          "lng": 104.735206870705,
+          "score": 129.96,
+          "label": "Jalan Masjid Al Gazali 176, Ilir Barat I, Sumatera Selatan, 30137",
+          "tokenCoverage": 0.5,
+          "campusDistanceKm": 0.294
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.9868931,
+          "lng": 104.7341775,
+          "score": 106.48,
+          "label": "Bukit",
+          "tokenCoverage": 0.17,
+          "campusDistanceKm": 0.36
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "f36dc76b-9e5b-4f66-8ba5-91d29413ec23",
+      "slug": "enter-kost",
+      "nama": "Enter Kost",
+      "alamat": "Jl. Kenari I No.1187, 9 Ilir, Ilir Tim. II, Palembang",
+      "kampus": "Universitas MDP",
+      "current": {
+        "lat": -2.9707199,
+        "lng": 104.7621398
+      },
+      "suggested": null,
+      "displacementKm": 0.065,
+      "providerAgreementKm": null,
+      "confidence": "keep",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.970620470972,
+          "lng": 104.762716818377,
+          "score": 113.61,
+          "label": "Jalan Kenari 1, Ilir Timur Tiga, Sumatera Selatan, 30113",
+          "tokenCoverage": 0.67,
+          "campusDistanceKm": 0.374
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.970368,
+          "lng": 104.764114,
+          "score": 98.21,
+          "label": "9 Ilir, Ilir Timur Tiga, Sumatera Selatan",
+          "tokenCoverage": 0.33,
+          "campusDistanceKm": 0.372
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.91673,
+          "lng": 104.7458,
+          "score": 90.35,
+          "label": "Palembang, Sumatera Selatan",
+          "tokenCoverage": 0,
+          "campusDistanceKm": 6.652
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "24185d08-bc20-45a8-ad45-025d4c74abca",
+      "slug": "kost-bukit-168",
+      "nama": "Kost Bukit 168",
+      "alamat": "Jl. Sungai Sahang No.5341, Lorok Pakjo, Ilir Bar. I, Palembang",
+      "kampus": "Politeknik Negeri Sriwijaya",
+      "current": {
+        "lat": -2.9796785,
+        "lng": 104.7305836
+      },
+      "suggested": null,
+      "displacementKm": 0.062,
+      "providerAgreementKm": null,
+      "confidence": "keep",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.979381807605,
+          "lng": 104.731054140595,
+          "score": 137.12,
+          "label": "Jalan Sungai Sahang 5341, Ilir Barat I, Sumatera Selatan, 30137",
+          "tokenCoverage": 0.67,
+          "campusDistanceKm": 0.547
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "a423210f-7619-401c-a9d2-c554207345b7",
+      "slug": "kost-pak-rachman",
+      "nama": "Kost Pak Rachman",
+      "alamat": "Jl. Bonsai Raya No.46, Lorok Pakjo, Ilir Bar. I, Palembang",
+      "kampus": "Politeknik Negeri Sriwijaya",
+      "current": {
+        "lat": -2.9811006,
+        "lng": 104.7257839
+      },
+      "suggested": null,
+      "displacementKm": 0.059,
+      "providerAgreementKm": null,
+      "confidence": "keep",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.981543715178,
+          "lng": 104.725494711036,
+          "score": 131.9,
+          "label": "Jalan Bonsai Raya, Ilir Barat I, Sumatera Selatan, 30137",
+          "tokenCoverage": 0.6,
+          "campusDistanceKm": 0.842
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.977485,
+          "lng": 104.735534,
+          "score": 115.33,
+          "label": "Lorok Pakjo, Ilir Barat I, Sumatera Selatan",
+          "tokenCoverage": 0.6,
+          "campusDistanceKm": 0.795
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "453a132c-b798-4be2-adbc-0865af29772e",
+      "slug": "pome-kost-luxury-palembang",
+      "nama": "POME KOST LUXURY PALEMBANG",
+      "alamat": "Lorong Tembesu, Bukit Lama, Palembang",
+      "kampus": "Politeknik Negeri Sriwijaya",
+      "current": {
+        "lat": -2.9857522,
+        "lng": 104.7310797
+      },
+      "suggested": null,
+      "displacementKm": 0.054,
+      "providerAgreementKm": null,
+      "confidence": "keep",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.986235285628,
+          "lng": 104.731002900035,
+          "score": 129.03,
+          "label": "Lorong Tembesu, Ilir Barat I, Sumatera Selatan, 30137",
+          "tokenCoverage": 0.33,
+          "campusDistanceKm": 0.306
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "b4966c99-665f-4860-b827-71bf80bd0f25",
+      "slug": "kos-pelangi-pak-riffat",
+      "nama": "Kos Pelangi Pak Riffat",
+      "alamat": "Jl. Jaya Indah, 13 Ulu, Seberang Ulu II, Palembang",
+      "kampus": "Universitas Muhammadiyah Palembang",
+      "current": {
+        "lat": -2.9920656,
+        "lng": 104.7775971
+      },
+      "suggested": null,
+      "displacementKm": 0.048,
+      "providerAgreementKm": null,
+      "confidence": "keep",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.992319568737,
+          "lng": 104.777246225192,
+          "score": 145.47,
+          "label": "Jalan Jaya Indah, Seberang Ulu II, Sumatera Selatan, 30118",
+          "tokenCoverage": 1,
+          "campusDistanceKm": 0.526
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "d09d6014-22df-4bec-a6ac-f136fd9ac466",
+      "slug": "rumah-kost-bahagia",
+      "nama": "Rumah Kost Bahagia",
+      "alamat": "Jl. Jend. Ahmad Yani Lrg. Bahagia No.83, 9/10 Ulu, Palembang",
+      "kampus": "Universitas Muhammadiyah Palembang",
+      "current": {
+        "lat": -2.9963388,
+        "lng": 104.7748578
+      },
+      "suggested": null,
+      "displacementKm": 0.046,
+      "providerAgreementKm": null,
+      "confidence": "keep",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.996640872257,
+          "lng": 104.775139318219,
+          "score": 120.33,
+          "label": "Jalan Jenderal Ahmad Yani, Jakabaring, Sumatera Selatan, 30521",
+          "tokenCoverage": 0.75,
+          "campusDistanceKm": 0.327
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.997303983116,
+          "lng": 104.773833553944,
+          "score": 120.19,
+          "label": "Jalan Jenderal Ahmad Yani, Jakabaring, Sumatera Selatan, 30251",
+          "tokenCoverage": 0.75,
+          "campusDistanceKm": 0.471
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.99505,
+          "lng": 104.770762,
+          "score": 90.16,
+          "label": "9/10 Ulu, Jakabaring, Sumatera Selatan",
+          "tokenCoverage": 0,
+          "campusDistanceKm": 0.839
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "d512ab70-d18d-415a-b104-678bfcb227a8",
+      "slug": "kost-puteri-h5y",
+      "nama": "Kost Puteri H5Y",
+      "alamat": "Lorong Masjid Mukmin No.109, Pahlawan, Kemuning, Palembang",
+      "kampus": "UIN Raden Fatah Palembang",
+      "current": {
+        "lat": -2.9621133,
+        "lng": 104.7517383
+      },
+      "suggested": null,
+      "displacementKm": 0.033,
+      "providerAgreementKm": null,
+      "confidence": "keep",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.961814575159,
+          "lng": 104.751731310911,
+          "score": 131.85,
+          "label": "Lorong Masjid Mukmin, Kemuning, Sumatera Selatan, 30128",
+          "tokenCoverage": 0.6,
+          "campusDistanceKm": 0.496
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "15038c61-7235-4419-ba74-e1a2fb384fda",
+      "slug": "aulia-kos",
+      "nama": "Aulia Kos",
+      "alamat": "Griya Poli Indah Blok C, Lorok Pakjo, Ilir Bar. I, Palembang",
+      "kampus": "Politeknik Negeri Sriwijaya",
+      "current": {
+        "lat": -2.9815341,
+        "lng": 104.7315829
+      },
+      "suggested": null,
+      "displacementKm": 0.032,
+      "providerAgreementKm": null,
+      "confidence": "keep",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.9818,
+          "lng": 104.7317,
+          "score": 111.71,
+          "label": "Perumahan Griya Poli Indah",
+          "tokenCoverage": 0.5,
+          "campusDistanceKm": 0.27
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.977485,
+          "lng": 104.735534,
+          "score": 111.19,
+          "label": "Lorok Pakjo, Ilir Barat I, Sumatera Selatan",
+          "tokenCoverage": 0.5,
+          "campusDistanceKm": 0.795
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.976859606823,
+          "lng": 104.7322608652,
+          "score": 108.72,
+          "label": "Blok C, Ilir Barat I, Sumatera Selatan, 30137",
+          "tokenCoverage": 0.17,
+          "campusDistanceKm": 0.799
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "fa1b3a74-fe5a-420d-bd1f-dd021c0d61e9",
+      "slug": "kost-munis",
+      "nama": "Kost Munis",
+      "alamat": "Lorong Veteran No.65, 9/10 Ulu, Seberang Ulu I, Palembang",
+      "kampus": "Universitas Muhammadiyah Palembang",
+      "current": {
+        "lat": -2.9957371,
+        "lng": 104.7732453
+      },
+      "suggested": null,
+      "displacementKm": 0.031,
+      "providerAgreementKm": null,
+      "confidence": "keep",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.995831389885,
+          "lng": 104.77351233305,
+          "score": 127.63,
+          "label": "Lorong Veteran, Jakabaring, Sumatera Selatan, 30521",
+          "tokenCoverage": 0.5,
+          "campusDistanceKm": 0.521
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.99505,
+          "lng": 104.770762,
+          "score": 97.69,
+          "label": "9/10 Ulu, Jakabaring, Sumatera Selatan",
+          "tokenCoverage": 0,
+          "campusDistanceKm": 0.839
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "d57db9a5-2ebb-47e6-b158-8e99ed0dea84",
+      "slug": "kost-nita",
+      "nama": "Kost NITA",
+      "alamat": "Jl. Abdul Kadir No.586, 13 Ulu, Seberang Ulu II, Palembang",
+      "kampus": "Universitas Muhammadiyah Palembang",
+      "current": {
+        "lat": -2.9933979,
+        "lng": 104.7758079
+      },
+      "suggested": null,
+      "displacementKm": 0.018,
+      "providerAgreementKm": null,
+      "confidence": "keep",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.993559656648,
+          "lng": 104.775809248189,
+          "score": 135.31,
+          "label": "Jalan Abdul Kadir, Seberang Ulu II, Sumatera Selatan, 30118",
+          "tokenCoverage": 0.75,
+          "campusDistanceKm": 0.455
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.991199,
+          "lng": 104.775255,
+          "score": 106.09,
+          "label": "13 Ulu, Seberang Ulu II, Sumatera Selatan",
+          "tokenCoverage": 0.25,
+          "campusDistanceKm": 0.714
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "ce1c13e8-f9f7-4e53-bc90-0d4966135a16",
+      "slug": "afny-kost",
+      "nama": "Afny Kost",
+      "alamat": "Jl. Kamboja No.1351, 20 Ilir D. III, Ilir Tim. I, Palembang",
+      "kampus": "UIN Raden Fatah Palembang",
+      "current": {
+        "lat": -2.9681428,
+        "lng": 104.7420475
+      },
+      "suggested": null,
+      "displacementKm": 0.015,
+      "providerAgreementKm": null,
+      "confidence": "keep",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.968276917454,
+          "lng": 104.74201926251,
+          "score": 133.22,
+          "label": "Jalan Kamboja 1351, Ilir Timur I, Sumatera Selatan, 30121",
+          "tokenCoverage": 0.75,
+          "campusDistanceKm": 0.805
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "43f98ecb-e479-458d-add9-111aa8b856b6",
+      "slug": "rian-kost",
+      "nama": "Rian Kost",
+      "alamat": "Jl. Inspektur Marzuki No.1962, Siring Agung, Ilir Bar. I, Palembang",
+      "kampus": "Universitas MDP",
+      "current": {
+        "lat": -2.9626202,
+        "lng": 104.7217765
+      },
+      "suggested": null,
+      "displacementKm": 0.015,
+      "providerAgreementKm": null,
+      "confidence": "keep",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.962531500013,
+          "lng": 104.721878974103,
+          "score": 132.82,
+          "label": "Jalan Inspektur Marzuki 1962, Ilir Barat I, Sumatera Selatan, 30138",
+          "tokenCoverage": 0.67,
+          "campusDistanceKm": 4.844
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "4fa06520-c7ae-4f7a-8b44-3d22477c6736",
+      "slug": "okey-kost",
+      "nama": "OKEY KOST",
+      "alamat": "Lorong Siguntang No.007, Bukit Lama, Ilir Bar. I, Palembang",
+      "kampus": "Politeknik Negeri Sriwijaya",
+      "current": {
+        "lat": -2.9863535,
+        "lng": 104.7300033
+      },
+      "suggested": null,
+      "displacementKm": 0.014,
+      "providerAgreementKm": null,
+      "confidence": "keep",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.986385211723,
+          "lng": 104.730127266563,
+          "score": 126.82,
+          "label": "Lorong Siguntang, Ilir Barat I, Sumatera Selatan, 30137",
+          "tokenCoverage": 0.4,
+          "campusDistanceKm": 0.384
+        },
+        {
+          "provider": "arcgis",
+          "lat": -2.997172,
+          "lng": 104.726223,
+          "score": 111.98,
+          "label": "Bukit Lama, Ilir Barat I, Sumatera Selatan",
+          "tokenCoverage": 0.6,
+          "campusDistanceKm": 1.627
+        }
+      ],
+      "geocodeError": null
+    },
+    {
+      "id": "11491d27-d4cc-4346-93f9-8c1eaeea2dec",
+      "slug": "arindy-kost",
+      "nama": "Arindy KOST",
+      "alamat": "Jl. Sikatan No.21, 9 Ilir, Ilir Tim. II, Palembang",
+      "kampus": "Universitas MDP",
+      "current": {
+        "lat": -2.9700317,
+        "lng": 104.7658693
+      },
+      "suggested": null,
+      "displacementKm": 0.007,
+      "providerAgreementKm": null,
+      "confidence": "keep",
+      "candidates": [
+        {
+          "provider": "arcgis",
+          "lat": -2.970093904515,
+          "lng": 104.76585923916,
+          "score": 137.77,
+          "label": "Jalan Sikatan 21, Ilir Timur Tiga, Sumatera Selatan, 30113",
+          "tokenCoverage": 1,
+          "campusDistanceKm": 0.45
+        }
+      ],
+      "geocodeError": null
+    }
+  ]
+}

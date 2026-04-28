@@ -1,0 +1,156 @@
+[
+  {
+    "id": "33d56692-38a2-4ae6-9615-3668d6308fb6",
+    "nama": "ITB PalComTech",
+    "lat": -2.9545456,
+    "lng": 104.7482617,
+    "radius_km": 3
+  },
+  {
+    "id": "656c7989-d986-4543-84e7-3707a7af9b81",
+    "nama": "Politeknik AKAMIGAS Palembang",
+    "lat": -3.0000241,
+    "lng": 104.820574,
+    "radius_km": 3
+  },
+  {
+    "id": "8d399d9a-3f8d-4a52-b8c4-8187243a7f77",
+    "nama": "Politeknik Negeri Sriwijaya",
+    "lat": -2.9840317,
+    "lng": 104.7326598,
+    "radius_km": 3
+  },
+  {
+    "id": "687ee89a-97cb-4a5d-be90-39b25b1c11a2",
+    "nama": "Politeknik Penerbangan Palembang",
+    "lat": -2.9088363,
+    "lng": 104.6999909,
+    "radius_km": 3
+  },
+  {
+    "id": "75b25fe2-f372-4180-9642-7916e2e07caa",
+    "nama": "Poltekkes Kemenkes Palembang",
+    "lat": -2.9413266,
+    "lng": 104.7395858,
+    "radius_km": 3
+  },
+  {
+    "id": "51e33f71-d1cf-4686-9f40-36f6dc074aed",
+    "nama": "Poltekpar Palembang",
+    "lat": -3.0137784,
+    "lng": 104.7849859,
+    "radius_km": 3
+  },
+  {
+    "id": "be3f4941-50f4-420c-a3ae-48e47bfe4f05",
+    "nama": "STIE Musi Palembang",
+    "lat": -2.9670794,
+    "lng": 104.7661718,
+    "radius_km": 3
+  },
+  {
+    "id": "b3fda92e-a707-4e83-9764-4a0285f7d9e7",
+    "nama": "STIHPADA Palembang",
+    "lat": -2.94149,
+    "lng": 104.7314392,
+    "radius_km": 3
+  },
+  {
+    "id": "de9e0c54-1a98-45e9-babf-04649946e26f",
+    "nama": "STISIPOL Chandradimuka",
+    "lat": -2.948187,
+    "lng": 104.746771,
+    "radius_km": 3
+  },
+  {
+    "id": "be22c137-3f8e-45cb-8be1-41f02af63ffa",
+    "nama": "UIN Raden Fatah Kampus Jakabaring",
+    "lat": -3.0104423,
+    "lng": 104.7719273,
+    "radius_km": 3
+  },
+  {
+    "id": "46371f18-b710-44f8-8344-b6cdef6e9727",
+    "nama": "UIN Raden Fatah Palembang",
+    "lat": -2.9638731,
+    "lng": 104.7477684,
+    "radius_km": 3
+  },
+  {
+    "id": "1424ca87-db6d-494f-b788-7a6f7b24ce51",
+    "nama": "Universitas Bina Darma",
+    "lat": -2.9995246,
+    "lng": 104.7705774,
+    "radius_km": 3
+  },
+  {
+    "id": "94658e27-29a2-4733-bbd7-d855b37a89f6",
+    "nama": "Universitas IBA",
+    "lat": -2.9626696,
+    "lng": 104.7637733,
+    "radius_km": 3
+  },
+  {
+    "id": "8db6a3c6-0c05-42cb-afcd-e30125e807c8",
+    "nama": "Universitas Indo Global Mandiri",
+    "lat": -2.9628609,
+    "lng": 104.740844,
+    "radius_km": 3
+  },
+  {
+    "id": "86d1df67-fbde-4cfb-ad5a-96b4828ee9c4",
+    "nama": "Universitas Katolik Musi Charitas",
+    "lat": -2.9663307,
+    "lng": 104.7654017,
+    "radius_km": 3
+  },
+  {
+    "id": "439572cc-d40a-4256-947b-bf8ca497de42",
+    "nama": "Universitas MDP",
+    "lat": -2.9737136,
+    "lng": 104.7640422,
+    "radius_km": 3
+  },
+  {
+    "id": "badfdc07-d80c-4e77-b40b-ee20cdae3174",
+    "nama": "Universitas Muhammadiyah Palembang",
+    "lat": -2.9969791,
+    "lng": 104.7780624,
+    "radius_km": 3
+  },
+  {
+    "id": "81d54248-3ef5-4597-8259-fd8361cdb318",
+    "nama": "Universitas Palembang",
+    "lat": -2.9928691,
+    "lng": 104.7260436,
+    "radius_km": 3
+  },
+  {
+    "id": "99befeae-80ac-497d-b15c-667fa5dfd521",
+    "nama": "Universitas PGRI Palembang",
+    "lat": -2.9949349,
+    "lng": 104.7759535,
+    "radius_km": 3
+  },
+  {
+    "id": "aa623b7e-537b-482b-a9e6-403b8e09a6c7",
+    "nama": "Universitas Sjakhyakirti",
+    "lat": -3.0014498,
+    "lng": 104.7450451,
+    "radius_km": 3
+  },
+  {
+    "id": "8ac3a568-54ff-4db0-a915-0ec387dbcc78",
+    "nama": "Universitas Sriwijaya Kampus Palembang",
+    "lat": -2.9849845,
+    "lng": 104.7333709,
+    "radius_km": 3
+  },
+  {
+    "id": "fb63f3b6-9d1d-4fb1-bc9d-4173ecdeed8c",
+    "nama": "Universitas Tridinanti Palembang",
+    "lat": -2.9713749,
+    "lng": 104.7460859,
+    "radius_km": 3
+  }
+]

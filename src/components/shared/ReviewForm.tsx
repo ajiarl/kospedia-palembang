@@ -60,7 +60,7 @@ export default function ReviewForm({
 
   if (!isLoggedIn) {
     return (
-      <div className="rounded-xl border bg-card p-4">
+      <div className="rounded-[1.2rem] border border-black/5 bg-white/55 p-4">
         <p className="text-sm text-muted-foreground">
           Masuk dulu untuk menulis review kos ini.
         </p>
@@ -75,15 +75,13 @@ export default function ReviewForm({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="rounded-xl border bg-card p-4">
+    <form onSubmit={handleSubmit} className="rounded-[1.2rem] border border-black/5 bg-white/55 p-4">
       <div className="space-y-4">
-        {/* Star Picker */}
         <div>
           <label className="mb-2 block text-sm font-medium">Rating</label>
           <StarPicker value={rating} onChange={setRating} />
         </div>
 
-        {/* Komentar */}
         <div>
           <label htmlFor="komentar" className="mb-1.5 block text-sm font-medium">
             Komentar <span className="text-muted-foreground">(opsional)</span>

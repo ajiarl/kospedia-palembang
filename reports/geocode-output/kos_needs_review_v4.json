@@ -1,0 +1,1240 @@
+[
+  {
+    "id": "b85482be-176a-48e5-a2cb-39751bd3271b",
+    "nama": "AL-IKHLAS KOST PALEMBANG",
+    "alamat": "Jl. Sungai Sahang Lr. Al Ikhlas 1 No.5335, Lorok Pakjo, Palembang",
+    "lat": -2.979,
+    "lng": 104.731,
+    "confidence": "area",
+    "reason": "single_provider_weak (score=85.088, tokens=1, nearRef=true)",
+    "geocode_source": "arcgis",
+    "geocoded_address": "Al-Ikhlas - Palembang",
+    "consensus_dist_m": null,
+    "top_score": 85.088,
+    "top_type": "POI",
+    "raw_candidates": [
+      {
+        "score": 85.088,
+        "provider": "arcgis",
+        "lat": -2.979,
+        "lng": 104.731,
+        "type": "POI",
+        "display": "Al-Ikhlas - Palembang"
+      },
+      {
+        "score": 85.088,
+        "provider": "arcgis",
+        "lat": -2.979,
+        "lng": 104.731,
+        "type": "POI",
+        "display": "Al-Ikhlas - Palembang"
+      }
+    ]
+  },
+  {
+    "id": "c1b59721-731e-4a8c-ab59-78eb1f9bcf10",
+    "nama": "ARRAYAN kost",
+    "alamat": "7 Ulu, Seberang Ulu I, Palembang",
+    "lat": -3.003665,
+    "lng": 104.7719366,
+    "confidence": "needs_review",
+    "reason": "no_qualifying_candidate",
+    "geocode_source": "nominatim",
+    "geocoded_address": "Kejaksaan Kota Palembang, Seberang Ulu I, Palembang, Sumatera Selatan, Sumatera, Indonesia",
+    "consensus_dist_m": null,
+    "top_score": 42.134599938963916,
+    "top_type": "commercial",
+    "raw_candidates": [
+      {
+        "score": 42.134599938963916,
+        "provider": "nominatim",
+        "lat": -3.003665,
+        "lng": 104.7719366,
+        "type": "commercial",
+        "display": "Kejaksaan Kota Palembang, Seberang Ulu I, Palembang, Sumatera Selatan, Sumatera, Indonesia"
+      },
+      {
+        "score": 40.001266605630576,
+        "provider": "nominatim",
+        "lat": -3.0060954,
+        "lng": 104.7731361,
+        "type": "light_rail",
+        "display": "LRT Palembang, Lorong Pasiran, RW 06 Kel. Silaberanti Kec. Seberang Ulu 1, Seberang Ulu I, Palembang"
+      }
+    ]
+  },
+  {
+    "id": "c8428868-646d-4dec-8914-b1791a72284c",
+    "nama": "Az Zahra Kost",
+    "alamat": "Jl. Padang Selasa, RT 27, Bukit Lama, Ilir Bar. I, Palembang",
+    "lat": -2.991456692292,
+    "lng": 104.731539817943,
+    "confidence": "needs_review",
+    "reason": "no_qualifying_candidate",
+    "geocode_source": "arcgis",
+    "geocoded_address": "Jalan Padang Selasa, Ilir Barat I, Sumatera Selatan, 30137",
+    "consensus_dist_m": null,
+    "top_score": 70,
+    "top_type": "StreetName",
+    "raw_candidates": [
+      {
+        "score": 70,
+        "provider": "arcgis",
+        "lat": -2.991456692292,
+        "lng": 104.731539817943,
+        "type": "StreetName",
+        "display": "Jalan Padang Selasa, Ilir Barat I, Sumatera Selatan, 30137"
+      }
+    ]
+  },
+  {
+    "id": "3ca06991-5385-40f8-93ed-fb71d65fddc5",
+    "nama": "DAHLIA KOST",
+    "alamat": "Lrg. PMD, Pahlawan, Kemuning, Palembang",
+    "lat": null,
+    "lng": null,
+    "confidence": "needs_review",
+    "reason": "no_candidates"
+  },
+  {
+    "id": "f36dc76b-9e5b-4f66-8ba5-91d29413ec23",
+    "nama": "Enter Kost",
+    "alamat": "Jl. Kenari I No.1187, 9 Ilir, Ilir Tim. II, Palembang",
+    "lat": -2.970620470972,
+    "lng": 104.762716818377,
+    "confidence": "needs_review",
+    "reason": "no_qualifying_candidate",
+    "geocode_source": "arcgis",
+    "geocoded_address": "Jalan Kenari 1, Ilir Timur Tiga, Sumatera Selatan, 30113",
+    "consensus_dist_m": null,
+    "top_score": 65.09,
+    "top_type": "StreetName",
+    "raw_candidates": [
+      {
+        "score": 65.09,
+        "provider": "arcgis",
+        "lat": -2.970620470972,
+        "lng": 104.762716818377,
+        "type": "StreetName",
+        "display": "Jalan Kenari 1, Ilir Timur Tiga, Sumatera Selatan, 30113"
+      },
+      {
+        "score": 64.25999999999999,
+        "provider": "arcgis",
+        "lat": -3.00339269126,
+        "lng": 104.689587105387,
+        "type": "PointAddress",
+        "display": "Jalan Kenari 9, Gandus, Sumatera Selatan, 30149"
+      }
+    ]
+  },
+  {
+    "id": "5c381c7e-619c-492c-a9a4-2550e561bbb6",
+    "nama": "Kos Bukit khusus Pria dekat UNSRI BUKIT",
+    "alamat": "Gg. II, 30 Ilir, Ilir Bar. II, Palembang",
+    "lat": -2.995768437841,
+    "lng": 104.733158653431,
+    "confidence": "needs_review",
+    "reason": "no_qualifying_candidate",
+    "geocode_source": "arcgis",
+    "geocoded_address": "Gang 2, Ilir Barat I, Sumatera Selatan, 30137",
+    "consensus_dist_m": null,
+    "top_score": 59.024,
+    "top_type": "StreetName",
+    "raw_candidates": [
+      {
+        "score": 59.024,
+        "provider": "arcgis",
+        "lat": -2.995768437841,
+        "lng": 104.733158653431,
+        "type": "StreetName",
+        "display": "Gang 2, Ilir Barat I, Sumatera Selatan, 30137"
+      }
+    ]
+  },
+  {
+    "id": "b4966c99-665f-4860-b827-71bf80bd0f25",
+    "nama": "Kos Pelangi Pak Riffat",
+    "alamat": "Jl. Jaya Indah, 13 Ulu, Seberang Ulu II, Palembang",
+    "lat": -2.992319568737,
+    "lng": 104.777246225192,
+    "confidence": "needs_review",
+    "reason": "no_qualifying_candidate",
+    "geocode_source": "arcgis",
+    "geocoded_address": "Jalan Jaya Indah, Seberang Ulu II, Sumatera Selatan, 30118",
+    "consensus_dist_m": null,
+    "top_score": 70,
+    "top_type": "StreetName",
+    "raw_candidates": [
+      {
+        "score": 70,
+        "provider": "arcgis",
+        "lat": -2.992319568737,
+        "lng": 104.777246225192,
+        "type": "StreetName",
+        "display": "Jalan Jaya Indah, Seberang Ulu II, Sumatera Selatan, 30118"
+      }
+    ]
+  },
+  {
+    "id": "ed649ac5-44c4-46f0-a412-0f0657e74d20",
+    "nama": "Kost 3 Behadeng",
+    "alamat": "Lorong Usaha I No.2149, 5 Ulu, Seberang Ulu I, Palembang",
+    "lat": -3.016761189936,
+    "lng": 104.76882873778,
+    "confidence": "needs_review",
+    "reason": "no_qualifying_candidate",
+    "geocode_source": "arcgis",
+    "geocoded_address": "Lorong Usaha, Seberang Ulu I, Sumatera Selatan, 30267",
+    "consensus_dist_m": null,
+    "top_score": 58.478,
+    "top_type": "StreetName",
+    "raw_candidates": [
+      {
+        "score": 58.478,
+        "provider": "arcgis",
+        "lat": -3.016761189936,
+        "lng": 104.76882873778,
+        "type": "StreetName",
+        "display": "Lorong Usaha, Seberang Ulu I, Sumatera Selatan, 30267"
+      },
+      {
+        "score": 56.348,
+        "provider": "arcgis",
+        "lat": -3.019621816007,
+        "lng": 104.765421452357,
+        "type": "StreetName",
+        "display": "Lorong Usaha, Seberang Ulu I, Sumatera Selatan, 30122"
+      }
+    ]
+  },
+  {
+    "id": "99aff160-1cd3-4d35-9782-858acd405ed5",
+    "nama": "Kost Amanda VVIP",
+    "alamat": "Sukarami, Palembang",
+    "lat": -2.9255,
+    "lng": 104.7236,
+    "confidence": "area",
+    "reason": "single_provider_weak (score=80, tokens=0, nearRef=true)",
+    "geocode_source": "arcgis",
+    "geocoded_address": "Palembang",
+    "consensus_dist_m": null,
+    "top_score": 80,
+    "top_type": "POI",
+    "raw_candidates": [
+      {
+        "score": 80,
+        "provider": "arcgis",
+        "lat": -2.9255,
+        "lng": 104.7236,
+        "type": "POI",
+        "display": "Palembang"
+      },
+      {
+        "score": 80,
+        "provider": "arcgis",
+        "lat": -2.9454,
+        "lng": 104.7447,
+        "type": "POI",
+        "display": "Palembang"
+      }
+    ]
+  },
+  {
+    "id": "14ddd0ee-b190-4e6d-95ea-99357ed21674",
+    "nama": "Kost Amelia Putri",
+    "alamat": "Jl. Parameswara, Bukit Baru, Ilir Barat I, Palembang",
+    "lat": -2.986910067195,
+    "lng": 104.721673515944,
+    "confidence": "needs_review",
+    "reason": "no_qualifying_candidate",
+    "geocode_source": "arcgis",
+    "geocoded_address": "Jalan Parameswara, Ilir Barat I, Sumatera Selatan, 30961",
+    "consensus_dist_m": null,
+    "top_score": 70,
+    "top_type": "StreetName",
+    "raw_candidates": [
+      {
+        "score": 70,
+        "provider": "arcgis",
+        "lat": -2.986910067195,
+        "lng": 104.721673515944,
+        "type": "StreetName",
+        "display": "Jalan Parameswara, Ilir Barat I, Sumatera Selatan, 30961"
+      }
+    ]
+  },
+  {
+    "id": "07f84609-e43d-4155-808c-e40fc45b4966",
+    "nama": "Kost Barokah Jakabaring",
+    "alamat": "Blok E Komplek Jaka Permai, Jl. Gub H Bastari No.11, 8 Ulu, Seberang Ulu I, Palembang",
+    "lat": null,
+    "lng": null,
+    "confidence": "needs_review",
+    "reason": "no_candidates"
+  },
+  {
+    "id": "1a0f6d6e-9470-4067-82be-37f1be88f167",
+    "nama": "Kost Bulanan Palembang | Makmur Lima Kost",
+    "alamat": "Lrg. Makmur V No.48, Sekip Jaya, Kemuning, Palembang",
+    "lat": -2.965396878612,
+    "lng": 104.753243916981,
+    "confidence": "needs_review",
+    "reason": "no_qualifying_candidate",
+    "geocode_source": "arcgis",
+    "geocoded_address": "Lorong Makmur, Kemuning, Sumatera Selatan, 30128",
+    "consensus_dist_m": null,
+    "top_score": 58.782,
+    "top_type": "StreetName",
+    "raw_candidates": [
+      {
+        "score": 58.782,
+        "provider": "arcgis",
+        "lat": -2.965396878612,
+        "lng": 104.753243916981,
+        "type": "StreetName",
+        "display": "Lorong Makmur, Kemuning, Sumatera Selatan, 30128"
+      }
+    ]
+  },
+  {
+    "id": "c1c2b271-4144-4c19-9639-83ab93b623a7",
+    "nama": "Kost Bunga Halimah",
+    "alamat": "Kemuning, Palembang",
+    "lat": -2.9613,
+    "lng": 104.7548,
+    "confidence": "area",
+    "reason": "single_provider_weak (score=90, tokens=1, nearRef=true)",
+    "geocode_source": "arcgis",
+    "geocoded_address": "Kemuning: Palembang",
+    "consensus_dist_m": null,
+    "top_score": 90,
+    "top_type": "POI",
+    "raw_candidates": [
+      {
+        "score": 90,
+        "provider": "arcgis",
+        "lat": -2.9613,
+        "lng": 104.7548,
+        "type": "POI",
+        "display": "Kemuning: Palembang"
+      },
+      {
+        "score": 80,
+        "provider": "arcgis",
+        "lat": -2.9688538,
+        "lng": 104.7595914,
+        "type": "POI",
+        "display": "Palembang"
+      }
+    ]
+  },
+  {
+    "id": "05df2455-edaa-4ded-9d06-0e6f90417ba6",
+    "nama": "Kost Davin",
+    "alamat": "Lorong Melati, 9/10 Ulu, Seberang Ulu I, Palembang",
+    "lat": -2.99362512671,
+    "lng": 104.770105141655,
+    "confidence": "needs_review",
+    "reason": "no_qualifying_candidate",
+    "geocode_source": "arcgis",
+    "geocoded_address": "Lorong Melati, Seberang Ulu II, Sumatera Selatan, 30267",
+    "consensus_dist_m": 2484,
+    "top_score": 57.438,
+    "top_type": "StreetName",
+    "raw_candidates": [
+      {
+        "score": 57.438,
+        "provider": "arcgis",
+        "lat": -2.99362512671,
+        "lng": 104.770105141655,
+        "type": "StreetName",
+        "display": "Lorong Melati, Seberang Ulu II, Sumatera Selatan, 30267"
+      },
+      {
+        "score": 57.438,
+        "provider": "arcgis",
+        "lat": -2.99362512671,
+        "lng": 104.770105141655,
+        "type": "StreetName",
+        "display": "Lorong Melati, Seberang Ulu II, Sumatera Selatan, 30267"
+      },
+      {
+        "score": 51.067933272297246,
+        "provider": "nominatim",
+        "lat": -2.9988921,
+        "lng": 104.7918487,
+        "type": "residential",
+        "display": "Lorong Melati, RW.13, Kel. 16 Ulu, Kec. Seberang Ulu 2, Palembang, Seberang Ulu I, Palembang, Sumate"
+      }
+    ]
+  },
+  {
+    "id": "e736f7ae-3362-432d-869a-ee9e100cd95c",
+    "nama": "Kost Gardena",
+    "alamat": "Jl. Srijaya Negara, Lorok Pakjo, Ilir Barat I, Palembang",
+    "lat": -2.9872797,
+    "lng": 104.7302128,
+    "confidence": "needs_review",
+    "reason": "no_qualifying_candidate",
+    "geocode_source": "nominatim",
+    "geocoded_address": "Jalan Srijaya Negara, Ilir Barat I, Palembang, Sumatera Selatan, Sumatera, 30144, Indonesia",
+    "consensus_dist_m": null,
+    "top_score": 71.06793327229724,
+    "top_type": "secondary",
+    "raw_candidates": [
+      {
+        "score": 71.06793327229724,
+        "provider": "nominatim",
+        "lat": -2.9872797,
+        "lng": 104.7302128,
+        "type": "secondary",
+        "display": "Jalan Srijaya Negara, Ilir Barat I, Palembang, Sumatera Selatan, Sumatera, 30144, Indonesia"
+      },
+      {
+        "score": 71.06793327229724,
+        "provider": "nominatim",
+        "lat": -2.993532,
+        "lng": 104.7265248,
+        "type": "tertiary",
+        "display": "Jalan Srijaya Negara, Ilir Barat I, Palembang, Sumatera Selatan, Sumatera, 30144, Indonesia"
+      }
+    ]
+  },
+  {
+    "id": "80d37aeb-ab85-48f5-8025-a6ff2454b3c2",
+    "nama": "Kost Grand Cahaya Mutea",
+    "alamat": "Jl. Jend Ahmad Yani Lrg. Dua Saudara, 13 Ulu, Seberang Ulu II, Palembang",
+    "lat": -2.995617726164,
+    "lng": 104.777341921525,
+    "confidence": "needs_review",
+    "reason": "no_qualifying_candidate",
+    "geocode_source": "arcgis",
+    "geocoded_address": "Jalan Jenderal Ahmad Yani, Seberang Ulu II, Sumatera Selatan, 30118",
+    "consensus_dist_m": null,
+    "top_score": 78.164,
+    "top_type": "StreetName",
+    "raw_candidates": [
+      {
+        "score": 78.164,
+        "provider": "arcgis",
+        "lat": -2.995617726164,
+        "lng": 104.777341921525,
+        "type": "StreetName",
+        "display": "Jalan Jenderal Ahmad Yani, Seberang Ulu II, Sumatera Selatan, 30118"
+      },
+      {
+        "score": 57.934,
+        "provider": "arcgis",
+        "lat": -2.993678879356,
+        "lng": 104.777755416144,
+        "type": "StreetName",
+        "display": "Lorong Dua Saudara, Seberang Ulu II, Sumatera Selatan, 30118"
+      }
+    ]
+  },
+  {
+    "id": "7de8fb9d-81e2-4156-8f89-d53130a82c84",
+    "nama": "Kost Kamaran Putri",
+    "alamat": "Jl. Muhajirin IV, Ilir Barat I, Palembang",
+    "lat": -2.978694446073,
+    "lng": 104.733572475266,
+    "confidence": "needs_review",
+    "reason": "no_qualifying_candidate",
+    "geocode_source": "arcgis",
+    "geocoded_address": "Jalan Muhajirin 4, Ilir Barat I, Sumatera Selatan, 30137",
+    "consensus_dist_m": null,
+    "top_score": 70,
+    "top_type": "StreetName",
+    "raw_candidates": [
+      {
+        "score": 70,
+        "provider": "arcgis",
+        "lat": -2.978694446073,
+        "lng": 104.733572475266,
+        "type": "StreetName",
+        "display": "Jalan Muhajirin 4, Ilir Barat I, Sumatera Selatan, 30137"
+      },
+      {
+        "score": 69.338,
+        "provider": "arcgis",
+        "lat": -2.977274740178,
+        "lng": 104.733744922906,
+        "type": "StreetName",
+        "display": "Lorong Muhajirin 4, Ilir Barat I, Sumatera Selatan, 30137"
+      }
+    ]
+  },
+  {
+    "id": "fa1b3a74-fe5a-420d-bd1f-dd021c0d61e9",
+    "nama": "Kost Munis",
+    "alamat": "Lorong Veteran No.65, 9/10 Ulu, Seberang Ulu I, Palembang",
+    "lat": -2.995831389885,
+    "lng": 104.77351233305,
+    "confidence": "needs_review",
+    "reason": "no_qualifying_candidate",
+    "geocode_source": "arcgis",
+    "geocoded_address": "Lorong Veteran, Jakabaring, Sumatera Selatan, 30521",
+    "consensus_dist_m": null,
+    "top_score": 48.534,
+    "top_type": "StreetName",
+    "raw_candidates": [
+      {
+        "score": 48.534,
+        "provider": "arcgis",
+        "lat": -2.995831389885,
+        "lng": 104.77351233305,
+        "type": "StreetName",
+        "display": "Lorong Veteran, Jakabaring, Sumatera Selatan, 30521"
+      }
+    ]
+  },
+  {
+    "id": "ed43c3cf-383b-4200-89c5-c28e8cccb371",
+    "nama": "Kost Nabila Putri",
+    "alamat": "Jl. Gub H Bastari, 8 Ulu, Seberang Ulu I, Palembang",
+    "lat": null,
+    "lng": null,
+    "confidence": "needs_review",
+    "reason": "no_candidates"
+  },
+  {
+    "id": "eb1eb618-aadf-4990-9516-feb0fb4ca819",
+    "nama": "Kost Nimas",
+    "alamat": "Sekip Ujung, Palembang",
+    "lat": -2.95422,
+    "lng": 104.75087,
+    "confidence": "area",
+    "reason": "consensus_too_far_479m",
+    "geocode_source": "arcgis",
+    "geocoded_address": "Pasar Sekip Ujung",
+    "consensus_dist_m": 479,
+    "top_score": 85.87,
+    "top_type": "POI",
+    "raw_candidates": [
+      {
+        "score": 85.87,
+        "provider": "arcgis",
+        "lat": -2.95422,
+        "lng": 104.75087,
+        "type": "POI",
+        "display": "Pasar Sekip Ujung"
+      },
+      {
+        "score": 85.87,
+        "provider": "arcgis",
+        "lat": -2.95422,
+        "lng": 104.75087,
+        "type": "POI",
+        "display": "Pasar Sekip Ujung"
+      },
+      {
+        "score": 51.067933272297246,
+        "provider": "nominatim",
+        "lat": -2.9526573,
+        "lng": 104.754888,
+        "type": "trunk",
+        "display": "Jalan Layang Sekip Ujung, Kemuning, Palembang, Sumatera Selatan, Sumatera, 30164, Indonesia"
+      }
+    ]
+  },
+  {
+    "id": "d57db9a5-2ebb-47e6-b158-8e99ed0dea84",
+    "nama": "Kost NITA",
+    "alamat": "Jl. Abdul Kadir No.586, 13 Ulu, Seberang Ulu II, Palembang",
+    "lat": -2.993559656648,
+    "lng": 104.775809248189,
+    "confidence": "needs_review",
+    "reason": "no_qualifying_candidate",
+    "geocode_source": "arcgis",
+    "geocoded_address": "Jalan Abdul Kadir, Seberang Ulu II, Sumatera Selatan, 30118",
+    "consensus_dist_m": null,
+    "top_score": 68.88,
+    "top_type": "StreetName",
+    "raw_candidates": [
+      {
+        "score": 68.88,
+        "provider": "arcgis",
+        "lat": -2.993559656648,
+        "lng": 104.775809248189,
+        "type": "StreetName",
+        "display": "Jalan Abdul Kadir, Seberang Ulu II, Sumatera Selatan, 30118"
+      }
+    ]
+  },
+  {
+    "id": "a423210f-7619-401c-a9d2-c554207345b7",
+    "nama": "Kost Pak Rachman",
+    "alamat": "Jl. Bonsai Raya No.46, Lorok Pakjo, Ilir Bar. I, Palembang",
+    "lat": -2.981543715178,
+    "lng": 104.725494711036,
+    "confidence": "needs_review",
+    "reason": "no_qualifying_candidate",
+    "geocode_source": "arcgis",
+    "geocoded_address": "Jalan Bonsai Raya, Ilir Barat I, Sumatera Selatan, 30137",
+    "consensus_dist_m": null,
+    "top_score": 69,
+    "top_type": "StreetName",
+    "raw_candidates": [
+      {
+        "score": 69,
+        "provider": "arcgis",
+        "lat": -2.981543715178,
+        "lng": 104.725494711036,
+        "type": "StreetName",
+        "display": "Jalan Bonsai Raya, Ilir Barat I, Sumatera Selatan, 30137"
+      }
+    ]
+  },
+  {
+    "id": "d512ab70-d18d-415a-b104-678bfcb227a8",
+    "nama": "Kost Puteri H5Y",
+    "alamat": "Lorong Masjid Mukmin No.109, Pahlawan, Kemuning, Palembang",
+    "lat": -2.961814575159,
+    "lng": 104.751731310911,
+    "confidence": "needs_review",
+    "reason": "no_qualifying_candidate",
+    "geocode_source": "arcgis",
+    "geocoded_address": "Lorong Masjid Mukmin, Kemuning, Sumatera Selatan, 30128",
+    "consensus_dist_m": null,
+    "top_score": 68.902,
+    "top_type": "StreetName",
+    "raw_candidates": [
+      {
+        "score": 68.902,
+        "provider": "arcgis",
+        "lat": -2.961814575159,
+        "lng": 104.751731310911,
+        "type": "StreetName",
+        "display": "Lorong Masjid Mukmin, Kemuning, Sumatera Selatan, 30128"
+      }
+    ]
+  },
+  {
+    "id": "85228bb0-3c4a-4dcd-b144-d66e1a9e3cd3",
+    "nama": "Kost Putri Sriwijaya Homestay - FK Unsri Madang",
+    "alamat": "Jl. Lb. Rejo No.939, Sekip Jaya, Kemuning, Palembang",
+    "lat": null,
+    "lng": null,
+    "confidence": "needs_review",
+    "reason": "no_candidates"
+  },
+  {
+    "id": "77831733-f803-4110-a1c3-c6842f6a2e6c",
+    "nama": "Kost Rame-inn Palembang",
+    "alamat": "Gg. Keluarga, Lorok Pakjo, Ilir Bar. I, Palembang",
+    "lat": -2.980376341162,
+    "lng": 104.732985332225,
+    "confidence": "needs_review",
+    "reason": "no_qualifying_candidate",
+    "geocode_source": "arcgis",
+    "geocoded_address": "Lorong Keluarga, Ilir Barat I, Sumatera Selatan, 30137",
+    "consensus_dist_m": null,
+    "top_score": 59.512,
+    "top_type": "StreetName",
+    "raw_candidates": [
+      {
+        "score": 59.512,
+        "provider": "arcgis",
+        "lat": -2.980376341162,
+        "lng": 104.732985332225,
+        "type": "StreetName",
+        "display": "Lorong Keluarga, Ilir Barat I, Sumatera Selatan, 30137"
+      },
+      {
+        "score": 56.924,
+        "provider": "arcgis",
+        "lat": -2.989964259748,
+        "lng": 104.722357051999,
+        "type": "StreetName",
+        "display": "Gang Keluarga, Ilir Barat I, Sumatera Selatan, 30961"
+      }
+    ]
+  },
+  {
+    "id": "447610b8-f837-4f96-bb91-4ef984d3c974",
+    "nama": "Kost Royal Demang III",
+    "alamat": "Jl. Demang III, Ilir Barat I, Palembang",
+    "lat": -2.974628861904,
+    "lng": 104.730866490533,
+    "confidence": "needs_review",
+    "reason": "no_qualifying_candidate",
+    "geocode_source": "arcgis",
+    "geocoded_address": "Jalan Demang 3, Ilir Barat I, Sumatera Selatan, 30137",
+    "consensus_dist_m": null,
+    "top_score": 70,
+    "top_type": "StreetName",
+    "raw_candidates": [
+      {
+        "score": 70,
+        "provider": "arcgis",
+        "lat": -2.974628861904,
+        "lng": 104.730866490533,
+        "type": "StreetName",
+        "display": "Jalan Demang 3, Ilir Barat I, Sumatera Selatan, 30137"
+      }
+    ]
+  },
+  {
+    "id": "780d9f2b-d124-4e27-bd91-6665892eb10e",
+    "nama": "Kost Rumah Biru",
+    "alamat": "Sekip, Ilir Timur, Palembang",
+    "lat": -2.968513,
+    "lng": 104.742955,
+    "confidence": "area",
+    "reason": "consensus_too_far_1013m",
+    "geocode_source": "arcgis",
+    "geocoded_address": "Palembang",
+    "consensus_dist_m": 1013,
+    "top_score": 77.314,
+    "top_type": "POI",
+    "raw_candidates": [
+      {
+        "score": 77.314,
+        "provider": "arcgis",
+        "lat": -2.968513,
+        "lng": 104.742955,
+        "type": "POI",
+        "display": "Palembang"
+      },
+      {
+        "score": 60.001266605630576,
+        "provider": "nominatim",
+        "lat": -2.9722521,
+        "lng": 104.7512772,
+        "type": "restaurant",
+        "display": "Martabak Har Simpang Sekip, Jalan Jenderal Sudirman, Ilir Timur I, Palembang, Sumatera Selatan, Suma"
+      }
+    ]
+  },
+  {
+    "id": "92b0391d-e054-4401-8dad-34634cd9e705",
+    "nama": "Kost Shukuhaku",
+    "alamat": "13 Ulu, Seberang Ulu II, Palembang",
+    "lat": null,
+    "lng": null,
+    "confidence": "needs_review",
+    "reason": "no_candidates"
+  },
+  {
+    "id": "112466cf-24f0-497b-90d1-8dc35fb664d7",
+    "nama": "Kost Sister Jakabaring",
+    "alamat": "Jl. Gub H Bastari, 8 Ulu, Seberang Ulu I, Palembang",
+    "lat": null,
+    "lng": null,
+    "confidence": "needs_review",
+    "reason": "no_candidates"
+  },
+  {
+    "id": "4d3691b3-3253-47e5-a4ea-6a00cdd410c9",
+    "nama": "Kost Sumitro",
+    "alamat": "Lorong Tembesu No.102, Bukit Lama, Ilir Barat I, Palembang",
+    "lat": -2.986235285628,
+    "lng": 104.731002900035,
+    "confidence": "needs_review",
+    "reason": "no_qualifying_candidate",
+    "geocode_source": "arcgis",
+    "geocoded_address": "Lorong Tembesu, Ilir Barat I, Sumatera Selatan, 30137",
+    "consensus_dist_m": null,
+    "top_score": 68.858,
+    "top_type": "StreetName",
+    "raw_candidates": [
+      {
+        "score": 68.858,
+        "provider": "arcgis",
+        "lat": -2.986235285628,
+        "lng": 104.731002900035,
+        "type": "StreetName",
+        "display": "Lorong Tembesu, Ilir Barat I, Sumatera Selatan, 30137"
+      }
+    ]
+  },
+  {
+    "id": "9fba286a-1c17-4c7c-8008-5d8d03a2725e",
+    "nama": "Kost Tata Sekip",
+    "alamat": "Sekip, Ilir Timur, Palembang",
+    "lat": -2.968513,
+    "lng": 104.742955,
+    "confidence": "area",
+    "reason": "consensus_too_far_1013m",
+    "geocode_source": "arcgis",
+    "geocoded_address": "Palembang",
+    "consensus_dist_m": 1013,
+    "top_score": 77.314,
+    "top_type": "POI",
+    "raw_candidates": [
+      {
+        "score": 77.314,
+        "provider": "arcgis",
+        "lat": -2.968513,
+        "lng": 104.742955,
+        "type": "POI",
+        "display": "Palembang"
+      },
+      {
+        "score": 60.001266605630576,
+        "provider": "nominatim",
+        "lat": -2.9722521,
+        "lng": 104.7512772,
+        "type": "restaurant",
+        "display": "Martabak Har Simpang Sekip, Jalan Jenderal Sudirman, Ilir Timur I, Palembang, Sumatera Selatan, Suma"
+      }
+    ]
+  },
+  {
+    "id": "7105ffe2-1471-4981-b468-f58828681a1f",
+    "nama": "Kost Unique Ilir Barat",
+    "alamat": "Jl. Muhajirin, Ilir Barat I, Palembang",
+    "lat": -2.976288347939,
+    "lng": 104.736949927787,
+    "confidence": "needs_review",
+    "reason": "no_qualifying_candidate",
+    "geocode_source": "arcgis",
+    "geocoded_address": "Lorong Muhajirin, Ilir Barat I, Sumatera Selatan, 30137",
+    "consensus_dist_m": null,
+    "top_score": 69.338,
+    "top_type": "StreetName",
+    "raw_candidates": [
+      {
+        "score": 69.338,
+        "provider": "arcgis",
+        "lat": -2.976288347939,
+        "lng": 104.736949927787,
+        "type": "StreetName",
+        "display": "Lorong Muhajirin, Ilir Barat I, Sumatera Selatan, 30137"
+      }
+    ]
+  },
+  {
+    "id": "2a1c1520-0d42-4c53-a953-cd8b247308c1",
+    "nama": "KOST WANITA SOMA",
+    "alamat": "Jl. Rajawali No.8, 9 Ilir, Ilir Tim. II, Palembang",
+    "lat": -2.926939717926,
+    "lng": 104.699599707825,
+    "confidence": "area",
+    "reason": "single_provider_weak (score=76.218, tokens=1, nearRef=true)",
+    "geocode_source": "arcgis",
+    "geocoded_address": "Jalan Rajawali 8, Alang Alang Lebar, Sumatera Selatan, 30155",
+    "consensus_dist_m": null,
+    "top_score": 76.218,
+    "top_type": "PointAddress",
+    "raw_candidates": [
+      {
+        "score": 76.218,
+        "provider": "arcgis",
+        "lat": -2.926939717926,
+        "lng": 104.699599707825,
+        "type": "PointAddress",
+        "display": "Jalan Rajawali 8, Alang Alang Lebar, Sumatera Selatan, 30155"
+      },
+      {
+        "score": 65.714,
+        "provider": "arcgis",
+        "lat": -2.972165361186,
+        "lng": 104.764322435978,
+        "type": "StreetName",
+        "display": "Jalan Rajawali, Ilir Timur Tiga, Sumatera Selatan, 30113"
+      }
+    ]
+  },
+  {
+    "id": "c63099a4-d04c-441a-822b-2c75dcb36b13",
+    "nama": "Kostan Ar-rahmah Poltek",
+    "alamat": "Lrg. Muhajirin IV No.77, Lorok Pakjo, Ilir Bar. I, Palembang",
+    "lat": -2.9771581,
+    "lng": 104.73426,
+    "confidence": "area",
+    "reason": "single_provider_weak (score=77.316, tokens=1, nearRef=true)",
+    "geocode_source": "arcgis",
+    "geocoded_address": "Lorong Muhajirin 4 4931",
+    "consensus_dist_m": null,
+    "top_score": 77.316,
+    "top_type": "POI",
+    "raw_candidates": [
+      {
+        "score": 77.316,
+        "provider": "arcgis",
+        "lat": -2.9771581,
+        "lng": 104.73426,
+        "type": "POI",
+        "display": "Lorong Muhajirin 4 4931"
+      },
+      {
+        "score": 58.763999999999996,
+        "provider": "arcgis",
+        "lat": -2.976288347939,
+        "lng": 104.736949927787,
+        "type": "StreetName",
+        "display": "Lorong Muhajirin, Ilir Barat I, Sumatera Selatan, 30137"
+      }
+    ]
+  },
+  {
+    "id": "922a29d6-4525-4fa6-8955-ff5400853413",
+    "nama": "Kostanisa 2.0",
+    "alamat": "Jl. Panca Usaha No.2334, 5 Ulu, Seberang Ulu I, Palembang",
+    "lat": -3.010764544023,
+    "lng": 104.768028009028,
+    "confidence": "needs_review",
+    "reason": "no_qualifying_candidate",
+    "geocode_source": "arcgis",
+    "geocoded_address": "Jalan Panca Usaha, Seberang Ulu I, Sumatera Selatan, 30267",
+    "consensus_dist_m": null,
+    "top_score": 68.714,
+    "top_type": "StreetName",
+    "raw_candidates": [
+      {
+        "score": 68.714,
+        "provider": "arcgis",
+        "lat": -3.010764544023,
+        "lng": 104.768028009028,
+        "type": "StreetName",
+        "display": "Jalan Panca Usaha, Seberang Ulu I, Sumatera Selatan, 30267"
+      }
+    ]
+  },
+  {
+    "id": "2edde618-fc6e-49b4-a818-ed9df923d833",
+    "nama": "LA Kost Palembang",
+    "alamat": "Perumahan Top 100, Jl. Pangeran Ratu, Jakabaring, Palembang",
+    "lat": -3.0224963,
+    "lng": 104.7751115,
+    "confidence": "area",
+    "reason": "single_provider_weak (score=76.47, tokens=1, nearRef=true)",
+    "geocode_source": "arcgis",
+    "geocoded_address": "Jakabaring",
+    "consensus_dist_m": null,
+    "top_score": 76.47,
+    "top_type": "POI",
+    "raw_candidates": [
+      {
+        "score": 76.47,
+        "provider": "arcgis",
+        "lat": -3.0224963,
+        "lng": 104.7751115,
+        "type": "POI",
+        "display": "Jakabaring"
+      },
+      {
+        "score": 67.942,
+        "provider": "arcgis",
+        "lat": -3.016066637441,
+        "lng": 104.774439758878,
+        "type": "StreetName",
+        "display": "Jalan Pangeran Ratu, Jakabaring, Sumatera Selatan, 30252"
+      }
+    ]
+  },
+  {
+    "id": "0cae5806-0b02-4f4f-a811-25f3c744e8ec",
+    "nama": "LUNAR KOST",
+    "alamat": "Pahlawan, Kemuning, Palembang",
+    "lat": -2.9626658,
+    "lng": 104.7424552,
+    "confidence": "needs_review",
+    "reason": "no_qualifying_candidate",
+    "geocode_source": "nominatim",
+    "geocoded_address": "Taman Makam Pahlawan, Tribrata, Kemuning, Palembang, Sumatera Selatan, Sumatera, 30128, Indonesia",
+    "consensus_dist_m": null,
+    "top_score": 50.001266605630576,
+    "top_type": "attraction",
+    "raw_candidates": [
+      {
+        "score": 50.001266605630576,
+        "provider": "nominatim",
+        "lat": -2.9626658,
+        "lng": 104.7424552,
+        "type": "attraction",
+        "display": "Taman Makam Pahlawan, Tribrata, Kemuning, Palembang, Sumatera Selatan, Sumatera, 30128, Indonesia"
+      },
+      {
+        "score": 50.001266605630576,
+        "provider": "nominatim",
+        "lat": -2.9624654,
+        "lng": 104.7472342,
+        "type": "hotel",
+        "display": "Grand Tara Homestay Pahlawan, Jalan Rawa Jaya, Kemuning, Palembang, Sumatera Selatan, Sumatera, 3012"
+      }
+    ]
+  },
+  {
+    "id": "20745775-63df-464c-bfb5-87d86fd1c425",
+    "nama": "Melati Kost Putri",
+    "alamat": "Jl. Sungai Sahang Ujung, Lorok Pakjo, Ilir Bar. I, Palembang",
+    "lat": -2.978871300575,
+    "lng": 104.728594922115,
+    "confidence": "needs_review",
+    "reason": "no_qualifying_candidate",
+    "geocode_source": "arcgis",
+    "geocoded_address": "Jalan Sungai Sahang, Ilir Barat I, Sumatera Selatan, 30137",
+    "consensus_dist_m": null,
+    "top_score": 69.286,
+    "top_type": "StreetName",
+    "raw_candidates": [
+      {
+        "score": 69.286,
+        "provider": "arcgis",
+        "lat": -2.978871300575,
+        "lng": 104.728594922115,
+        "type": "StreetName",
+        "display": "Jalan Sungai Sahang, Ilir Barat I, Sumatera Selatan, 30137"
+      }
+    ]
+  },
+  {
+    "id": "e567b9fb-f029-44e6-b747-e5777d28d33a",
+    "nama": "Meutuah Kost Putri",
+    "alamat": "Lorok Pakjo, Ilir Barat I, Palembang",
+    "lat": -2.978575,
+    "lng": 104.7371748,
+    "confidence": "needs_review",
+    "reason": "no_qualifying_candidate",
+    "geocode_source": "nominatim",
+    "geocoded_address": "Jalan Bengkalis/Lorok Pakjo, Ilir Barat I, Palembang, Sumatera Selatan, Sumatera, 30121, Indonesia",
+    "consensus_dist_m": null,
+    "top_score": 71.06793327229724,
+    "top_type": "residential",
+    "raw_candidates": [
+      {
+        "score": 71.06793327229724,
+        "provider": "nominatim",
+        "lat": -2.978575,
+        "lng": 104.7371748,
+        "type": "residential",
+        "display": "Jalan Bengkalis/Lorok Pakjo, Ilir Barat I, Palembang, Sumatera Selatan, Sumatera, 30121, Indonesia"
+      },
+      {
+        "score": 71.06793327229724,
+        "provider": "nominatim",
+        "lat": -2.978575,
+        "lng": 104.7371748,
+        "type": "residential",
+        "display": "Jalan Bengkalis/Lorok Pakjo, Ilir Barat I, Palembang, Sumatera Selatan, Sumatera, 30121, Indonesia"
+      }
+    ]
+  },
+  {
+    "id": "4fa06520-c7ae-4f7a-8b44-3d22477c6736",
+    "nama": "OKEY KOST",
+    "alamat": "Lorong Siguntang No.007, Bukit Lama, Ilir Bar. I, Palembang",
+    "lat": -2.986385211723,
+    "lng": 104.730127266563,
+    "confidence": "needs_review",
+    "reason": "no_qualifying_candidate",
+    "geocode_source": "arcgis",
+    "geocoded_address": "Lorong Siguntang, Ilir Barat I, Sumatera Selatan, 30137",
+    "consensus_dist_m": null,
+    "top_score": 58.858000000000004,
+    "top_type": "StreetName",
+    "raw_candidates": [
+      {
+        "score": 58.858000000000004,
+        "provider": "arcgis",
+        "lat": -2.986385211723,
+        "lng": 104.730127266563,
+        "type": "StreetName",
+        "display": "Lorong Siguntang, Ilir Barat I, Sumatera Selatan, 30137"
+      }
+    ]
+  },
+  {
+    "id": "453a132c-b798-4be2-adbc-0865af29772e",
+    "nama": "POME KOST LUXURY PALEMBANG",
+    "alamat": "Lorong Tembesu, Bukit Lama, Palembang",
+    "lat": -2.986235285628,
+    "lng": 104.731002900035,
+    "confidence": "needs_review",
+    "reason": "no_qualifying_candidate",
+    "geocode_source": "arcgis",
+    "geocoded_address": "Lorong Tembesu, Ilir Barat I, Sumatera Selatan, 30137",
+    "consensus_dist_m": null,
+    "top_score": 50,
+    "top_type": "StreetName",
+    "raw_candidates": [
+      {
+        "score": 50,
+        "provider": "arcgis",
+        "lat": -2.986235285628,
+        "lng": 104.731002900035,
+        "type": "StreetName",
+        "display": "Lorong Tembesu, Ilir Barat I, Sumatera Selatan, 30137"
+      }
+    ]
+  },
+  {
+    "id": "3255fb29-6dee-4010-9b70-b9ff8686b00f",
+    "nama": "Rinu Kost",
+    "alamat": "Jl. Dokter Muhammad Ali No.KM 3, Pahlawan, Kemuning, Palembang",
+    "lat": -2.964888144502,
+    "lng": 104.748899323899,
+    "confidence": "needs_review",
+    "reason": "no_qualifying_candidate",
+    "geocode_source": "arcgis",
+    "geocoded_address": "Jalan Doktor Muhammad Ali, Kemuning, Sumatera Selatan, 30128",
+    "consensus_dist_m": null,
+    "top_score": 58.982,
+    "top_type": "StreetName",
+    "raw_candidates": [
+      {
+        "score": 58.982,
+        "provider": "arcgis",
+        "lat": -2.964888144502,
+        "lng": 104.748899323899,
+        "type": "StreetName",
+        "display": "Jalan Doktor Muhammad Ali, Kemuning, Sumatera Selatan, 30128"
+      }
+    ]
+  },
+  {
+    "id": "d09d6014-22df-4bec-a6ac-f136fd9ac466",
+    "nama": "Rumah Kost Bahagia",
+    "alamat": "Jl. Jend. Ahmad Yani Lrg. Bahagia No.83, 9/10 Ulu, Palembang",
+    "lat": -2.997303983116,
+    "lng": 104.773833553944,
+    "confidence": "needs_review",
+    "reason": "no_qualifying_candidate",
+    "geocode_source": "arcgis",
+    "geocoded_address": "Jalan Jenderal Ahmad Yani, Jakabaring, Sumatera Selatan, 30251",
+    "consensus_dist_m": null,
+    "top_score": 65.47200000000001,
+    "top_type": "StreetName",
+    "raw_candidates": [
+      {
+        "score": 65.47200000000001,
+        "provider": "arcgis",
+        "lat": -2.997303983116,
+        "lng": 104.773833553944,
+        "type": "StreetName",
+        "display": "Jalan Jenderal Ahmad Yani, Jakabaring, Sumatera Selatan, 30251"
+      },
+      {
+        "score": 65.47200000000001,
+        "provider": "arcgis",
+        "lat": -2.996640872257,
+        "lng": 104.775139318219,
+        "type": "StreetName",
+        "display": "Jalan Jenderal Ahmad Yani, Jakabaring, Sumatera Selatan, 30521"
+      }
+    ]
+  },
+  {
+    "id": "48bbede2-5fbc-46c4-8404-0312eeb89228",
+    "nama": "SRIKANDI KOST",
+    "alamat": "Lrg. Sikumbang, 9/10 Ulu, Seberang Ulu I, Palembang",
+    "lat": -2.9951,
+    "lng": 104.796,
+    "confidence": "area",
+    "reason": "single_provider_weak (score=64.97, tokens=0, nearRef=true)",
+    "geocode_source": "arcgis",
+    "geocoded_address": "Lorong",
+    "consensus_dist_m": null,
+    "top_score": 64.97,
+    "top_type": "POI",
+    "raw_candidates": [
+      {
+        "score": 64.97,
+        "provider": "arcgis",
+        "lat": -2.9951,
+        "lng": 104.796,
+        "type": "POI",
+        "display": "Lorong"
+      },
+      {
+        "score": 64.97,
+        "provider": "arcgis",
+        "lat": -2.9951,
+        "lng": 104.796,
+        "type": "POI",
+        "display": "Lorong"
+      }
+    ]
+  },
+  {
+    "id": "f220f03b-5268-4a41-822e-b0f6d56c2c1e",
+    "nama": "Tiara Kost",
+    "alamat": "Pahlawan, Kemuning, Palembang",
+    "lat": -2.9626658,
+    "lng": 104.7424552,
+    "confidence": "needs_review",
+    "reason": "no_qualifying_candidate",
+    "geocode_source": "nominatim",
+    "geocoded_address": "Taman Makam Pahlawan, Tribrata, Kemuning, Palembang, Sumatera Selatan, Sumatera, 30128, Indonesia",
+    "consensus_dist_m": null,
+    "top_score": 50.001266605630576,
+    "top_type": "attraction",
+    "raw_candidates": [
+      {
+        "score": 50.001266605630576,
+        "provider": "nominatim",
+        "lat": -2.9626658,
+        "lng": 104.7424552,
+        "type": "attraction",
+        "display": "Taman Makam Pahlawan, Tribrata, Kemuning, Palembang, Sumatera Selatan, Sumatera, 30128, Indonesia"
+      },
+      {
+        "score": 50.001266605630576,
+        "provider": "nominatim",
+        "lat": -2.9624654,
+        "lng": 104.7472342,
+        "type": "hotel",
+        "display": "Grand Tara Homestay Pahlawan, Jalan Rawa Jaya, Kemuning, Palembang, Sumatera Selatan, Sumatera, 3012"
+      }
+    ]
+  },
+  {
+    "id": "82ff6522-bc61-4dcd-8c6b-b083ad63b139",
+    "nama": "VERA KOST",
+    "alamat": "Pahlawan, Kemuning, Palembang",
+    "lat": -2.9626658,
+    "lng": 104.7424552,
+    "confidence": "needs_review",
+    "reason": "no_qualifying_candidate",
+    "geocode_source": "nominatim",
+    "geocoded_address": "Taman Makam Pahlawan, Tribrata, Kemuning, Palembang, Sumatera Selatan, Sumatera, 30128, Indonesia",
+    "consensus_dist_m": null,
+    "top_score": 50.001266605630576,
+    "top_type": "attraction",
+    "raw_candidates": [
+      {
+        "score": 50.001266605630576,
+        "provider": "nominatim",
+        "lat": -2.9626658,
+        "lng": 104.7424552,
+        "type": "attraction",
+        "display": "Taman Makam Pahlawan, Tribrata, Kemuning, Palembang, Sumatera Selatan, Sumatera, 30128, Indonesia"
+      },
+      {
+        "score": 50.001266605630576,
+        "provider": "nominatim",
+        "lat": -2.9624654,
+        "lng": 104.7472342,
+        "type": "hotel",
+        "display": "Grand Tara Homestay Pahlawan, Jalan Rawa Jaya, Kemuning, Palembang, Sumatera Selatan, Sumatera, 3012"
+      }
+    ]
+  },
+  {
+    "id": "fc9d77dd-a1e0-42bb-bc35-7567564c4738",
+    "nama": "Villa Kost",
+    "alamat": "Jl. Madang, Sekip Jaya, Kemuning, Palembang",
+    "lat": -2.96682548541,
+    "lng": 104.754323801759,
+    "confidence": "needs_review",
+    "reason": "no_qualifying_candidate",
+    "geocode_source": "arcgis",
+    "geocoded_address": "Jalan Madang, Kemuning, Sumatera Selatan, 30128",
+    "consensus_dist_m": null,
+    "top_score": 60,
+    "top_type": "StreetName",
+    "raw_candidates": [
+      {
+        "score": 60,
+        "provider": "arcgis",
+        "lat": -2.96682548541,
+        "lng": 104.754323801759,
+        "type": "StreetName",
+        "display": "Jalan Madang, Kemuning, Sumatera Selatan, 30128"
+      }
+    ]
+  }
+]

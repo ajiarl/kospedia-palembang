@@ -2,8 +2,9 @@ import Link from "next/link";
 
 import KosCard from "@/components/shared/KosCard";
 import { getCurrentUser } from "@/lib/auth";
+import { applyKosCoordinateOverrides } from "@/lib/kosCoordinates";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import type { KosWithKampus } from "@/types/kos";
+import type { KosWithKampus, KosWithLocationMeta } from "@/types/kos";
 
 type FavoritWithKos = {
   id: string;
@@ -72,9 +73,9 @@ export default async function HalamanFavorit() {
     : { data: [], error: null };
 
   const favorit = (data ?? []) as FavoritWithKos[];
-  const daftarKos = favorit
-    .map((item) => item.kos)
-    .filter((kos): kos is KosWithKampus => Boolean(kos));
+  const daftarKos: Array<KosWithLocationMeta<KosWithKampus>> = applyKosCoordinateOverrides(
+    favorit.map((item) => item.kos).filter((kos): kos is KosWithKampus => Boolean(kos))
+  );
 
   return (
     <div className="container py-8">

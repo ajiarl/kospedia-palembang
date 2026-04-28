@@ -4,6 +4,8 @@ import FilterSidebar from "@/components/shared/FilterSidebar";
 import KosCard from "@/components/shared/KosCard";
 import KosSortSelect from "@/components/shared/KosSortSelect";
 import MapViewClient from "@/components/shared/MapViewClient";
+import { haversineKm } from "@/lib/haversine";
+import { applyKosCoordinateOverrides } from "@/lib/kosCoordinates";
 import { getKosPath } from "@/lib/kos";
 import {
   absoluteImageUrl,
@@ -20,6 +22,7 @@ type SearchParams = Promise<{
   jenis?: string;
   hargaMin?: string;
   hargaMax?: string;
+  jarakMax?: string;
   sort?: string;
 }>;
 
@@ -43,7 +46,12 @@ export async function generateMetadata({
   const title = buildListingTitle(kampusName, filters.jenis);
   const description = buildListingDescription(kampusName, filters.jenis);
   const hasFilters = Boolean(
-    filters.kampus || filters.jenis || filters.hargaMin || filters.hargaMax || filters.sort
+    filters.kampus ||
+      filters.jenis ||
+      filters.hargaMin ||
+      filters.hargaMax ||
+      filters.jarakMax ||
+      filters.sort
   );
 
   return {
@@ -114,6 +122,7 @@ export default async function HalamanListingKos({
   const hargaMaxTersedia = Math.max(2_500_000, maxHargaData?.harga_max ?? 0);
   const parsedMinRaw = Number(filters.hargaMin);
   const parsedMaxRaw = Number(filters.hargaMax);
+  const parsedJarakMaxRaw = Number(filters.jarakMax);
   const parsedMin =
     Number.isFinite(parsedMinRaw) && parsedMinRaw >= 0
       ? Math.min(parsedMinRaw, hargaMaxTersedia)
@@ -122,6 +131,11 @@ export default async function HalamanListingKos({
     Number.isFinite(parsedMaxRaw) && parsedMaxRaw >= 0
       ? Math.min(parsedMaxRaw, hargaMaxTersedia)
       : NaN;
+  const parsedJarakMax =
+    Number.isFinite(parsedJarakMaxRaw) && parsedJarakMaxRaw > 0 ? parsedJarakMaxRaw : NaN;
+  const hasJarakFilter = selectedKampus && !Number.isNaN(parsedJarakMax);
+  const jarakFilterLabel =
+    hasJarakFilter ? `<= ${parsedJarakMax} km` : null;
 
   if (filters.hargaMin && !Number.isNaN(parsedMin) && parsedMin >= 0) {
     query = query.gte("harga_max", parsedMin);
@@ -131,7 +145,16 @@ export default async function HalamanListingKos({
   }
 
   const { data: kosData, error } = await query;
-  const daftarKos = ((kosData ?? []) as KosWithRating[]).sort((a, b) => {
+  const normalizedKos = applyKosCoordinateOverrides((kosData ?? []) as KosWithRating[]);
+  const filteredKos = normalizedKos.filter((kos) => {
+    if (!hasJarakFilter || !selectedKampus) return true;
+    if (!kos.locationMeta.isDistanceReliable) return false;
+
+    return (
+      haversineKm(kos.lat, kos.lng, selectedKampus.lat, selectedKampus.lng) <= parsedJarakMax
+    );
+  });
+  const daftarKos = filteredKos.sort((a, b) => {
     const sort = filters.sort ?? "termurah";
     const avgA =
       a.review.length > 0
@@ -141,6 +164,17 @@ export default async function HalamanListingKos({
       b.review.length > 0
         ? b.review.reduce((sum, review) => sum + review.rating, 0) / b.review.length
         : 0;
+    const jarakA = selectedKampus && a.locationMeta.isDistanceReliable
+      ? haversineKm(a.lat, a.lng, selectedKampus.lat, selectedKampus.lng)
+      : Number.POSITIVE_INFINITY;
+    const jarakB = selectedKampus && b.locationMeta.isDistanceReliable
+      ? haversineKm(b.lat, b.lng, selectedKampus.lat, selectedKampus.lng)
+      : Number.POSITIVE_INFINITY;
+
+    if (hasJarakFilter) {
+      const selisihJarak = jarakA - jarakB;
+      if (Math.abs(selisihJarak) > 0.01) return selisihJarak;
+    }
 
     if (sort === "termahal") return b.harga_min - a.harga_min;
     if (sort === "rating") return avgB - avgA || a.harga_min - b.harga_min;
@@ -152,16 +186,21 @@ export default async function HalamanListingKos({
     filters.jenis ? `Jenis: ${filters.jenis}` : null,
     filters.hargaMin ? `Min: Rp${Number(filters.hargaMin).toLocaleString("id-ID")}` : null,
     filters.hargaMax ? `Max: Rp${Number(filters.hargaMax).toLocaleString("id-ID")}` : null,
+    selectedKampus && filters.jarakMax ? `Jarak: <= ${filters.jarakMax} km` : null,
   ].filter(Boolean) as string[];
+  const visibleKosForMap = daftarKos.filter((kos) => kos.locationMeta.isMapVisible);
+  const hiddenKosCount = daftarKos.length - visibleKosForMap.length;
 
   const mapMarkers = [
-    ...daftarKos.map((kos) => ({
+    ...visibleKosForMap.map((kos) => ({
       id: kos.id,
       nama: kos.nama,
       alamat: kos.alamat,
       lat: kos.lat,
       lng: kos.lng,
       href: getKosPath(kos),
+      note: kos.locationMeta.note,
+      precision: kos.locationMeta.precision,
       type: "kos" as const,
     })),
     ...(selectedKampus ? [selectedKampus] : daftarKampus).map((kampus) => ({
@@ -194,11 +233,13 @@ export default async function HalamanListingKos({
           addressLocality: "Palembang",
           addressCountry: "ID",
         },
-        geo: {
-          "@type": "GeoCoordinates",
-          latitude: kos.lat,
-          longitude: kos.lng,
-        },
+        geo: kos.locationMeta.isDistanceReliable
+          ? {
+              "@type": "GeoCoordinates",
+              latitude: kos.lat,
+              longitude: kos.lng,
+            }
+          : undefined,
         offers: {
           "@type": "AggregateOffer",
           priceCurrency: "IDR",
@@ -211,27 +252,61 @@ export default async function HalamanListingKos({
   };
 
   return (
-    <div className="container py-8">
+    <div className="container py-8 md:py-10">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(listJsonLd) }}
       />
-      <div className="mb-6 space-y-1">
-        <p className="text-sm font-medium text-primary">Kos sekitar kampus Palembang</p>
-        <h1 className="text-3xl font-bold">Cari Kos</h1>
-        <p className="max-w-2xl text-muted-foreground">
-          Temukan kos berdasarkan kampus, jenis, dan rentang harga yang cocok untuk
-          kebutuhan kuliahmu.
-        </p>
+      <div className="surface-panel mb-6 rounded-[2rem] border border-white/80 px-6 py-7 shadow-[0_18px_46px_rgba(17,17,16,0.07)] md:px-8 md:py-8">
+        <div className="flex flex-col gap-6 xl:flex-row xl:items-end xl:justify-between">
+          <div className="space-y-2">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">
+              Direktori kos mahasiswa Palembang
+            </p>
+            <h1 className="text-4xl font-bold leading-none text-charcoal md:text-5xl">
+              Temukan kos yang terasa pas, bukan sekadar tersedia.
+            </h1>
+            <p className="max-w-2xl text-sm leading-7 text-muted-foreground md:text-base">
+              Temukan kos berdasarkan kampus, jenis, rentang harga, dan jarak yang paling cocok
+              dengan ritme kuliahmu.
+            </p>
+          </div>
+
+          <div className="grid gap-3 sm:grid-cols-3">
+            <div className="rounded-[1.35rem] border border-white/80 bg-white/75 px-4 py-4">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+                Total Hasil
+              </p>
+              <p className="mt-2 text-2xl font-bold text-charcoal">{daftarKos.length}</p>
+            </div>
+            <div className="rounded-[1.35rem] border border-white/80 bg-white/75 px-4 py-4">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+                Kampus
+              </p>
+              <p className="mt-2 text-sm font-semibold text-charcoal">
+                {selectedKampus?.nama ?? "Semua kampus"}
+              </p>
+            </div>
+            <div className="rounded-[1.35rem] border border-white/80 bg-white/75 px-4 py-4">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+                Urutan
+              </p>
+              <p className="mt-2 text-sm font-semibold capitalize text-charcoal">
+                {filters.sort ?? "termurah"}
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-[280px_1fr]">
         <FilterSidebar kampus={daftarKampus} maxHarga={hargaMaxTersedia} />
 
         <section className="space-y-4">
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div className="surface-panel flex flex-col gap-4 rounded-[1.6rem] border border-white/80 px-5 py-4 shadow-[0_12px_30px_rgba(17,17,16,0.06)] sm:flex-row sm:items-center sm:justify-between">
             <p className="text-sm text-muted-foreground">
               <span className="font-semibold text-foreground">{daftarKos.length}</span> kos ditemukan
+              {selectedKampus ? ` di sekitar ${selectedKampus.nama}` : ""}
             </p>
             <div className="flex items-center gap-2 self-start sm:self-auto">
               <label htmlFor="sort" className="text-sm text-muted-foreground">
@@ -241,12 +316,19 @@ export default async function HalamanListingKos({
             </div>
           </div>
 
+          {hasJarakFilter ? (
+            <p className="text-xs font-medium text-primary">
+              Hasil diurutkan dari jarak terdekat ke {selectedKampus.nama}, lalu
+              disesuaikan dengan pilihan urutanmu.
+            </p>
+          ) : null}
+
           {activeFilters.length > 0 ? (
             <div className="flex flex-wrap gap-2">
               {activeFilters.map((item) => (
                 <span
                   key={item}
-                  className="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary"
+                  className="rounded-full border border-primary/10 bg-primary/10 px-3 py-1.5 text-xs font-semibold text-primary"
                 >
                   {item}
                 </span>
@@ -260,7 +342,15 @@ export default async function HalamanListingKos({
             </div>
           ) : daftarKos.length > 0 ? (
             <>
-              <MapViewClient markers={mapMarkers} className="h-80" />
+              <div className="overflow-hidden rounded-[1.8rem] border border-white/80 bg-white/75 p-3 shadow-[0_18px_40px_rgba(17,17,16,0.08)] backdrop-blur-sm">
+                <MapViewClient markers={mapMarkers} className="h-80 rounded-[1.2rem]" />
+              </div>
+              {hiddenKosCount > 0 ? (
+                <p className="text-xs text-muted-foreground">
+                  {hiddenKosCount} kos tidak ditampilkan pada peta karena koordinatnya masih terlalu
+                  umum untuk dianggap titik yang cukup akurat.
+                </p>
+              ) : null}
               <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
                 {daftarKos.map((kos) => {
                   const avgRating =
@@ -269,12 +359,19 @@ export default async function HalamanListingKos({
                         kos.review.length
                       : null;
 
-                  return <KosCard key={kos.id} kos={kos} averageRating={avgRating} />;
+                  return (
+                    <KosCard
+                      key={kos.id}
+                      kos={kos}
+                      averageRating={avgRating}
+                      jarakFilterLabel={jarakFilterLabel}
+                    />
+                  );
                 })}
               </div>
             </>
           ) : (
-            <div className="rounded-xl border bg-white p-10 text-center">
+            <div className="surface-panel rounded-[1.8rem] border border-white/80 p-10 text-center shadow-[0_18px_40px_rgba(17,17,16,0.06)]">
               <svg
                 className="mx-auto mb-4 h-12 w-12 text-muted-foreground/40"
                 fill="none"
@@ -290,7 +387,7 @@ export default async function HalamanListingKos({
               </svg>
               <h2 className="text-lg font-semibold">Belum ada kos yang cocok</h2>
               <p className="mt-2 text-sm text-muted-foreground">
-                Coba longgarkan filter harga, jenis kos, atau pilih semua kampus.
+                Coba longgarkan filter harga, jenis kos, jarak, atau pilih semua kampus.
               </p>
             </div>
           )}

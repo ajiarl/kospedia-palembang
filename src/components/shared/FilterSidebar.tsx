@@ -9,6 +9,7 @@ import type { KampusRow } from "@/types/kos";
 
 const HARGA_MAX_DEFAULT = 2_500_000;
 const HARGA_STEP = 100_000;
+const JARAK_OPTIONS_KM = [0.5, 1, 2, 3, 5];
 
 const jenisOptions = [
   { value: "", label: "Semua" },
@@ -49,6 +50,7 @@ export default function FilterSidebar({
   const currentKampus = searchParams.get("kampus") ?? "";
   const currentJenis = searchParams.get("jenis") ?? "";
   const currentMin = Number(searchParams.get("hargaMin")) || 0;
+  const currentJarakMax = Number(searchParams.get("jarakMax")) || 0;
   const currentMax = Math.min(
     Number(searchParams.get("hargaMax")) || effectiveMaxHarga,
     effectiveMaxHarga
@@ -62,13 +64,15 @@ export default function FilterSidebar({
     if (value) params.set(key, value);
     else params.delete(key);
     if (key === "kampus") {
+      if (!value) params.delete("jarakMax");
       trackEvent("filter_kampus_select", {
         kampus_slug: value || "all",
         source: "listing_sidebar",
       });
     }
     if (window.innerWidth < 1024) setMobileOpen(false);
-    router.push(`/kos?${params.toString()}`);
+    const queryString = params.toString();
+    router.push(queryString ? `/kos?${queryString}` : "/kos");
   }
 
   function applyHarga() {
@@ -80,7 +84,17 @@ export default function FilterSidebar({
     else params.delete("hargaMax");
 
     if (window.innerWidth < 1024) setMobileOpen(false);
-    router.push(`/kos?${params.toString()}`);
+    const queryString = params.toString();
+    router.push(queryString ? `/kos?${queryString}` : "/kos");
+  }
+
+  function applyJarak(jarakKm: number | null) {
+    const params = new URLSearchParams(searchParams.toString());
+    if (jarakKm && currentKampus) params.set("jarakMax", String(jarakKm));
+    else params.delete("jarakMax");
+    if (window.innerWidth < 1024) setMobileOpen(false);
+    const queryString = params.toString();
+    router.push(queryString ? `/kos?${queryString}` : "/kos");
   }
 
   function reset() {
@@ -91,7 +105,11 @@ export default function FilterSidebar({
   }
 
   const hasFilter =
-    currentKampus || currentJenis || currentMin > 0 || currentMax < effectiveMaxHarga;
+    currentKampus ||
+    currentJenis ||
+    currentMin > 0 ||
+    currentMax < effectiveMaxHarga ||
+    currentJarakMax > 0;
   const minValue = localMin === currentMin ? currentMin : localMin;
   const maxValue = localMax === currentMax ? currentMax : localMax;
   const selectedWidth = ((maxValue - minValue) / effectiveMaxHarga) * 100;
@@ -104,8 +122,13 @@ export default function FilterSidebar({
 
   const filterContent = (
     <>
-      <div className="mb-4 flex items-center justify-between px-5 pt-5">
-        <h2 className="text-sm font-bold">Filter</h2>
+      <div className="mb-4 flex items-center justify-between border-b border-black/5 px-5 pt-5 pb-4">
+        <div>
+          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+            Penyaring
+          </p>
+          <h2 className="mt-1 text-sm font-bold text-charcoal">Atur pencarian</h2>
+        </div>
         <div className="flex items-center gap-3">
           {hasFilter ? (
             <button
@@ -127,7 +150,7 @@ export default function FilterSidebar({
       </div>
 
       <div className="space-y-5 px-5 pb-5">
-        <div>
+        <div className="rounded-[1.35rem] border border-black/5 bg-white/60 p-4">
           <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
             Kampus
           </p>
@@ -166,7 +189,7 @@ export default function FilterSidebar({
           </div>
         </div>
 
-        <div>
+        <div className="rounded-[1.35rem] border border-black/5 bg-white/60 p-4">
           <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
             Jenis Kos
           </p>
@@ -189,7 +212,7 @@ export default function FilterSidebar({
           </div>
         </div>
 
-        <div>
+        <div className="rounded-[1.35rem] border border-black/5 bg-white/60 p-4">
           <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
             Rentang Harga
           </p>
@@ -265,6 +288,56 @@ export default function FilterSidebar({
             </div>
           </div>
         </div>
+
+        <div className="rounded-[1.35rem] border border-black/5 bg-white/60 p-4">
+          <div className="mb-2 flex items-center justify-between gap-3">
+            <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+              Jarak ke Kampus
+            </p>
+            {currentJarakMax > 0 ? (
+              <span className="text-xs font-bold text-primary">
+                Maks. {currentJarakMax} km
+              </span>
+            ) : null}
+          </div>
+
+          {currentKampus ? (
+            <div className="flex flex-wrap gap-2">
+              <button
+                type="button"
+                onClick={() => applyJarak(null)}
+                className={cn(
+                  `min-h-10 rounded-full px-3 py-2 text-xs font-semibold transition-all ${focusRingClass}`,
+                  currentJarakMax === 0
+                    ? "bg-primary text-white shadow-sm"
+                    : "bg-muted text-muted-foreground hover:bg-primary/10 hover:text-primary"
+                )}
+              >
+                Bebas
+              </button>
+              {JARAK_OPTIONS_KM.map((jarak) => (
+                <button
+                  key={jarak}
+                  type="button"
+                  onClick={() => applyJarak(jarak)}
+                  className={cn(
+                    `min-h-10 rounded-full px-3 py-2 text-xs font-semibold transition-all ${focusRingClass}`,
+                    currentJarakMax === jarak
+                      ? "bg-primary text-white shadow-sm"
+                      : "bg-muted text-muted-foreground hover:bg-primary/10 hover:text-primary"
+                  )}
+                >
+                  {"<= "}
+                  {jarak} km
+                </button>
+              ))}
+            </div>
+          ) : (
+            <p className="rounded-xl border border-dashed bg-muted/40 px-4 py-3 text-xs text-muted-foreground">
+              Pilih kampus dulu untuk mengaktifkan filter jarak.
+            </p>
+          )}
+        </div>
       </div>
     </>
   );
@@ -274,7 +347,7 @@ export default function FilterSidebar({
       <button
         type="button"
         onClick={() => setMobileOpen((current) => !current)}
-        className={`sticky top-20 z-30 flex w-full items-center justify-between rounded-xl border bg-card px-5 py-4 text-left shadow-sm lg:hidden ${focusRingClass}`}
+        className={`surface-panel sticky top-20 z-30 flex w-full items-center justify-between rounded-[1.4rem] border border-white/80 px-5 py-4 text-left shadow-[0_16px_34px_rgba(17,17,16,0.08)] lg:hidden ${focusRingClass}`}
       >
         <span className="text-sm font-bold">Filter</span>
         <span className="text-xs font-medium text-primary">
@@ -290,13 +363,13 @@ export default function FilterSidebar({
             onClick={() => setMobileOpen(false)}
             className="absolute inset-0"
           />
-          <div className="absolute inset-x-0 bottom-0 max-h-[85vh] overflow-y-auto rounded-t-3xl bg-card shadow-2xl">
+          <div className="surface-panel absolute inset-x-0 bottom-0 max-h-[85vh] overflow-y-auto rounded-t-[2rem] border-t border-white/70 shadow-2xl">
             {filterContent}
           </div>
         </div>
       ) : null}
 
-      <aside className="hidden rounded-xl border bg-card shadow-sm lg:block">
+      <aside className="surface-panel hidden rounded-[1.6rem] border border-white/80 shadow-[0_18px_40px_rgba(17,17,16,0.07)] lg:block">
         {filterContent}
       </aside>
     </>

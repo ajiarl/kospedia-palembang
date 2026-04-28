@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "audit:coords": "node scripts/audit-kos-coordinates.mjs",
+    "geocode:prepare": "node scripts/prepare-geocode-input.mjs",
+    "geocode:batch": "node scripts/geocode-batch-v4.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

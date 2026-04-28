@@ -1,6 +1,7 @@
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { isValidUuid } from "@/lib/security";
-import type { KosDetail, KosWithKampus } from "@/types/kos";
+import { applyKosCoordinateOverride } from "@/lib/kosCoordinates";
+import type { KosDetail, KosWithKampus, KosWithLocationMeta } from "@/types/kos";
 
 type KosSelectMode = "card" | "detail";
 
@@ -11,11 +12,11 @@ export function getKosPath(kos: Pick<KosWithKampus, "id" | "slug">) {
 export async function getKosByIdentifier(
   identifier: string,
   mode: "card"
-): Promise<KosWithKampus | null>;
+): Promise<KosWithLocationMeta<KosWithKampus> | null>;
 export async function getKosByIdentifier(
   identifier: string,
   mode?: "detail"
-): Promise<KosDetail | null>;
+): Promise<KosWithLocationMeta<KosDetail> | null>;
 export async function getKosByIdentifier(
   identifier: string,
   mode: KosSelectMode = "detail"
@@ -32,7 +33,7 @@ export async function getKosByIdentifier(
         .eq("tersedia", true)
         .maybeSingle();
 
-      return (idResult.data as KosWithKampus | null) ?? null;
+      return idResult.data ? applyKosCoordinateOverride(idResult.data as KosWithKampus) : null;
     }
 
     const slugResult = await supabase
@@ -42,7 +43,7 @@ export async function getKosByIdentifier(
       .eq("tersedia", true)
       .maybeSingle();
 
-    return (slugResult.data as KosWithKampus | null) ?? null;
+    return slugResult.data ? applyKosCoordinateOverride(slugResult.data as KosWithKampus) : null;
   }
 
   if (isUuidIdentifier) {
@@ -55,7 +56,7 @@ export async function getKosByIdentifier(
       .eq("tersedia", true)
       .maybeSingle();
 
-    return (idResult.data as KosDetail | null) ?? null;
+    return idResult.data ? applyKosCoordinateOverride(idResult.data as KosDetail) : null;
   }
 
   const slugResult = await supabase
@@ -67,5 +68,5 @@ export async function getKosByIdentifier(
     .eq("tersedia", true)
     .maybeSingle();
 
-  return (slugResult.data as KosDetail | null) ?? null;
+  return slugResult.data ? applyKosCoordinateOverride(slugResult.data as KosDetail) : null;
 }

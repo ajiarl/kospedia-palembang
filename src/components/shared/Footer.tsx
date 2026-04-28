@@ -14,29 +14,33 @@ export default function Footer() {
   const showPublicContact = hasPublicContact();
 
   return (
-    <footer className="mt-auto border-t bg-card">
-      <div className="container py-8">
-        <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
-          <div>
+    <footer className="mt-auto border-t border-white/60 bg-[linear-gradient(180deg,rgba(255,255,255,0.92),rgba(245,240,235,0.96))]">
+      <div className="container py-10">
+        <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
+          <div className="max-w-md">
             <div className="flex items-center gap-1.5 text-base font-bold text-primary">
               <HomeIcon />
               KosPedia Palembang
             </div>
-            <p className="mt-1 max-w-xs text-xs text-muted-foreground">
-              Platform pencari kos untuk mahasiswa di sekitar kampus-kampus kota Palembang.
+            <p className="mt-3 text-sm leading-7 text-muted-foreground">
+              Direktori kos mahasiswa yang membantu pencarian area tinggal sekitar kampus-kampus
+              Palembang dengan alur yang lebih ringkas, visual, dan langsung ke pemilik.
             </p>
-            <p className="mt-2 max-w-sm text-xs text-muted-foreground">
+            <p className="mt-3 text-xs uppercase tracking-[0.16em] text-muted-foreground">
+              Kurasi listing
+            </p>
+            <p className="mt-2 text-sm leading-7 text-muted-foreground">
               {siteProfile.listing.updateSummary}
             </p>
-            <p className="mt-2 max-w-sm text-xs text-muted-foreground">
-              Pendaftaran kos baru dan koreksi data saat ini masih ditangani manual.
-              Detail operasional bisa diperbarui dari `src/lib/siteProfile.ts`.
+            <p className="mt-3 text-sm leading-7 text-muted-foreground">
+              Pendaftaran kos baru dan koreksi data saat ini masih dikurasi manual agar informasi
+              yang tampil tetap lebih konsisten.
             </p>
           </div>
 
-          <nav className="flex flex-wrap gap-8 text-sm">
+          <nav className="grid gap-8 text-sm sm:grid-cols-3">
             <div className="space-y-2">
-              <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
                 Jelajahi
               </p>
               <div className="flex flex-col gap-1.5">
@@ -88,12 +92,12 @@ export default function Footer() {
           </nav>
         </div>
 
-        <div className="mt-6 flex items-center justify-between border-t pt-5 text-xs text-muted-foreground">
+        <div className="mt-8 flex flex-col gap-3 border-t border-black/5 pt-5 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
           <p>&copy; {siteProfile.siteName}. Dibuat untuk mahasiswa.</p>
-          <p className="hidden sm:block">
+          <p className="max-w-xl">
             {showPublicContact
               ? "Butuh koreksi data atau ingin mendaftarkan kos? Kunjungi halaman Kontak."
-              : "Kanal kontak resmi belum dipublikasikan. Isi kontak asli di src/lib/siteProfile.ts."}
+              : "Kanal kontak resmi belum dipublikasikan untuk umum."}
           </p>
         </div>
       </div>
