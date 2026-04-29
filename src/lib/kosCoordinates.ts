@@ -84,10 +84,9 @@ const KOS_COORDINATE_OVERRIDES: Record<string, CoordinateOverride> = {
   },
 };
 
-const auditEntries = ((coordinateAudit as { entries?: AuditEntry[] }).entries ?? []).map((entry) => [
-  entry.slug,
-  entry,
-]);
+const auditEntries = ((coordinateAudit as { entries?: AuditEntry[] }).entries ?? []).map(
+  (entry): [string, AuditEntry] => [entry.slug, entry]
+);
 const AUDIT_BY_SLUG = new Map<string, AuditEntry>(auditEntries);
 
 function isStreetLevelLabel(label?: string | null) {

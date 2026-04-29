@@ -23,6 +23,7 @@ export async function GET(request: Request) {
   const selectedKampus = kampus
     ? await supabase.from("kampus").select("id, lat, lng").eq("slug", kampus).maybeSingle()
     : null;
+  const selectedKampusData = selectedKampus?.data;
   const hargaMaxTersedia = Math.max(2_500_000, maxHargaData?.harga_max ?? 0);
   const parsedMin = Number(hargaMin);
   const parsedMax = Number(hargaMax);
@@ -44,8 +45,8 @@ export async function GET(request: Request) {
     .eq("tersedia", true)
     .order("harga_min", { ascending: true });
 
-  if (selectedKampus?.data) {
-    query = query.eq("kampus_id", selectedKampus.data.id);
+  if (selectedKampusData) {
+    query = query.eq("kampus_id", selectedKampusData.id);
   }
 
   if (jenis === "putra" || jenis === "putri" || jenis === "campur") {
@@ -71,11 +72,11 @@ export async function GET(request: Request) {
 
   const normalizedData = applyKosCoordinateOverrides(data ?? []);
   const filteredData =
-    selectedKampus?.data && normalizedJarakMax !== null
+    selectedKampusData && normalizedJarakMax !== null
       ? normalizedData.filter(
           (kos) =>
             kos.locationMeta.isDistanceReliable &&
-            haversineKm(kos.lat, kos.lng, selectedKampus.data.lat, selectedKampus.data.lng) <=
+            haversineKm(kos.lat, kos.lng, selectedKampusData.lat, selectedKampusData.lng) <=
             normalizedJarakMax
         )
       : normalizedData;
