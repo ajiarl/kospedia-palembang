@@ -1,113 +1,41 @@
-# KosPedia Palembang 🏠
+# KosPedia Palembang
 
-Platform pencarian kos mahasiswa di sekitar kampus-kampus Palembang. Temukan kos terdekat, bandingkan fasilitas, dan filter berdasarkan kebutuhan — semua dalam satu tempat.
+> Platform pencarian kos mahasiswa di sekitar kampus Palembang yang memudahkan pencarian berdasarkan lokasi presisi, fasilitas lengkap, dan rentang harga yang transparan.
 
-## ✨ Fitur Unggulan
+## 🎯 Tujuan Proyek
+Proyek ini dibuat untuk menyelesaikan kendala mahasiswa dalam menemukan hunian sementara yang strategis dan sesuai anggaran di sekitar kampus-kampus Palembang. Dengan mengintegrasikan data lokasi yang akurat dan sistem filter yang cerdas, aplikasi ini bertujuan untuk menyederhanakan proses pengambilan keputusan bagi mahasiswa pendatang maupun lokal.
 
-### 🔍 Smart Filtering
-- **Jarak ke Kampus** — Filter kos berdasarkan radius (0.5–5 km) dari kampus pilihan menggunakan kalkulasi Haversine.
-- **Fasilitas Lengkap** — Filter berdasarkan WiFi, AC, Kamar Mandi Dalam, Parkir, Dapur, dan lainnya.
-- **Rentang Harga** — Dual-slider untuk menentukan batas harga minimum dan maksimum.
-- **Jenis Kos** — Filter berdasarkan Putra, Putri, atau Campur.
-
-### ⚡ Batch Filter Update
-Semua interaksi filter (klik chip, geser slider) hanya mengubah state lokal. Perubahan baru dikirim ke server setelah tombol **"Terapkan Filter"** ditekan — menghilangkan reload berulang dan memberikan pengalaman yang jauh lebih responsif.
-
-### 🎨 Flat Minimalist UI
-- **Tanpa card-ception** — Hanya item kos yang menggunakan card. Header, sidebar, peta, dan toolbar menyatu seamless tanpa border/shadow berlebihan.
-- Layout responsif yang optimal untuk Mobile dan Desktop.
-- Sticky sidebar transparan di desktop, bottom-sheet drawer di mobile.
-- Search bar glassmorphic dengan subtle shadow, tanpa border tebal.
-
-### 🗺️ Peta Interaktif
-- Peta Leaflet dengan pin lokasi kos dan kampus.
-- Validasi koordinat otomatis via audit geocoding dan sistem override.
-- Badge jarak yang menampilkan jarak ke kampus terdekat.
-
-### 🔐 Hardened Security
-- **Zod Validation** — Input API divalidasi dengan schema ketat.
-- **Rate Limiting** — Proteksi brute-force berbasis IP/User via Supabase SQL.
-- **CSRF Protection** — Verifikasi origin pada semua mutation routes.
-- **Dynamic CSP** — Content Security Policy yang environment-aware.
-- **ENV Validation** — Aplikasi gagal start secara eksplisit jika config tidak valid.
-
-### 📊 Analytics & Monitoring
-- Structured logging (NDJSON di produksi, pretty-print di dev).
-- Google Tag Manager & GA4 terintegrasi aman dengan CSP.
-- Correlation IDs untuk request tracing.
-
----
+## ✨ Fitur Utama
+- **Smart Proximity Search**: Pencarian kos berdasarkan radius jarak (0.5–5 km) dari kampus menggunakan kalkulasi formula Haversine untuk akurasi lokasi.
+- **Batch Filter Update**: Sistem pemrosesan filter secara berkelompok (batch) yang menghilangkan reload berulang pada setiap interaksi, memberikan pengalaman pencarian yang jauh lebih cepat.
+- **Flat Minimalist UI**: Antarmuka modern yang bersih dengan fokus pada konten, dioptimalkan sepenuhnya untuk kenyamanan penggunaan di perangkat mobile maupun desktop.
+- **Hardened Security**: Implementasi keamanan tingkat tinggi melalui validasi schema Zod, proteksi CSRF Origin, dan sistem rate limiting berbasis database.
 
 ## 🛠️ Tech Stack
+- **Frontend**: Next.js 16 (App Router), Tailwind CSS, React-Leaflet
+- **Backend**: Next.js API Routes, Supabase Auth
+- **Database**: PostgreSQL (Supabase) dengan Row Level Security (RLS)
+- **Hosting**: Vercel
 
-| Layer | Teknologi |
-|-------|-----------|
-| Framework | [Next.js 16](https://nextjs.org/) (App Router + Turbopack) |
-| Database & Auth | [Supabase](https://supabase.com/) (PostgreSQL + RLS) |
-| Styling | [Tailwind CSS](https://tailwindcss.com/) |
-| Maps | [Leaflet](https://leafletjs.com/) & [React-Leaflet](https://react-leaflet.js.org/) |
-| Validation | [Zod](https://zod.dev/) |
-| Analytics | [Google Tag Manager](https://tagmanager.google.com/) & GA4 |
+## 🚀 Cara Menjalankan Lokal
 
----
+### Prasyarat
+- Node.js v18+
+- Akun Supabase (untuk database dan autentikasi)
 
-## 🚀 Setup Lokal
-
+### Instalasi
 ```bash
-# 1. Install dependencies
+# 1. Clone repository
+git clone https://github.com/ajiarl/kospedia-palembang.git
+cd kospedia-palembang
+
+# 2. Install dependencies
 npm install
 
-# 2. Salin environment
-copy .env.example .env.local
+# 3. Setup environment
+cp .env.example .env.local
+# Edit .env.local dan isi dengan kunci API Supabase Anda
 
-# 3. Jalankan development server
+# 4. Jalankan dev server
 npm run dev
 ```
-
-Isi variabel berikut di `.env.local`:
-
-```env
-NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
-NEXT_PUBLIC_SITE_URL=http://localhost:3000           # opsional, default localhost
-SUPABASE_SERVICE_ROLE_KEY=your-service-role-key      # opsional untuk build
-NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX           # opsional untuk analytics
-```
-
-Buka **http://localhost:3000** dan mulai eksplorasi.
-
----
-
-## 📜 Script
-
-| Perintah | Fungsi |
-|----------|--------|
-| `npm run dev` | Server development |
-| `npm run build` | Build produksi |
-| `npm run start` | Jalankan build produksi |
-| `npm run lint` | Cek kode dengan ESLint |
-| `npx tsc --noEmit` | Validasi integritas tipe |
-
----
-
-## 📂 Struktur Penting
-
-```
-src/
-├── app/(main)/kos/         # Halaman listing & detail kos
-├── app/api/                 # API routes (favorit, review, kos)
-├── components/shared/       # FilterSidebar, KosCard, Navbar, dll.
-├── context/                 # FavoritContext (optimistic UI)
-├── lib/                     # Utils: haversine, logger, security, csrf
-├── env.ts                   # Zod schema untuk environment variables
-└── types/                   # TypeScript types & database schema
-```
-
----
-
-## 📝 Catatan
-
-- SEO metadata dan canonical URL bergantung pada `NEXT_PUBLIC_SITE_URL`.
-- GA4 otomatis aktif jika `NEXT_PUBLIC_GA_MEASUREMENT_ID` diisi.
-- Cookie consent tersimpan di `localStorage` (`kospedia-cookie-consent`).
-- Koordinat kos divalidasi via audit otomatis dengan fallback ke geocoder.
