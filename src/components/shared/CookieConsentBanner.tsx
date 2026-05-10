@@ -13,7 +13,7 @@ export default function CookieConsentBanner() {
   }
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-[90] border-t bg-background/95 backdrop-blur-md">
+    <div className="fixed inset-x-0 bottom-0 z-[100] border-t bg-background/95 pb-[env(safe-area-inset-bottom)] backdrop-blur-md pointer-events-auto">
       <div className="container flex flex-col gap-3 py-4 md:flex-row md:items-end md:justify-between">
         <div className="max-w-3xl">
           <p className="text-sm font-semibold">Privasi & Cookies</p>
