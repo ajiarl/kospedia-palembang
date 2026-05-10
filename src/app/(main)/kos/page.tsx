@@ -90,7 +90,6 @@ export default async function HalamanListingKos({
     { data: kampusData },
     { data: maxHargaData },
     { data: selectedKampusData },
-    { data: kosData, error: kosError },
   ] = await Promise.all([
     supabase.from("kampus").select("id, nama, slug, lat, lng").order("nama"),
     supabase
@@ -107,10 +106,15 @@ export default async function HalamanListingKos({
           .eq("slug", filters.kampus as string)
           .maybeSingle()
       : Promise.resolve({ data: null, error: null }),
-    buildKosQuery(supabase, filters),
   ]);
 
   const selectedKampus = selectedKampusData ?? null;
+  const { data: kosData, error: kosError } = await buildKosQuery(
+    supabase,
+    filters,
+    selectedKampus?.id
+  );
+
   const maxHarga = maxHargaData?.harga_max ?? 5_000_000;
   const error = kosError;
 
@@ -385,14 +389,15 @@ export default async function HalamanListingKos({
 
 function buildKosQuery(
   supabase: Awaited<ReturnType<typeof createSupabaseServerClient>>,
-  filters: { [key: string]: string | string[] | undefined }
+  filters: { [key: string]: string | string[] | undefined },
+  selectedKampusId?: string
 ) {
   let query = supabase
     .from("kos")
     .select(`*, kampus:kampus_id (id, nama, slug, lat, lng), review(rating)`)
     .eq("tersedia", true);
 
-  if (filters.kampus) query = query.eq("kampus.slug", filters.kampus as string);
+  if (selectedKampusId) query = query.eq("kampus_id", selectedKampusId);
 
   const hargaMin = Number(filters.hargaMin);
   const hargaMax = Number(filters.hargaMax);

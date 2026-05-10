@@ -138,10 +138,13 @@ export function FavoritProvider({
     setError(null);
 
     try {
-      const response = await fetch("/api/favorit", {
-        method: isCurrentlyFavorit ? "DELETE" : "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ kosId }),
+      const method = isCurrentlyFavorit ? "DELETE" : "POST";
+      const url = method === "DELETE" ? `/api/favorit?kosId=${kosId}` : "/api/favorit";
+
+      const response = await fetch(url, {
+        method,
+        headers: method === "POST" ? { "Content-Type": "application/json" } : {},
+        body: method === "POST" ? JSON.stringify({ kosId }) : undefined,
       });
 
       if (!response.ok) {
@@ -150,6 +153,16 @@ export function FavoritProvider({
             ? [...current, kosId]
             : current.filter((id) => id !== kosId)
         );
+
+        if (response.status === 401) {
+          localStorage.setItem(
+            "pending-favorit-intent",
+            JSON.stringify({ kosId, path: window.location.pathname })
+          );
+          window.location.href = `/login?next=${encodeURIComponent(window.location.pathname)}`;
+          return;
+        }
+
         setError("Gagal memperbarui favorit.");
       }
     } catch {

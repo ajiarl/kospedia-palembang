@@ -3,7 +3,7 @@ import { z } from "zod";
 const clientSchema = z.object({
   NEXT_PUBLIC_SUPABASE_URL: z.string().url(),
   NEXT_PUBLIC_SUPABASE_ANON_KEY: z.string().min(20),
-  NEXT_PUBLIC_SITE_URL: z.string().url().optional(),
+  NEXT_PUBLIC_SITE_URL: z.string().url().optional().default("http://localhost:3000"),
   NEXT_PUBLIC_GA_MEASUREMENT_ID: z.string().regex(/^G-[A-Z0-9]+$/).optional(),
 });
 

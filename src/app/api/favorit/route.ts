@@ -32,7 +32,7 @@ export async function GET(request: Request) {
     );
   }
 
-  return NextResponse.json({ data });
+  return NextResponse.json({ favorit: (data ?? []).map((i: any) => i.kos_id) });
 }
 
 export async function POST(request: Request) {
@@ -131,21 +131,6 @@ export async function DELETE(request: Request) {
     return NextResponse.json({ pesan: "Belum login" }, { status: 401 });
   }
 
-  const rateLimit = await checkRateLimit(user.id, "favorit");
-  if (!rateLimit.allowed) {
-    return NextResponse.json(
-      { pesan: "Terlalu banyak permintaan. Coba lagi dalam satu menit." },
-      {
-        status: 429,
-        headers: {
-          "Retry-After": String(Math.ceil((rateLimit.resetAt - Date.now()) / 1000)),
-          "X-RateLimit-Limit": "20",
-          "X-RateLimit-Remaining": "0",
-        },
-      }
-    );
-  }
-
   const { searchParams } = new URL(request.url);
   const kosId = searchParams.get("kosId");
 
@@ -158,6 +143,21 @@ export async function DELETE(request: Request) {
     return NextResponse.json(
       { pesan: "kosId UUID valid wajib diisi" },
       { status: 400 }
+    );
+  }
+
+  const rateLimit = await checkRateLimit(user.id, "favorit");
+  if (!rateLimit.allowed) {
+    return NextResponse.json(
+      { pesan: "Terlalu banyak permintaan. Coba lagi dalam satu menit." },
+      {
+        status: 429,
+        headers: {
+          "Retry-After": String(Math.ceil((rateLimit.resetAt - Date.now()) / 1000)),
+          "X-RateLimit-Limit": "20",
+          "X-RateLimit-Remaining": "0",
+        },
+      }
     );
   }
 
