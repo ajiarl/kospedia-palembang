@@ -14,7 +14,14 @@ const navLinks = [
 
 function MenuIcon({ open }: { open: boolean }) {
   return (
-    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg 
+      viewBox="0 0 24 24" 
+      className="h-5 w-5" 
+      fill="none" 
+      stroke="currentColor" 
+      strokeWidth="2"
+      aria-hidden="true"
+    >
       {open ? (
         <>
           <path d="M6 6l12 12" />
@@ -46,8 +53,11 @@ export default function MobileNav({
     <div className="md:hidden">
       <button
         type="button"
+        id="mobile-nav-trigger"
         onClick={() => setOpen((current) => !current)}
         aria-label={open ? "Tutup menu" : "Buka menu"}
+        aria-expanded={open}
+        aria-controls="mobile-nav-menu"
         className={cn(
           "rounded-lg border p-2 shadow-sm backdrop-blur-md transition",
           isHomePage
@@ -60,6 +70,7 @@ export default function MobileNav({
 
       {open ? (
         <div
+          id="mobile-nav-menu"
           className={cn(
             "absolute inset-x-0 top-14 z-50 px-4 py-4 shadow-lg backdrop-blur-xl",
             isHomePage

@@ -4,7 +4,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 
 import { trackEvent } from "@/lib/analytics";
-import { cn, formatRupiah } from "@/lib/utils";
+import { cn, formatRupiah, KAMPUS_ALIASES, singkatNamaKampus } from "@/lib/utils";
 import type { KampusRow } from "@/types/kos";
 
 const HARGA_MAX_DEFAULT = 2_500_000;
@@ -18,22 +18,6 @@ const jenisOptions = [
   { value: "campur", label: "Campur" },
 ];
 
-function singkatNama(nama: string): string {
-  const map: Record<string, string> = {
-    "Universitas Sriwijaya": "Unsri",
-    "Universitas Sriwijaya Kampus Palembang": "Unsri Plg",
-    "Universitas Muhammadiyah Palembang": "UMP",
-    "Politeknik Negeri Sriwijaya": "Polsri",
-    "UIN Raden Fatah Palembang": "UIN RF",
-    "Universitas MDP": "MDP",
-    "Universitas Bina Darma": "Bina Darma",
-    "Universitas IBA": "IBA",
-  };
-
-  if (map[nama]) return map[nama];
-  if (nama.length > 20) return `${nama.slice(0, 18)}...`;
-  return nama;
-}
 
 export default function FilterSidebar({
   kampus,
@@ -134,6 +118,7 @@ export default function FilterSidebar({
             <button
               type="button"
               onClick={reset}
+              aria-label="Reset semua filter"
               className={`text-xs font-medium text-primary hover:underline ${focusRingClass}`}
             >
               Reset semua
@@ -159,6 +144,8 @@ export default function FilterSidebar({
               type="button"
               onClick={() => pushFilter("kampus", "")}
               title="Semua kampus"
+              aria-label="Filter semua kampus"
+              aria-pressed={currentKampus === ""}
               className={cn(
                 `min-h-10 rounded-full px-3 py-2 text-xs font-semibold transition-all ${focusRingClass}`,
                 currentKampus === ""
@@ -176,6 +163,8 @@ export default function FilterSidebar({
                   pushFilter("kampus", currentKampus === item.slug ? "" : item.slug)
                 }
                 title={item.nama}
+                aria-label={`Filter kampus ${item.nama}`}
+                aria-pressed={currentKampus === item.slug}
                 className={cn(
                   `min-h-10 max-w-[130px] truncate rounded-full px-3 py-2 text-xs font-semibold transition-all ${focusRingClass}`,
                   currentKampus === item.slug
@@ -183,7 +172,7 @@ export default function FilterSidebar({
                     : "bg-muted text-muted-foreground hover:bg-primary/10 hover:text-primary"
                 )}
               >
-                {singkatNama(item.nama)}
+                {singkatNamaKampus(item.nama)}
               </button>
             ))}
           </div>
@@ -199,6 +188,8 @@ export default function FilterSidebar({
                 key={opt.value}
                 type="button"
                 onClick={() => pushFilter("jenis", opt.value)}
+                aria-label={`Filter jenis ${opt.label}`}
+                aria-pressed={currentJenis === opt.value}
                 className={cn(
                   `min-h-11 flex-1 rounded-lg px-3 py-2 text-xs font-bold transition-all ${focusRingClass}`,
                   currentJenis === opt.value
@@ -306,6 +297,8 @@ export default function FilterSidebar({
               <button
                 type="button"
                 onClick={() => applyJarak(null)}
+                aria-label="Tanpa batas jarak"
+                aria-pressed={currentJarakMax === 0}
                 className={cn(
                   `min-h-10 rounded-full px-3 py-2 text-xs font-semibold transition-all ${focusRingClass}`,
                   currentJarakMax === 0
@@ -320,6 +313,8 @@ export default function FilterSidebar({
                   key={jarak}
                   type="button"
                   onClick={() => applyJarak(jarak)}
+                  aria-label={`Filter jarak maksimal ${jarak} km`}
+                  aria-pressed={currentJarakMax === jarak}
                   className={cn(
                     `min-h-10 rounded-full px-3 py-2 text-xs font-semibold transition-all ${focusRingClass}`,
                     currentJarakMax === jarak
@@ -346,7 +341,11 @@ export default function FilterSidebar({
     <>
       <button
         type="button"
+        id="mobile-filter-trigger"
         onClick={() => setMobileOpen((current) => !current)}
+        aria-label="Buka filter pencarian"
+        aria-expanded={mobileOpen}
+        aria-controls="mobile-filter-panel"
         className={`surface-panel sticky top-20 z-30 flex w-full items-center justify-between rounded-[1.4rem] border border-white/80 px-5 py-4 text-left shadow-[0_16px_34px_rgba(17,17,16,0.08)] lg:hidden ${focusRingClass}`}
       >
         <span className="text-sm font-bold">Filter</span>
@@ -363,7 +362,10 @@ export default function FilterSidebar({
             onClick={() => setMobileOpen(false)}
             className="absolute inset-0"
           />
-          <div className="surface-panel absolute inset-x-0 bottom-0 max-h-[85vh] overflow-y-auto rounded-t-[2rem] border-t border-white/70 shadow-2xl">
+          <div 
+            id="mobile-filter-panel"
+            className="surface-panel absolute inset-x-0 bottom-0 max-h-[85vh] overflow-y-auto rounded-t-[2rem] border-t border-white/70 shadow-2xl"
+          >
             {filterContent}
           </div>
         </div>

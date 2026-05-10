@@ -15,6 +15,7 @@ function HeartIcon({ filled }: { filled: boolean }) {
       strokeLinecap="round"
       strokeLinejoin="round"
       xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
     >
       <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
     </svg>
@@ -22,7 +23,7 @@ function HeartIcon({ filled }: { filled: boolean }) {
 }
 
 export default function FavoritButton({ kosId }: { kosId: string }) {
-  const { hapusFavorit, isFavorit, loading, tambahFavorit, error } = useFavorit();
+  const { toggleFavorit, isFavorit, loading, error } = useFavorit();
   const [pending, setPending] = useState(false);
   const [justToggled, setJustToggled] = useState(false);
   const tersimpan = isFavorit(kosId);
@@ -31,13 +32,8 @@ export default function FavoritButton({ kosId }: { kosId: string }) {
     setPending(true);
     setJustToggled(true);
 
-    if (tersimpan) {
-      await hapusFavorit(kosId);
-      trackEvent("favorite_remove", { kos_id: kosId });
-    } else {
-      await tambahFavorit(kosId);
-      trackEvent("favorite_add", { kos_id: kosId });
-    }
+    await toggleFavorit(kosId);
+    trackEvent(tersimpan ? "favorite_remove" : "favorite_add", { kos_id: kosId });
 
     setPending(false);
     // Reset animasi setelah selesai
@@ -50,6 +46,7 @@ export default function FavoritButton({ kosId }: { kosId: string }) {
       onClick={handleClick}
       disabled={loading || pending}
       aria-label={tersimpan ? "Hapus dari favorit" : "Simpan ke favorit"}
+      aria-pressed={tersimpan}
       title={error ?? undefined}
       className={[
         "relative flex h-11 w-11 shrink-0 items-center justify-center rounded-full transition-all duration-200",

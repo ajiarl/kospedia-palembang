@@ -1,7 +1,7 @@
 "use client";
 
 import L from "leaflet";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   MapContainer,
   Marker,
@@ -11,6 +11,7 @@ import {
   ZoomControl,
   useMap,
 } from "react-leaflet";
+import { singkatNamaKampus } from "@/lib/utils";
 
 type MapMarker = {
   id: string;
@@ -75,12 +76,34 @@ function FitBounds({
   return null;
 }
 
+function ScrollZoomController() {
+  const map = useMap();
+  useEffect(() => {
+    const container = map.getContainer();
+    const enable = () => map.scrollWheelZoom.enable();
+    const disable = () => map.scrollWheelZoom.disable();
+    container.addEventListener("mouseenter", enable);
+    container.addEventListener("mouseleave", disable);
+    return () => {
+      container.removeEventListener("mouseenter", enable);
+      container.removeEventListener("mouseleave", disable);
+    };
+  }, [map]);
+  return null;
+}
+
 export default function MapView({
   center,
   zoom = 13,
   markers,
   className = "h-80",
 }: MapViewProps) {
+  const [showHint, setShowHint] = useState(true);
+  useEffect(() => {
+    const timer = setTimeout(() => setShowHint(false), 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
   const fallbackCenter: [number, number] = [-2.9761, 104.7754];
   const mapCenter =
     center ??
@@ -96,15 +119,19 @@ export default function MapView({
   const kampusIcon = useMemo(() => createPinIcon("kampus"), []);
 
   return (
-    <div className={`relative overflow-hidden rounded-xl border bg-muted shadow-sm ${className}`}>
+    <div
+      className={`relative overflow-hidden rounded-xl border bg-muted shadow-sm ${className}`}
+      role="region"
+      aria-label="Peta interaktif lokasi kos dan kampus"
+    >
       <MapContainer
-        aria-hidden="true"
         center={mapCenter}
         zoom={zoom}
         scrollWheelZoom={false}
         className="h-full w-full"
         zoomControl={false}
       >
+        <ScrollZoomController />
         <ZoomControl position="topright" />
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -127,7 +154,7 @@ export default function MapView({
                 opacity={1}
                 className="!border-0 !bg-[#2D4A3E] !text-white !text-xs !font-semibold !rounded-md !shadow-md !px-2 !py-1"
               >
-                {marker.nama}
+                {singkatNamaKampus(marker.nama)}
               </Tooltip>
             ) : (
               <Tooltip
@@ -170,6 +197,14 @@ export default function MapView({
           </Marker>
         ))}
       </MapContainer>
+
+      {showHint && (
+        <div className="pointer-events-none absolute inset-0 z-[500] flex items-center justify-center bg-black/10 transition-opacity duration-500">
+          <div className="rounded-full bg-charcoal/90 px-5 py-2.5 text-xs font-bold text-white shadow-2xl backdrop-blur-sm">
+            Gunakan mouse-wheel untuk zoom peta
+          </div>
+        </div>
+      )}
 
       <div className="absolute bottom-3 right-3 z-[400] flex items-center gap-3 rounded-lg border bg-white/95 px-3 py-1.5 text-xs font-medium shadow-sm backdrop-blur-sm">
         <span className="flex items-center gap-1.5">
