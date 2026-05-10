@@ -153,7 +153,7 @@ export default async function HalamanUtama() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(homeJsonLd) }}
       />
-      <section className="hero-pattern relative -mt-14 min-h-[calc(100svh-4.5rem)] overflow-hidden pt-28 md:-mt-16 md:min-h-[calc(100svh-5rem)] md:pt-32">
+      <section className="hero-pattern relative -mt-14 min-h-[calc(100svh-4.5rem)] overflow-hidden pt-20 md:-mt-16 md:min-h-[calc(100svh-5rem)] md:pt-24">
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-black/80 via-black/62 to-black/85" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(240,128,96,0.22),transparent_26%),radial-gradient(circle_at_bottom_right,rgba(45,74,62,0.26),transparent_28%)]" />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background/72 to-transparent" />
