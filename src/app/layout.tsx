@@ -1,3 +1,4 @@
+import "@/env";
 import type { Metadata } from "next";
 import AppClientShell from "@/components/shared/AppClientShell";
 import { getMetadataBase, SITE_DESCRIPTION, SITE_NAME } from "@/lib/seo";
