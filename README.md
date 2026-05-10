@@ -1,98 +1,92 @@
-# KosPedia Palembang
+# KosPedia Palembang 🚀
 
-Platform pencarian kos mahasiswa di sekitar kampus-kampus Palembang, dibangun dengan Next.js App Router dan Supabase.
+Platform pencarian kos mahasiswa di sekitar kampus-kampus Palembang, dibangun dengan **Hardened Architecture** menggunakan Next.js App Router dan Supabase.
 
-## Stack
+## 🏗️ Hardened Architecture (Phases 1-13)
 
-- Next.js 16
-- React 19
-- TypeScript
-- Supabase Auth + Database + RLS
-- Tailwind CSS
-- Leaflet
+Project ini telah melewati audit keamanan, performa, dan reliabilitas menyeluruh untuk memastikan kualitas produksi:
 
-## Setup Lokal
+### 🔐 Security & Reliability
+- **Type-Safe Input Validation**: Seluruh API mutation (Favorit, Review) diproteksi menggunakan **Zod** untuk validasi schema dan `safeParseJson` wrapper untuk mencegah payload injection.
+- **CSRF & Origin Protection**: Pengamanan mutation routes dengan verifikasi host dan origin untuk mencegah serangan Cross-Site Request Forgery.
+- **Advanced Rate Limiting**: Limitasi request berbasis IP/User menggunakan backend **Supabase SQL** untuk mencegah brute-force dan spamming.
+- **Fail-Safe ENV Validation**: Validasi variabel lingkungan (Supabase keys, Site URL) menggunakan Zod di level module-load. Aplikasi akan gagal start secara eksplisit jika config tidak valid.
+- **Security Headers**: Implementasi strict Content Security Policy (CSP), HSTS, XSS Protection, dan Frameguard via `next.config.ts`.
+- **Service Role Key Isolation**: Audit menyeluruh untuk memastikan `SUPABASE_SERVICE_ROLE_KEY` hanya diakses di lingkungan server-side admin yang terisolasi.
 
-1. Install dependency:
+### ⚡ Performance
+- **Parallel Data Fetching**: Eliminasi waterfall data-fetching pada halaman listing `/kos` menggunakan `Promise.all` untuk query kampus dan kos secara bersamaan.
+- **Coordinate Map Singletons**: Pengelolaan titik koordinat menggunakan singleton pattern dan lazy-loading untuk optimasi memori dan render map.
+- **Memory Leak Fixes**: Refactor React Context (Favorit) dengan stable refs dan `isMounted` guards untuk mencegah memory leak dan loop re-render.
 
-```bash
-npm install
-```
+### 📊 Monitoring & DX
+- **Structured Logging**: Implementasi logger kustom yang mendukung **NDJSON** di produksi (siap ingest ke Axiom/Datadog) dan *pretty-printing* berwarna di lingkungan development.
+- **Correlation IDs**: Setiap log request otomatis menyertakan `requestId` unik untuk kemudahan tracing transaksi antar modul.
+- **Accessibility (A11y)**: Audit WCAG untuk komponen interaktif, penambahan ARIA labels, dan perbaikan UX map scroll-trap.
 
-2. Salin environment:
+---
 
-```bash
-copy .env.example .env.local
-```
+## 🛠️ Tech Stack
 
-3. Isi minimal variabel berikut di `.env.local`:
+- **Framework**: [Next.js 16](https://nextjs.org/) (App Router + Turbopack)
+- **Database & Auth**: [Supabase](https://supabase.com/) (PostgreSQL + RLS)
+- **Validation**: [Zod](https://zod.dev/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Maps**: [Leaflet](https://leafletjs.com/) & [React-Leaflet](https://react-leaflet.js.org/)
 
-```env
-NEXT_PUBLIC_SUPABASE_URL=
-NEXT_PUBLIC_SUPABASE_ANON_KEY=
-NEXT_PUBLIC_SITE_URL=http://localhost:3000
-NEXT_PUBLIC_GA_MEASUREMENT_ID=
-SUPABASE_SERVICE_ROLE_KEY=
-```
+---
 
-4. Jalankan development server:
+## 🚀 Setup Lokal
 
-```bash
-npm run dev
-```
+1. **Install dependency**:
+   ```bash
+   npm install
+   ```
 
-5. Buka `http://localhost:3000`.
+2. **Salin environment**:
+   ```bash
+   copy .env.example .env.local
+   ```
 
-## Database Supabase
+3. **Isi minimal variabel berikut di `.env.local`**:
+   ```env
+   NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+   NEXT_PUBLIC_SITE_URL=http://localhost:3000
+   SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
+   ```
 
-Schema lokal ada di:
+4. **Jalankan development server**:
+   ```bash
+   npm run dev
+   ```
 
-- `supabase/schema.sql`
-- `supabase/migrations/20260427_add_kos_slug.sql`
-- `supabase/migrations/20260429_add_kos_geocode_fields.sql`
-- `supabase/seed.sql`
+5. **Buka `http://localhost:3000`**.
 
-Jika database aktif belum sinkron dengan code terbaru, pastikan migration slug sudah dijalankan sebelum membuka halaman detail kos.
+---
 
-## Seed Data
+## 📜 Script Utama
 
-`supabase/seed.sql` berisi data awal kampus dan kos untuk development. Jalankan file ini ke project Supabase lokal atau remote yang kamu pakai setelah schema dan migration terbaru diterapkan.
+- `npm run dev`: Menjalankan server development.
+- `npm run build`: Build aplikasi untuk produksi.
+- `npm run start`: Menjalankan hasil build produksi.
+- `npm run lint`: Cek kualitas kode dengan ESLint.
+- `npx tsc --noEmit`: Validasi integritas tipe TypeScript.
 
-## Script
+---
 
-```bash
-npm run dev
-npm run build
-npm run start
-npm run lint
-npm run audit:coords
-npm run geocode:prepare
-npm run geocode:batch
-```
+## 📂 Struktur Project Penting
 
-## Geocoding Workflow
+- `src/env.ts`: Skema validasi environment variables.
+- `src/lib/logger.ts`: Utilitas logging terstruktur.
+- `src/lib/api.ts`: Helper shared untuk respon API standard.
+- `src/lib/csrf.ts`: Middleware validasi origin.
+- `src/lib/security.ts`: Implementasi rate limiter persisten.
 
-Untuk audit dan koreksi koordinat kos secara batch:
+---
 
-1. Jalankan migration geocode di Supabase:
-   `supabase/migrations/20260429_add_kos_geocode_fields.sql`
-2. Siapkan input dari data aktif Supabase:
-   `npm run geocode:prepare`
-3. Jalankan batch geocoder:
-   `npm run geocode:batch`
+## 📝 Catatan Implementasi
 
-File input akan dibuat di `reports/geocode-input/`.
-Hasil geocode dan SQL output akan dibuat di `reports/geocode-output/`.
-
-Catatan:
-- Pipeline ini memakai provider gratis, jadi hasil `exact` lebih aman untuk auto-apply daripada `approximate`.
-- `approximate`, `area`, dan `needs_review` sebaiknya tetap direview sebelum dipakai sebagai titik publik.
-
-## Catatan Implementasi
-
-- Route publik utama ada di `(main)`, auth flow ada di `(auth)`.
-- Client dan server Supabase dipisah di `src/lib/supabase`.
-- Metadata SEO, canonical URL, sitemap, robots, dan structured data bergantung pada `NEXT_PUBLIC_SITE_URL`.
+- Metadata SEO, canonical URL, sitemap, dan robots bergantung pada `NEXT_PUBLIC_SITE_URL`.
 - Google Analytics 4 otomatis aktif jika `NEXT_PUBLIC_GA_MEASUREMENT_ID` diisi.
-- Event yang ditrack saat ini: `whatsapp_click`, `favorite_add`, `favorite_remove`, `review_submit`, dan `filter_kampus_select`.
 - Banner consent menyimpan pilihan analytics di `localStorage` dengan key `kospedia-cookie-consent`.
