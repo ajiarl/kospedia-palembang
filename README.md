@@ -11,7 +11,7 @@ Project ini telah melewati audit keamanan, performa, dan reliabilitas menyeluruh
 - **CSRF & Origin Protection**: Pengamanan mutation routes dengan verifikasi host dan origin untuk mencegah serangan Cross-Site Request Forgery.
 - **Advanced Rate Limiting**: Limitasi request berbasis IP/User menggunakan backend **Supabase SQL** untuk mencegah brute-force dan spamming.
 - **Fail-Safe ENV Validation**: Validasi variabel lingkungan (Supabase keys, Site URL) menggunakan Zod di level module-load. Aplikasi akan gagal start secara eksplisit jika config tidak valid.
-- **Security Headers**: Implementasi strict Content Security Policy (CSP), HSTS, XSS Protection, dan Frameguard via `next.config.ts`.
+- **Security Headers**: Implementasi **Dynamic Content Security Policy (CSP)** via `next.config.ts`. Header ini bersifat *environment-aware*: mengizinkan `unsafe-eval` hanya di development (untuk HMR) dan mendukung Google Tag Manager tanpa mengorbankan keamanan di produksi.
 - **Service Role Key Isolation**: Audit menyeluruh untuk memastikan `SUPABASE_SERVICE_ROLE_KEY` hanya diakses di lingkungan server-side admin yang terisolasi.
 
 ### ⚡ Performance
@@ -22,6 +22,7 @@ Project ini telah melewati audit keamanan, performa, dan reliabilitas menyeluruh
 ### 📊 Monitoring & DX
 - **Structured Logging**: Implementasi logger kustom yang mendukung **NDJSON** di produksi (siap ingest ke Axiom/Datadog) dan *pretty-printing* berwarna di lingkungan development.
 - **Correlation IDs**: Setiap log request otomatis menyertakan `requestId` unik untuk kemudahan tracing transaksi antar modul.
+- **Analytics & Tracking**: Integrasi **Google Tag Manager (GTM)** dan **GA4** yang telah dikonfigurasi aman dengan CSP untuk tracking event tanpa memblokir proses hidrasi Next.js.
 - **Accessibility (A11y)**: Audit WCAG untuk komponen interaktif, penambahan ARIA labels, dan perbaikan UX map scroll-trap.
 
 ---
@@ -31,6 +32,7 @@ Project ini telah melewati audit keamanan, performa, dan reliabilitas menyeluruh
 - **Framework**: [Next.js 16](https://nextjs.org/) (App Router + Turbopack)
 - **Database & Auth**: [Supabase](https://supabase.com/) (PostgreSQL + RLS)
 - **Validation**: [Zod](https://zod.dev/)
+- **Analytics**: [Google Tag Manager](https://tagmanager.google.com/) & [GA4](https://analytics.google.com/)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 - **Maps**: [Leaflet](https://leafletjs.com/) & [React-Leaflet](https://react-leaflet.js.org/)
 
