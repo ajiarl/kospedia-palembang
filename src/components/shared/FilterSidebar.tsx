@@ -4,12 +4,23 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 
 import { trackEvent } from "@/lib/analytics";
-import { cn, formatRupiah, KAMPUS_ALIASES, singkatNamaKampus } from "@/lib/utils";
+import { cn, formatRupiah, singkatNamaKampus } from "@/lib/utils";
 import type { KampusRow } from "@/types/kos";
 
 const HARGA_MAX_DEFAULT = 2_500_000;
 const HARGA_STEP = 100_000;
 const JARAK_OPTIONS_KM = [0.5, 1, 2, 3, 5];
+
+const FASILITAS_OPTIONS = [
+  { value: "wifi", label: "WiFi" },
+  { value: "ac", label: "AC" },
+  { value: "kamar mandi dalam", label: "KM Dalam" },
+  { value: "parkir motor", label: "Parkir" },
+  { value: "dapur bersama", label: "Dapur" },
+  { value: "lemari", label: "Lemari" },
+  { value: "kasur", label: "Kasur" },
+  { value: "laundry sekitar", label: "Laundry" },
+];
 
 const jenisOptions = [
   { value: "", label: "Semua" },
@@ -18,6 +29,58 @@ const jenisOptions = [
   { value: "campur", label: "Campur" },
 ];
 
+// ─── Helpers ────────────────────────────────────────────────────────────────
+
+type LocalFilters = {
+  kampus: string;
+  jenis: string;
+  hargaMin: number;
+  hargaMax: number;
+  jarakMax: number;
+  fasilitas: string[];
+};
+
+function readFiltersFromParams(
+  sp: URLSearchParams,
+  effectiveMaxHarga: number
+): LocalFilters {
+  return {
+    kampus: sp.get("kampus") ?? "",
+    jenis: sp.get("jenis") ?? "",
+    hargaMin: Number(sp.get("hargaMin")) || 0,
+    hargaMax: Math.min(
+      Number(sp.get("hargaMax")) || effectiveMaxHarga,
+      effectiveMaxHarga
+    ),
+    jarakMax: Number(sp.get("jarakMax")) || 0,
+    fasilitas: (sp.get("fasilitas") ?? "").split(",").filter(Boolean),
+  };
+}
+
+function filtersToParams(f: LocalFilters, effectiveMaxHarga: number): string {
+  const params = new URLSearchParams();
+  if (f.kampus) params.set("kampus", f.kampus);
+  if (f.jenis) params.set("jenis", f.jenis);
+  if (f.hargaMin > 0) params.set("hargaMin", String(f.hargaMin));
+  if (f.hargaMax < effectiveMaxHarga)
+    params.set("hargaMax", String(f.hargaMax));
+  if (f.jarakMax > 0 && f.kampus) params.set("jarakMax", String(f.jarakMax));
+  if (f.fasilitas.length > 0) params.set("fasilitas", f.fasilitas.join(","));
+  return params.toString();
+}
+
+function hasAnyFilter(f: LocalFilters, effectiveMaxHarga: number): boolean {
+  return !!(
+    f.kampus ||
+    f.jenis ||
+    f.hargaMin > 0 ||
+    f.hargaMax < effectiveMaxHarga ||
+    f.jarakMax > 0 ||
+    f.fasilitas.length > 0
+  );
+}
+
+// ─── Component ──────────────────────────────────────────────────────────────
 
 export default function FilterSidebar({
   kampus,
@@ -28,100 +91,130 @@ export default function FilterSidebar({
 }) {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [mobileOpen, setMobileOpen] = useState(false);
   const effectiveMaxHarga = Math.max(HARGA_STEP, maxHarga);
 
-  const currentKampus = searchParams.get("kampus") ?? "";
-  const currentJenis = searchParams.get("jenis") ?? "";
-  const currentMin = Number(searchParams.get("hargaMin")) || 0;
-  const currentJarakMax = Number(searchParams.get("jarakMax")) || 0;
-  const currentMax = Math.min(
-    Number(searchParams.get("hargaMax")) || effectiveMaxHarga,
-    effectiveMaxHarga
+  // ── Local draft state (only pushed on "Terapkan") ─────────────────────────
+  const [draft, setDraft] = useState<LocalFilters>(() =>
+    readFiltersFromParams(searchParams, effectiveMaxHarga)
   );
+  const [mobileOpen, setMobileOpen] = useState(false);
 
-  const [localMin, setLocalMin] = useState(currentMin);
-  const [localMax, setLocalMax] = useState(currentMax);
+  // Check if local draft differs from URL (show "unsaved" indicator)
+  const committed = readFiltersFromParams(searchParams, effectiveMaxHarga);
+  const isDirty =
+    draft.kampus !== committed.kampus ||
+    draft.jenis !== committed.jenis ||
+    draft.hargaMin !== committed.hargaMin ||
+    draft.hargaMax !== committed.hargaMax ||
+    draft.jarakMax !== committed.jarakMax ||
+    draft.fasilitas.join(",") !== committed.fasilitas.join(",");
 
-  function pushFilter(key: string, value: string) {
-    const params = new URLSearchParams(searchParams.toString());
-    if (value) params.set(key, value);
-    else params.delete(key);
-    if (key === "kampus") {
-      if (!value) params.delete("jarakMax");
+  const hasFilter = hasAnyFilter(draft, effectiveMaxHarga);
+
+  // ── Draft updaters (no navigation) ────────────────────────────────────────
+
+  function setKampus(slug: string) {
+    setDraft((prev) => ({
+      ...prev,
+      kampus: slug,
+      jarakMax: slug ? prev.jarakMax : 0,
+    }));
+    if (slug) {
       trackEvent("filter_kampus_select", {
-        kampus_slug: value || "all",
+        kampus_slug: slug,
         source: "listing_sidebar",
       });
     }
-    if (window.innerWidth < 1024) setMobileOpen(false);
-    const queryString = params.toString();
-    router.push(queryString ? `/kos?${queryString}` : "/kos");
   }
 
-  function applyHarga() {
-    const params = new URLSearchParams(searchParams.toString());
-    if (localMin > 0) params.set("hargaMin", String(localMin));
-    else params.delete("hargaMin");
-
-    if (localMax < effectiveMaxHarga) params.set("hargaMax", String(localMax));
-    else params.delete("hargaMax");
-
-    if (window.innerWidth < 1024) setMobileOpen(false);
-    const queryString = params.toString();
-    router.push(queryString ? `/kos?${queryString}` : "/kos");
+  function setJenis(value: string) {
+    setDraft((prev) => ({ ...prev, jenis: value }));
   }
 
-  function applyJarak(jarakKm: number | null) {
-    const params = new URLSearchParams(searchParams.toString());
-    if (jarakKm && currentKampus) params.set("jarakMax", String(jarakKm));
-    else params.delete("jarakMax");
-    if (window.innerWidth < 1024) setMobileOpen(false);
-    const queryString = params.toString();
-    router.push(queryString ? `/kos?${queryString}` : "/kos");
+  function setHargaMin(val: number) {
+    setDraft((prev) => ({
+      ...prev,
+      hargaMin: Math.min(val, prev.hargaMax - HARGA_STEP),
+    }));
   }
 
-  function reset() {
-    setLocalMin(0);
-    setLocalMax(effectiveMaxHarga);
+  function setHargaMax(val: number) {
+    setDraft((prev) => ({
+      ...prev,
+      hargaMax: Math.max(val, prev.hargaMin + HARGA_STEP),
+    }));
+  }
+
+  function setJarakMax(km: number) {
+    setDraft((prev) => ({ ...prev, jarakMax: km }));
+  }
+
+  function toggleFasilitas(value: string) {
+    setDraft((prev) => ({
+      ...prev,
+      fasilitas: prev.fasilitas.includes(value)
+        ? prev.fasilitas.filter((v) => v !== value)
+        : [...prev.fasilitas, value],
+    }));
+  }
+
+  // ── Actions (navigate) ────────────────────────────────────────────────────
+
+  function applyFilters() {
+    const qs = filtersToParams(draft, effectiveMaxHarga);
+    if (window.innerWidth < 1024) setMobileOpen(false);
+    router.push(qs ? `/kos?${qs}` : "/kos");
+  }
+
+  function resetAll() {
+    const clean: LocalFilters = {
+      kampus: "",
+      jenis: "",
+      hargaMin: 0,
+      hargaMax: effectiveMaxHarga,
+      jarakMax: 0,
+      fasilitas: [],
+    };
+    setDraft(clean);
     if (window.innerWidth < 1024) setMobileOpen(false);
     router.push("/kos");
   }
 
-  const hasFilter =
-    currentKampus ||
-    currentJenis ||
-    currentMin > 0 ||
-    currentMax < effectiveMaxHarga ||
-    currentJarakMax > 0;
-  const minValue = localMin === currentMin ? currentMin : localMin;
-  const maxValue = localMax === currentMax ? currentMax : localMax;
-  const selectedWidth = ((maxValue - minValue) / effectiveMaxHarga) * 100;
-  const selectedLeft = (minValue / effectiveMaxHarga) * 100;
-  const minimumValueText = minValue > 0 ? formatRupiah(minValue) : "Bebas";
+  // ── Derived display values ────────────────────────────────────────────────
+
+  const selectedWidth =
+    ((draft.hargaMax - draft.hargaMin) / effectiveMaxHarga) * 100;
+  const selectedLeft = (draft.hargaMin / effectiveMaxHarga) * 100;
+  const minimumValueText =
+    draft.hargaMin > 0 ? formatRupiah(draft.hargaMin) : "Bebas";
   const maximumValueText =
-    maxValue < effectiveMaxHarga ? formatRupiah(maxValue) : "Bebas";
+    draft.hargaMax < effectiveMaxHarga
+      ? formatRupiah(draft.hargaMax)
+      : "Bebas";
   const focusRingClass =
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2";
 
+  // ── JSX ───────────────────────────────────────────────────────────────────
+
   const filterContent = (
-    <>
-      <div className="mb-4 flex items-center justify-between border-b border-black/5 px-5 pt-5 pb-4">
+    <div className="p-5">
+      {/* ── Header ───────────────────────────────────────────────────── */}
+      <div className="mb-5 flex items-center justify-between">
         <div>
           <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
             Penyaring
           </p>
-          <h2 className="mt-1 text-sm font-bold text-charcoal">Atur pencarian</h2>
+          <h2 className="mt-0.5 text-sm font-bold text-charcoal">Atur pencarian</h2>
         </div>
         <div className="flex items-center gap-3">
           {hasFilter ? (
             <button
               type="button"
-              onClick={reset}
+              onClick={resetAll}
               aria-label="Reset semua filter"
               className={`text-xs font-medium text-primary hover:underline ${focusRingClass}`}
             >
-              Reset semua
+              Reset
             </button>
           ) : null}
           <button
@@ -134,207 +227,258 @@ export default function FilterSidebar({
         </div>
       </div>
 
-      <div className="space-y-5 px-5 pb-5">
-        <div className="rounded-[1.35rem] border border-black/5 bg-white/60 p-4">
-          <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-            Kampus
-          </p>
-          <div className="flex flex-wrap gap-2">
+      {/* ── Kampus ───────────────────────────────────────────────────── */}
+      <div>
+        <p className="mb-2 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
+          Kampus
+        </p>
+        <div className="flex flex-wrap gap-1.5">
+          <button
+            type="button"
+            onClick={() => setKampus("")}
+            title="Semua kampus"
+            aria-label="Filter semua kampus"
+            aria-pressed={draft.kampus === ""}
+            className={cn(
+              `rounded-full px-2.5 py-1.5 text-[11px] font-semibold transition-all ${focusRingClass}`,
+              draft.kampus === ""
+                ? "bg-primary text-white shadow-sm"
+                : "bg-muted text-muted-foreground hover:bg-primary/10 hover:text-primary"
+            )}
+          >
+            Semua
+          </button>
+          {kampus.map((item) => (
             <button
+              key={item.id}
               type="button"
-              onClick={() => pushFilter("kampus", "")}
-              title="Semua kampus"
-              aria-label="Filter semua kampus"
-              aria-pressed={currentKampus === ""}
+              onClick={() =>
+                setKampus(draft.kampus === item.slug ? "" : item.slug)
+              }
+              title={item.nama}
+              aria-label={`Filter kampus ${item.nama}`}
+              aria-pressed={draft.kampus === item.slug}
               className={cn(
-                `min-h-10 rounded-full px-3 py-2 text-xs font-semibold transition-all ${focusRingClass}`,
-                currentKampus === ""
+                `max-w-[120px] truncate rounded-full px-2.5 py-1.5 text-[11px] font-semibold transition-all ${focusRingClass}`,
+                draft.kampus === item.slug
                   ? "bg-primary text-white shadow-sm"
                   : "bg-muted text-muted-foreground hover:bg-primary/10 hover:text-primary"
               )}
             >
-              Semua
+              {singkatNamaKampus(item.nama)}
             </button>
-            {kampus.map((item) => (
-              <button
-                key={item.id}
-                type="button"
-                onClick={() =>
-                  pushFilter("kampus", currentKampus === item.slug ? "" : item.slug)
-                }
-                title={item.nama}
-                aria-label={`Filter kampus ${item.nama}`}
-                aria-pressed={currentKampus === item.slug}
-                className={cn(
-                  `min-h-10 max-w-[130px] truncate rounded-full px-3 py-2 text-xs font-semibold transition-all ${focusRingClass}`,
-                  currentKampus === item.slug
-                    ? "bg-primary text-white shadow-sm"
-                    : "bg-muted text-muted-foreground hover:bg-primary/10 hover:text-primary"
-                )}
-              >
-                {singkatNamaKampus(item.nama)}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div className="rounded-[1.35rem] border border-black/5 bg-white/60 p-4">
-          <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-            Jenis Kos
-          </p>
-          <div className="flex gap-2">
-            {jenisOptions.map((opt) => (
-              <button
-                key={opt.value}
-                type="button"
-                onClick={() => pushFilter("jenis", opt.value)}
-                aria-label={`Filter jenis ${opt.label}`}
-                aria-pressed={currentJenis === opt.value}
-                className={cn(
-                  `min-h-11 flex-1 rounded-lg px-3 py-2 text-xs font-bold transition-all ${focusRingClass}`,
-                  currentJenis === opt.value
-                    ? "bg-primary text-white shadow-sm"
-                    : "bg-muted text-muted-foreground hover:bg-primary/10 hover:text-primary"
-                )}
-              >
-                {opt.label}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div className="rounded-[1.35rem] border border-black/5 bg-white/60 p-4">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-            Rentang Harga
-          </p>
-          <div className="space-y-4">
-            <div className="px-1">
-              <div className="relative h-2 rounded-full bg-muted">
-                <div
-                  className="absolute h-2 rounded-full bg-primary"
-                  style={{
-                    left: `${selectedLeft}%`,
-                    width: `${selectedWidth}%`,
-                  }}
-                />
-              </div>
-            </div>
-
-            <div>
-              <div className="mb-1 flex justify-between">
-                <span className="text-xs text-muted-foreground">Minimum</span>
-                <span className="text-xs font-bold">
-                  {minimumValueText}
-                </span>
-              </div>
-              <input
-                type="range"
-                aria-label="Harga minimum"
-                aria-valuemin={0}
-                aria-valuemax={effectiveMaxHarga}
-                aria-valuenow={minValue}
-                aria-valuetext={minimumValueText}
-                min={0}
-                max={effectiveMaxHarga}
-                step={HARGA_STEP}
-                value={minValue}
-                onChange={(e) => {
-                  const val = Number(e.target.value);
-                  setLocalMin(Math.min(val, maxValue - HARGA_STEP));
-                }}
-                onKeyUp={applyHarga}
-                onMouseUp={applyHarga}
-                onTouchEnd={applyHarga}
-                className="w-full"
-              />
-            </div>
-
-            <div>
-              <div className="mb-1 flex justify-between">
-                <span className="text-xs text-muted-foreground">Maksimum</span>
-                <span className="text-xs font-bold">
-                  {maximumValueText}
-                </span>
-              </div>
-              <input
-                type="range"
-                aria-label="Harga maksimum"
-                aria-valuemin={0}
-                aria-valuemax={effectiveMaxHarga}
-                aria-valuenow={maxValue}
-                aria-valuetext={maximumValueText}
-                min={0}
-                max={effectiveMaxHarga}
-                step={HARGA_STEP}
-                value={maxValue}
-                onChange={(e) => {
-                  const val = Number(e.target.value);
-                  setLocalMax(Math.max(val, minValue + HARGA_STEP));
-                }}
-                onKeyUp={applyHarga}
-                onMouseUp={applyHarga}
-                onTouchEnd={applyHarga}
-                className="w-full"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div className="rounded-[1.35rem] border border-black/5 bg-white/60 p-4">
-          <div className="mb-2 flex items-center justify-between gap-3">
-            <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-              Jarak ke Kampus
-            </p>
-            {currentJarakMax > 0 ? (
-              <span className="text-xs font-bold text-primary">
-                Maks. {currentJarakMax} km
-              </span>
-            ) : null}
-          </div>
-
-          {currentKampus ? (
-            <div className="flex flex-wrap gap-2">
-              <button
-                type="button"
-                onClick={() => applyJarak(null)}
-                aria-label="Tanpa batas jarak"
-                aria-pressed={currentJarakMax === 0}
-                className={cn(
-                  `min-h-10 rounded-full px-3 py-2 text-xs font-semibold transition-all ${focusRingClass}`,
-                  currentJarakMax === 0
-                    ? "bg-primary text-white shadow-sm"
-                    : "bg-muted text-muted-foreground hover:bg-primary/10 hover:text-primary"
-                )}
-              >
-                Bebas
-              </button>
-              {JARAK_OPTIONS_KM.map((jarak) => (
-                <button
-                  key={jarak}
-                  type="button"
-                  onClick={() => applyJarak(jarak)}
-                  aria-label={`Filter jarak maksimal ${jarak} km`}
-                  aria-pressed={currentJarakMax === jarak}
-                  className={cn(
-                    `min-h-10 rounded-full px-3 py-2 text-xs font-semibold transition-all ${focusRingClass}`,
-                    currentJarakMax === jarak
-                      ? "bg-primary text-white shadow-sm"
-                      : "bg-muted text-muted-foreground hover:bg-primary/10 hover:text-primary"
-                  )}
-                >
-                  {"<= "}
-                  {jarak} km
-                </button>
-              ))}
-            </div>
-          ) : (
-            <p className="rounded-xl border border-dashed bg-muted/40 px-4 py-3 text-xs text-muted-foreground">
-              Pilih kampus dulu untuk mengaktifkan filter jarak.
-            </p>
-          )}
+          ))}
         </div>
       </div>
-    </>
+
+      <hr className="my-5 border-black/5" />
+
+      {/* ── Jenis Kos ────────────────────────────────────────────────── */}
+      <div>
+        <p className="mb-2 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
+          Jenis Kos
+        </p>
+        <div className="flex gap-1.5">
+          {jenisOptions.map((opt) => (
+            <button
+              key={opt.value}
+              type="button"
+              onClick={() => setJenis(opt.value)}
+              aria-label={`Filter jenis ${opt.label}`}
+              aria-pressed={draft.jenis === opt.value}
+              className={cn(
+                `flex-1 rounded-lg px-2.5 py-2 text-[11px] font-bold transition-all ${focusRingClass}`,
+                draft.jenis === opt.value
+                  ? "bg-primary text-white shadow-sm"
+                  : "bg-muted text-muted-foreground hover:bg-primary/10 hover:text-primary"
+              )}
+            >
+              {opt.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <hr className="my-5 border-black/5" />
+
+      {/* ── Rentang Harga ────────────────────────────────────────────── */}
+      <div>
+        <p className="mb-3 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
+          Rentang Harga
+        </p>
+        <div className="space-y-3">
+          <div className="px-1">
+            <div className="relative h-1.5 rounded-full bg-muted">
+              <div
+                className="absolute h-1.5 rounded-full bg-primary"
+                style={{
+                  left: `${selectedLeft}%`,
+                  width: `${selectedWidth}%`,
+                }}
+              />
+            </div>
+          </div>
+
+          <div>
+            <div className="mb-1 flex justify-between">
+              <span className="text-[11px] text-muted-foreground">Minimum</span>
+              <span className="text-[11px] font-bold">{minimumValueText}</span>
+            </div>
+            <input
+              type="range"
+              aria-label="Harga minimum"
+              aria-valuemin={0}
+              aria-valuemax={effectiveMaxHarga}
+              aria-valuenow={draft.hargaMin}
+              aria-valuetext={minimumValueText}
+              min={0}
+              max={effectiveMaxHarga}
+              step={HARGA_STEP}
+              value={draft.hargaMin}
+              onChange={(e) => setHargaMin(Number(e.target.value))}
+              className="w-full"
+            />
+          </div>
+
+          <div>
+            <div className="mb-1 flex justify-between">
+              <span className="text-[11px] text-muted-foreground">Maksimum</span>
+              <span className="text-[11px] font-bold">{maximumValueText}</span>
+            </div>
+            <input
+              type="range"
+              aria-label="Harga maksimum"
+              aria-valuemin={0}
+              aria-valuemax={effectiveMaxHarga}
+              aria-valuenow={draft.hargaMax}
+              aria-valuetext={maximumValueText}
+              min={0}
+              max={effectiveMaxHarga}
+              step={HARGA_STEP}
+              value={draft.hargaMax}
+              onChange={(e) => setHargaMax(Number(e.target.value))}
+              className="w-full"
+            />
+          </div>
+        </div>
+      </div>
+
+      <hr className="my-5 border-black/5" />
+
+      {/* ── Fasilitas ────────────────────────────────────────────────── */}
+      <div>
+        <div className="mb-2 flex items-center justify-between">
+          <p className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
+            Fasilitas
+          </p>
+          {draft.fasilitas.length > 0 ? (
+            <span className="text-[11px] font-bold text-primary">
+              {draft.fasilitas.length} dipilih
+            </span>
+          ) : null}
+        </div>
+        <div className="flex flex-wrap gap-1.5">
+          {FASILITAS_OPTIONS.map((opt) => (
+            <button
+              key={opt.value}
+              type="button"
+              onClick={() => toggleFasilitas(opt.value)}
+              aria-label={`Filter fasilitas ${opt.label}`}
+              aria-pressed={draft.fasilitas.includes(opt.value)}
+              className={cn(
+                `rounded-full px-2.5 py-1.5 text-[11px] font-semibold transition-all ${focusRingClass}`,
+                draft.fasilitas.includes(opt.value)
+                  ? "bg-primary text-white shadow-sm"
+                  : "bg-muted text-muted-foreground hover:bg-primary/10 hover:text-primary"
+              )}
+            >
+              {opt.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <hr className="my-5 border-black/5" />
+
+      {/* ── Jarak ke Kampus ──────────────────────────────────────────── */}
+      <div>
+        <div className="mb-2 flex items-center justify-between">
+          <p className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
+            Jarak ke Kampus
+          </p>
+          {draft.jarakMax > 0 ? (
+            <span className="text-[11px] font-bold text-primary">
+              Maks. {draft.jarakMax} km
+            </span>
+          ) : null}
+        </div>
+
+        {draft.kampus ? (
+          <div className="flex flex-wrap gap-1.5">
+            <button
+              type="button"
+              onClick={() => setJarakMax(0)}
+              aria-label="Tanpa batas jarak"
+              aria-pressed={draft.jarakMax === 0}
+              className={cn(
+                `rounded-full px-2.5 py-1.5 text-[11px] font-semibold transition-all ${focusRingClass}`,
+                draft.jarakMax === 0
+                  ? "bg-primary text-white shadow-sm"
+                  : "bg-muted text-muted-foreground hover:bg-primary/10 hover:text-primary"
+              )}
+            >
+              Bebas
+            </button>
+            {JARAK_OPTIONS_KM.map((jarak) => (
+              <button
+                key={jarak}
+                type="button"
+                onClick={() => setJarakMax(jarak)}
+                aria-label={`Filter jarak maksimal ${jarak} km`}
+                aria-pressed={draft.jarakMax === jarak}
+                className={cn(
+                  `rounded-full px-2.5 py-1.5 text-[11px] font-semibold transition-all ${focusRingClass}`,
+                  draft.jarakMax === jarak
+                    ? "bg-primary text-white shadow-sm"
+                    : "bg-muted text-muted-foreground hover:bg-primary/10 hover:text-primary"
+                )}
+              >
+                {"<= "}
+                {jarak} km
+              </button>
+            ))}
+          </div>
+        ) : (
+          <p className="rounded-lg border border-dashed border-black/10 bg-muted/30 px-3 py-2.5 text-[11px] text-muted-foreground">
+            Pilih kampus dulu untuk mengaktifkan filter jarak.
+          </p>
+        )}
+      </div>
+
+      {/* ── Action Buttons ───────────────────────────────────────────── */}
+      <div className="mt-6 space-y-2">
+        <button
+          type="button"
+          onClick={applyFilters}
+          className={cn(
+            "w-full rounded-xl bg-primary px-5 py-2.5 text-[13px] font-bold text-white shadow-md shadow-primary/20 transition-all hover:bg-primary-600 active:scale-[0.98]",
+            isDirty &&
+              "animate-pulse ring-2 ring-primary/30 ring-offset-2"
+          )}
+        >
+          Terapkan Filter
+        </button>
+        {hasFilter ? (
+          <button
+            type="button"
+            onClick={resetAll}
+            className="w-full rounded-xl border border-black/10 bg-white/80 px-5 py-2 text-[13px] font-semibold text-muted-foreground transition-all hover:bg-muted/50"
+          >
+            Reset Semua
+          </button>
+        ) : null}
+      </div>
+    </div>
   );
 
   return (
@@ -362,7 +506,7 @@ export default function FilterSidebar({
             onClick={() => setMobileOpen(false)}
             className="absolute inset-0"
           />
-          <div 
+          <div
             id="mobile-filter-panel"
             className="surface-panel absolute inset-x-0 bottom-0 max-h-[85vh] overflow-y-auto rounded-t-[2rem] border-t border-white/70 shadow-2xl"
           >
@@ -371,7 +515,7 @@ export default function FilterSidebar({
         </div>
       ) : null}
 
-      <aside className="surface-panel hidden rounded-[1.6rem] border border-white/80 shadow-[0_18px_40px_rgba(17,17,16,0.07)] lg:block">
+      <aside className="surface-panel hidden max-h-[calc(100vh-6rem)] overflow-y-auto rounded-[1.6rem] border border-white/80 shadow-[0_18px_40px_rgba(17,17,16,0.07)] lg:sticky lg:top-20 lg:block">
         {filterContent}
       </aside>
     </>

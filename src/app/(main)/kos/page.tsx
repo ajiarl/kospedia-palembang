@@ -23,6 +23,7 @@ type SearchParams = Promise<{
   hargaMin?: string;
   hargaMax?: string;
   jarakMax?: string;
+  fasilitas?: string;
   sort?: string;
 }>;
 
@@ -175,6 +176,9 @@ export default async function HalamanListingKos({
     filters.jenis ? `Jenis: ${filters.jenis}` : null,
     filters.hargaMin ? `Min: Rp${Number(filters.hargaMin).toLocaleString("id-ID")}` : null,
     filters.hargaMax ? `Max: Rp${Number(filters.hargaMax).toLocaleString("id-ID")}` : null,
+    ...(filters.fasilitas
+      ? filters.fasilitas.split(",").filter(Boolean).map((f) => `Fasilitas: ${f}`)
+      : []),
     selectedKampus && filters.jarakMax ? `Jarak: <= ${filters.jarakMax} km` : null,
   ].filter(Boolean) as string[];
   const visibleKosForMap = daftarKos.filter((kos) => kos.locationMeta.isMapVisible);
@@ -288,10 +292,10 @@ export default async function HalamanListingKos({
         </div>
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-[280px_1fr]">
+      <div className="grid items-start gap-6 lg:grid-cols-[300px_1fr]">
         <FilterSidebar kampus={daftarKampus} maxHarga={hargaMaxTersedia} />
 
-        <section className="space-y-4">
+        <section className="min-w-0 space-y-4">
           <div className="surface-panel flex flex-col gap-4 rounded-[1.6rem] border border-white/80 px-5 py-4 shadow-[0_12px_30px_rgba(17,17,16,0.06)] sm:flex-row sm:items-center sm:justify-between">
             <p className="text-sm text-muted-foreground">
               <span className="font-semibold text-foreground">{daftarKos.length}</span> kos ditemukan
@@ -413,10 +417,12 @@ function buildKosQuery(
   }
 
   if (filters.fasilitas) {
-    const fasilitas = Array.isArray(filters.fasilitas)
-      ? filters.fasilitas
-      : [filters.fasilitas];
-    query = query.contains("fasilitas", fasilitas);
+    const fasilitas = typeof filters.fasilitas === "string"
+      ? filters.fasilitas.split(",").filter(Boolean)
+      : Array.isArray(filters.fasilitas)
+        ? filters.fasilitas
+        : [filters.fasilitas];
+    if (fasilitas.length > 0) query = query.contains("fasilitas", fasilitas);
   }
 
   query = query.order("created_at", { ascending: false });

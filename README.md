@@ -1,94 +1,113 @@
-# KosPedia Palembang 🚀
+# KosPedia Palembang 🏠
 
-Platform pencarian kos mahasiswa di sekitar kampus-kampus Palembang, dibangun dengan **Hardened Architecture** menggunakan Next.js App Router dan Supabase.
+Platform pencarian kos mahasiswa di sekitar kampus-kampus Palembang. Temukan kos terdekat, bandingkan fasilitas, dan filter berdasarkan kebutuhan — semua dalam satu tempat.
 
-## 🏗️ Hardened Architecture (Phases 1-13)
+## ✨ Fitur Unggulan
 
-Project ini telah melewati audit keamanan, performa, dan reliabilitas menyeluruh untuk memastikan kualitas produksi:
+### 🔍 Smart Filtering
+- **Jarak ke Kampus** — Filter kos berdasarkan radius (0.5–5 km) dari kampus pilihan menggunakan kalkulasi Haversine.
+- **Fasilitas Lengkap** — Filter berdasarkan WiFi, AC, Kamar Mandi Dalam, Parkir, Dapur, dan lainnya.
+- **Rentang Harga** — Dual-slider untuk menentukan batas harga minimum dan maksimum.
+- **Jenis Kos** — Filter berdasarkan Putra, Putri, atau Campur.
 
-### 🔐 Security & Reliability
-- **Type-Safe Input Validation**: Seluruh API mutation (Favorit, Review) diproteksi menggunakan **Zod** untuk validasi schema dan `safeParseJson` wrapper untuk mencegah payload injection.
-- **CSRF & Origin Protection**: Pengamanan mutation routes dengan verifikasi host dan origin untuk mencegah serangan Cross-Site Request Forgery.
-- **Advanced Rate Limiting**: Limitasi request berbasis IP/User menggunakan backend **Supabase SQL** untuk mencegah brute-force dan spamming.
-- **Fail-Safe ENV Validation**: Validasi variabel lingkungan (Supabase keys, Site URL) menggunakan Zod di level module-load. Aplikasi akan gagal start secara eksplisit jika config tidak valid.
-- **Security Headers**: Implementasi **Dynamic Content Security Policy (CSP)** via `next.config.ts`. Header ini bersifat *environment-aware*: mengizinkan `unsafe-eval` hanya di development (untuk HMR) dan mendukung Google Tag Manager tanpa mengorbankan keamanan di produksi.
-- **Service Role Key Isolation**: Audit menyeluruh untuk memastikan `SUPABASE_SERVICE_ROLE_KEY` hanya diakses di lingkungan server-side admin yang terisolasi.
+### ⚡ Batch Filter Update
+Semua interaksi filter (klik chip, geser slider) hanya mengubah state lokal. Perubahan baru dikirim ke server setelah tombol **"Terapkan Filter"** ditekan — menghilangkan reload berulang dan memberikan pengalaman yang jauh lebih responsif.
 
-### ⚡ Performance
-- **Parallel Data Fetching**: Eliminasi waterfall data-fetching pada halaman listing `/kos` menggunakan `Promise.all` untuk query kampus dan kos secara bersamaan.
-- **Coordinate Map Singletons**: Pengelolaan titik koordinat menggunakan singleton pattern dan lazy-loading untuk optimasi memori dan render map.
-- **Memory Leak Fixes**: Refactor React Context (Favorit) dengan stable refs dan `isMounted` guards untuk mencegah memory leak dan loop re-render.
+### 🎨 Modern-Clean UI
+- Layout responsif yang optimal untuk Mobile dan Desktop.
+- Sidebar filter dalam satu container bersih dengan divider halus, bukan card-card terpisah.
+- Sticky sidebar di desktop agar filter selalu terlihat saat scrolling.
+- Bottom-sheet drawer di mobile dengan backdrop blur.
 
-### 📊 Monitoring & DX
-- **Structured Logging**: Implementasi logger kustom yang mendukung **NDJSON** di produksi (siap ingest ke Axiom/Datadog) dan *pretty-printing* berwarna di lingkungan development.
-- **Correlation IDs**: Setiap log request otomatis menyertakan `requestId` unik untuk kemudahan tracing transaksi antar modul.
-- **Analytics & Tracking**: Integrasi **Google Tag Manager (GTM)** dan **GA4** yang telah dikonfigurasi aman dengan CSP untuk tracking event tanpa memblokir proses hidrasi Next.js.
-- **Accessibility (A11y)**: Audit WCAG untuk komponen interaktif, penambahan ARIA labels, dan perbaikan UX map scroll-trap.
+### 🗺️ Peta Interaktif
+- Peta Leaflet dengan pin lokasi kos dan kampus.
+- Validasi koordinat otomatis via audit geocoding dan sistem override.
+- Badge jarak yang menampilkan jarak ke kampus terdekat.
+
+### 🔐 Hardened Security
+- **Zod Validation** — Input API divalidasi dengan schema ketat.
+- **Rate Limiting** — Proteksi brute-force berbasis IP/User via Supabase SQL.
+- **CSRF Protection** — Verifikasi origin pada semua mutation routes.
+- **Dynamic CSP** — Content Security Policy yang environment-aware.
+- **ENV Validation** — Aplikasi gagal start secara eksplisit jika config tidak valid.
+
+### 📊 Analytics & Monitoring
+- Structured logging (NDJSON di produksi, pretty-print di dev).
+- Google Tag Manager & GA4 terintegrasi aman dengan CSP.
+- Correlation IDs untuk request tracing.
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Framework**: [Next.js 16](https://nextjs.org/) (App Router + Turbopack)
-- **Database & Auth**: [Supabase](https://supabase.com/) (PostgreSQL + RLS)
-- **Validation**: [Zod](https://zod.dev/)
-- **Analytics**: [Google Tag Manager](https://tagmanager.google.com/) & [GA4](https://analytics.google.com/)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Maps**: [Leaflet](https://leafletjs.com/) & [React-Leaflet](https://react-leaflet.js.org/)
+| Layer | Teknologi |
+|-------|-----------|
+| Framework | [Next.js 16](https://nextjs.org/) (App Router + Turbopack) |
+| Database & Auth | [Supabase](https://supabase.com/) (PostgreSQL + RLS) |
+| Styling | [Tailwind CSS](https://tailwindcss.com/) |
+| Maps | [Leaflet](https://leafletjs.com/) & [React-Leaflet](https://react-leaflet.js.org/) |
+| Validation | [Zod](https://zod.dev/) |
+| Analytics | [Google Tag Manager](https://tagmanager.google.com/) & GA4 |
 
 ---
 
 ## 🚀 Setup Lokal
 
-1. **Install dependency**:
-   ```bash
-   npm install
-   ```
+```bash
+# 1. Install dependencies
+npm install
 
-2. **Salin environment**:
-   ```bash
-   copy .env.example .env.local
-   ```
+# 2. Salin environment
+copy .env.example .env.local
 
-3. **Isi minimal variabel berikut di `.env.local`**:
-   ```env
-   NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
-   NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
-   NEXT_PUBLIC_SITE_URL=http://localhost:3000
-   SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
-   ```
+# 3. Jalankan development server
+npm run dev
+```
 
-4. **Jalankan development server**:
-   ```bash
-   npm run dev
-   ```
+Isi variabel berikut di `.env.local`:
 
-5. **Buka `http://localhost:3000`**.
+```env
+NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+NEXT_PUBLIC_SITE_URL=http://localhost:3000           # opsional, default localhost
+SUPABASE_SERVICE_ROLE_KEY=your-service-role-key      # opsional untuk build
+NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX           # opsional untuk analytics
+```
+
+Buka **http://localhost:3000** dan mulai eksplorasi.
 
 ---
 
-## 📜 Script Utama
+## 📜 Script
 
-- `npm run dev`: Menjalankan server development.
-- `npm run build`: Build aplikasi untuk produksi.
-- `npm run start`: Menjalankan hasil build produksi.
-- `npm run lint`: Cek kualitas kode dengan ESLint.
-- `npx tsc --noEmit`: Validasi integritas tipe TypeScript.
-
----
-
-## 📂 Struktur Project Penting
-
-- `src/env.ts`: Skema validasi environment variables.
-- `src/lib/logger.ts`: Utilitas logging terstruktur.
-- `src/lib/api.ts`: Helper shared untuk respon API standard.
-- `src/lib/csrf.ts`: Middleware validasi origin.
-- `src/lib/security.ts`: Implementasi rate limiter persisten.
+| Perintah | Fungsi |
+|----------|--------|
+| `npm run dev` | Server development |
+| `npm run build` | Build produksi |
+| `npm run start` | Jalankan build produksi |
+| `npm run lint` | Cek kode dengan ESLint |
+| `npx tsc --noEmit` | Validasi integritas tipe |
 
 ---
 
-## 📝 Catatan Implementasi
+## 📂 Struktur Penting
 
-- Metadata SEO, canonical URL, sitemap, dan robots bergantung pada `NEXT_PUBLIC_SITE_URL`.
-- Google Analytics 4 otomatis aktif jika `NEXT_PUBLIC_GA_MEASUREMENT_ID` diisi.
-- Banner consent menyimpan pilihan analytics di `localStorage` dengan key `kospedia-cookie-consent`.
+```
+src/
+├── app/(main)/kos/         # Halaman listing & detail kos
+├── app/api/                 # API routes (favorit, review, kos)
+├── components/shared/       # FilterSidebar, KosCard, Navbar, dll.
+├── context/                 # FavoritContext (optimistic UI)
+├── lib/                     # Utils: haversine, logger, security, csrf
+├── env.ts                   # Zod schema untuk environment variables
+└── types/                   # TypeScript types & database schema
+```
+
+---
+
+## 📝 Catatan
+
+- SEO metadata dan canonical URL bergantung pada `NEXT_PUBLIC_SITE_URL`.
+- GA4 otomatis aktif jika `NEXT_PUBLIC_GA_MEASUREMENT_ID` diisi.
+- Cookie consent tersimpan di `localStorage` (`kospedia-cookie-consent`).
+- Koordinat kos divalidasi via audit otomatis dengan fallback ke geocoder.
