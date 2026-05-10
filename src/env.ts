@@ -8,7 +8,7 @@ const clientSchema = z.object({
 });
 
 const serverSchema = z.object({
-  SUPABASE_SERVICE_ROLE_KEY: z.string().min(20),
+  SUPABASE_SERVICE_ROLE_KEY: z.string().min(20).optional(),
   NODE_ENV: z.enum(["development", "test", "production"]).default("development"),
 });
 
