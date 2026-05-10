@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 import KosCard from "@/components/shared/KosCard";
 import { getCurrentUser } from "@/lib/auth";
@@ -62,15 +63,18 @@ function EmptyState() {
 
 export default async function HalamanFavorit() {
   const user = await getCurrentUser();
+
+  if (!user) {
+    redirect("/login?next=/favorit");
+  }
+
   const supabase = await createSupabaseServerClient();
 
-  const { data, error } = user
-    ? await supabase
-        .from("favorit")
-        .select("id, kos:kos_id(*, kampus:kampus_id(id, nama, slug, lat, lng))")
-        .eq("user_id", user.id)
-        .order("created_at", { ascending: false })
-    : { data: [], error: null };
+  const { data, error } = await supabase
+    .from("favorit")
+    .select("id, kos:kos_id(*, kampus:kampus_id(id, nama, slug, lat, lng))")
+    .eq("user_id", user.id)
+    .order("created_at", { ascending: false });
 
   const favorit = (data ?? []) as FavoritWithKos[];
   const daftarKos: Array<KosWithLocationMeta<KosWithKampus>> = applyKosCoordinateOverrides(
