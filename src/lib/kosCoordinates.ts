@@ -6,6 +6,8 @@ import type {
   KosWithLocationMeta,
 } from "@/types/kos";
 
+// ─── Types (unchanged) ───────────────────────────────────────────────────────
+
 type CoordinateOverride = {
   lat: number;
   lng: number;
@@ -39,7 +41,25 @@ type AuditEntry = {
   suggested: AuditSuggested | null;
 };
 
-const KOS_COORDINATE_OVERRIDES: Record<string, CoordinateOverride> = {
+// ─── Singleton audit map (CHANGED) ──────────────────────────────────────────
+
+let _auditMap: Map<string, AuditEntry> | null = null;
+
+function getAuditMap(): Map<string, AuditEntry> {
+  if (_auditMap !== null) return _auditMap;
+
+  _auditMap = new Map(
+    ((coordinateAudit as { entries?: AuditEntry[] }).entries ?? []).map(
+      (entry): [string, AuditEntry] => [entry.slug, entry]
+    )
+  );
+
+  return _auditMap;
+}
+
+// ─── Coordinate overrides (CHANGED: slug and ID separated) ──────────────────
+
+const OVERRIDES_BY_SLUG: Record<string, CoordinateOverride> = {
   "kost-3-behadeng": {
     lat: -3.0130007,
     lng: 104.7673129,
@@ -84,14 +104,16 @@ const KOS_COORDINATE_OVERRIDES: Record<string, CoordinateOverride> = {
   },
 };
 
-const auditEntries = ((coordinateAudit as { entries?: AuditEntry[] }).entries ?? []).map(
-  (entry): [string, AuditEntry] => [entry.slug, entry]
-);
-const AUDIT_BY_SLUG = new Map<string, AuditEntry>(auditEntries);
+const OVERRIDES_BY_ID: Record<string, CoordinateOverride> = {};
+
+// ─── Private helpers (unchanged logic, updated map accessor) ─────────────────
+
+function getOverride(kos: CoordinateAwareKos): CoordinateOverride | undefined {
+  return OVERRIDES_BY_SLUG[kos.slug] ?? OVERRIDES_BY_ID[kos.id];
+}
 
 function isStreetLevelLabel(label?: string | null) {
   if (!label) return false;
-
   return /(jalan|jl\.|lorong|lrg\.|gang|gg\.)/i.test(label);
 }
 
@@ -120,7 +142,7 @@ function buildMeta(
 }
 
 function getAuditBasedLocation<T extends CoordinateAwareKos>(kos: T) {
-  const audit = AUDIT_BY_SLUG.get(kos.slug);
+  const audit = getAuditMap().get(kos.slug);
 
   if (!audit) {
     return {
@@ -190,10 +212,12 @@ function getAuditBasedLocation<T extends CoordinateAwareKos>(kos: T) {
   };
 }
 
+// ─── Public API (exported — names and signatures unchanged) ──────────────────
+
 export function applyKosCoordinateOverride<T extends CoordinateAwareKos>(
   kos: T
 ): KosWithLocationMeta<T> {
-  const override = KOS_COORDINATE_OVERRIDES[kos.slug] ?? KOS_COORDINATE_OVERRIDES[kos.id];
+  const override = getOverride(kos);
 
   if (override) {
     return {
@@ -218,4 +242,15 @@ export function applyKosCoordinateOverrides<T extends CoordinateAwareKos>(
   items: T[]
 ): Array<KosWithLocationMeta<T>> {
   return items.map(applyKosCoordinateOverride);
+}
+
+// ─── Dev/test escape hatch ───────────────────────────────────────────────────
+
+/**
+ * Resets the singleton cache.
+ * Use ONLY in Jest/Vitest test files to ensure a clean state between tests.
+ * Never import this in application code.
+ */
+export function _resetAuditMapForTesting(): void {
+  _auditMap = null;
 }

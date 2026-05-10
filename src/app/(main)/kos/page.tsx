@@ -86,8 +86,13 @@ export default async function HalamanListingKos({
   const filters = await searchParams;
   const supabase = await createSupabaseServerClient();
 
-  const [{ data: kampusData }, { data: maxHargaData }] = await Promise.all([
-    supabase.from("kampus").select("*").order("nama", { ascending: true }),
+  const [
+    { data: kampusData },
+    { data: maxHargaData },
+    { data: selectedKampusData },
+    { data: kosData, error: kosError },
+  ] = await Promise.all([
+    supabase.from("kampus").select("id, nama, slug, lat, lng").order("nama"),
     supabase
       .from("kos")
       .select("harga_max")
@@ -95,29 +100,19 @@ export default async function HalamanListingKos({
       .order("harga_max", { ascending: false })
       .limit(1)
       .maybeSingle(),
+    filters.kampus
+      ? supabase
+          .from("kampus")
+          .select("id, nama, slug, lat, lng")
+          .eq("slug", filters.kampus as string)
+          .maybeSingle()
+      : Promise.resolve({ data: null, error: null }),
+    buildKosQuery(supabase, filters),
   ]);
 
-  const selectedKampus =
-    filters.kampus && kampusData
-      ? kampusData.find((item) => item.slug === filters.kampus)
-      : null;
-
-  let query = supabase
-    .from("kos")
-    .select("*, kampus:kampus_id(id, nama, slug, lat, lng), review(rating)")
-    .eq("tersedia", true);
-
-  if (selectedKampus) {
-    query = query.eq("kampus_id", selectedKampus.id);
-  }
-
-  if (
-    filters.jenis === "putra" ||
-    filters.jenis === "putri" ||
-    filters.jenis === "campur"
-  ) {
-    query = query.eq("jenis", filters.jenis);
-  }
+  const selectedKampus = selectedKampusData ?? null;
+  const maxHarga = maxHargaData?.harga_max ?? 5_000_000;
+  const error = kosError;
 
   const hargaMaxTersedia = Math.max(2_500_000, maxHargaData?.harga_max ?? 0);
   const parsedMinRaw = Number(filters.hargaMin);
@@ -133,18 +128,8 @@ export default async function HalamanListingKos({
       : NaN;
   const parsedJarakMax =
     Number.isFinite(parsedJarakMaxRaw) && parsedJarakMaxRaw > 0 ? parsedJarakMaxRaw : NaN;
-  const hasJarakFilter = selectedKampus && !Number.isNaN(parsedJarakMax);
-  const jarakFilterLabel =
-    hasJarakFilter ? `<= ${parsedJarakMax} km` : null;
-
-  if (filters.hargaMin && !Number.isNaN(parsedMin) && parsedMin >= 0) {
-    query = query.gte("harga_max", parsedMin);
-  }
-  if (filters.hargaMax && !Number.isNaN(parsedMax) && parsedMax >= 0) {
-    query = query.lte("harga_min", parsedMax);
-  }
-
-  const { data: kosData, error } = await query;
+  const hasJarakFilter = selectedKampus !== null && !Number.isNaN(parsedJarakMax);
+  const jarakFilterLabel = hasJarakFilter ? `<= ${parsedJarakMax} km` : null;
   const normalizedKos = applyKosCoordinateOverrides((kosData ?? []) as KosWithRating[]);
   const filteredKos = normalizedKos.filter((kos) => {
     if (!hasJarakFilter || !selectedKampus) return true;
@@ -396,4 +381,39 @@ export default async function HalamanListingKos({
       <BackToTopButton />
     </div>
   );
+}
+
+function buildKosQuery(
+  supabase: Awaited<ReturnType<typeof createSupabaseServerClient>>,
+  filters: { [key: string]: string | string[] | undefined }
+) {
+  let query = supabase
+    .from("kos")
+    .select(`*, kampus:kampus_id (id, nama, slug, lat, lng), review(rating)`)
+    .eq("tersedia", true);
+
+  if (filters.kampus) query = query.eq("kampus.slug", filters.kampus as string);
+
+  const hargaMin = Number(filters.hargaMin);
+  const hargaMax = Number(filters.hargaMax);
+  if (!isNaN(hargaMin) && hargaMin > 0) query = query.gte("harga_max", hargaMin);
+  if (!isNaN(hargaMax) && hargaMax > 0) query = query.lte("harga_min", hargaMax);
+
+  if (
+    filters.jenis === "putra" ||
+    filters.jenis === "putri" ||
+    filters.jenis === "campur"
+  ) {
+    query = query.eq("jenis", filters.jenis);
+  }
+
+  if (filters.fasilitas) {
+    const fasilitas = Array.isArray(filters.fasilitas)
+      ? filters.fasilitas
+      : [filters.fasilitas];
+    query = query.contains("fasilitas", fasilitas);
+  }
+
+  query = query.order("created_at", { ascending: false });
+  return query;
 }
