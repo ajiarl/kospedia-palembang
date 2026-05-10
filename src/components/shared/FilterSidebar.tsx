@@ -490,7 +490,7 @@ export default function FilterSidebar({
         aria-label="Buka filter pencarian"
         aria-expanded={mobileOpen}
         aria-controls="mobile-filter-panel"
-        className={`surface-panel sticky top-20 z-30 flex w-full items-center justify-between rounded-[1.4rem] border border-white/80 px-5 py-4 text-left shadow-[0_16px_34px_rgba(17,17,16,0.08)] lg:hidden ${focusRingClass}`}
+        className={`sticky top-20 z-30 flex w-full items-center justify-between border-b border-black/5 bg-white/60 px-4 py-3.5 text-left backdrop-blur-sm lg:hidden ${focusRingClass}`}
       >
         <span className="text-sm font-bold">Filter</span>
         <span className="text-xs font-medium text-primary">
@@ -508,14 +508,14 @@ export default function FilterSidebar({
           />
           <div
             id="mobile-filter-panel"
-            className="surface-panel absolute inset-x-0 bottom-0 max-h-[85vh] overflow-y-auto rounded-t-[2rem] border-t border-white/70 shadow-2xl"
+            className="absolute inset-x-0 bottom-0 max-h-[85vh] overflow-y-auto rounded-t-[1.5rem] border-t border-black/5 bg-white shadow-2xl"
           >
             {filterContent}
           </div>
         </div>
       ) : null}
 
-      <aside className="surface-panel hidden max-h-[calc(100vh-6rem)] overflow-y-auto rounded-[1.6rem] border border-white/80 shadow-[0_18px_40px_rgba(17,17,16,0.07)] lg:sticky lg:top-20 lg:block">
+      <aside className="hidden max-h-[calc(100vh-6rem)] overflow-y-auto lg:sticky lg:top-20 lg:block">
         {filterContent}
       </aside>
     </>

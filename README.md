@@ -13,11 +13,11 @@ Platform pencarian kos mahasiswa di sekitar kampus-kampus Palembang. Temukan kos
 ### ⚡ Batch Filter Update
 Semua interaksi filter (klik chip, geser slider) hanya mengubah state lokal. Perubahan baru dikirim ke server setelah tombol **"Terapkan Filter"** ditekan — menghilangkan reload berulang dan memberikan pengalaman yang jauh lebih responsif.
 
-### 🎨 Modern-Clean UI
+### 🎨 Flat Minimalist UI
+- **Tanpa card-ception** — Hanya item kos yang menggunakan card. Header, sidebar, peta, dan toolbar menyatu seamless tanpa border/shadow berlebihan.
 - Layout responsif yang optimal untuk Mobile dan Desktop.
-- Sidebar filter dalam satu container bersih dengan divider halus, bukan card-card terpisah.
-- Sticky sidebar di desktop agar filter selalu terlihat saat scrolling.
-- Bottom-sheet drawer di mobile dengan backdrop blur.
+- Sticky sidebar transparan di desktop, bottom-sheet drawer di mobile.
+- Search bar glassmorphic dengan subtle shadow, tanpa border tebal.
 
 ### 🗺️ Peta Interaktif
 - Peta Leaflet dengan pin lokasi kos dan kampus.

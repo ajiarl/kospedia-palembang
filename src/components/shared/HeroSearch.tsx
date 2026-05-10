@@ -50,7 +50,7 @@ export default function HeroSearch({ kampus }: { kampus: Kampus[] }) {
   return (
     <div ref={wrapperRef} className="relative mx-auto w-full max-w-xl">
       <form onSubmit={handleSubmit}>
-        <div className="flex items-center gap-2 rounded-full border-2 border-black bg-white/80 p-1.5 backdrop-blur-md shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-shadow hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] md:p-2">
+        <div className="flex items-center gap-2 rounded-full border border-black/10 bg-white/80 p-1.5 shadow-lg shadow-black/5 ring-1 ring-black/5 backdrop-blur-md transition-shadow hover:shadow-xl md:p-2">
           <div className="flex min-w-0 flex-1 items-center gap-2 pl-3 md:gap-3">
             <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
               <svg
@@ -90,7 +90,7 @@ export default function HeroSearch({ kampus }: { kampus: Kampus[] }) {
       </form>
 
       {open && suggestions.length > 0 && (
-        <div className="absolute left-0 right-0 top-full z-50 mt-4 overflow-hidden rounded-[1.5rem] border-2 border-black bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+        <div className="absolute left-0 right-0 top-full z-50 mt-3 overflow-hidden rounded-2xl border border-black/10 bg-white shadow-xl shadow-black/10">
           {suggestions.map((k) => (
             <button
               key={k.slug}
@@ -106,7 +106,7 @@ export default function HeroSearch({ kampus }: { kampus: Kampus[] }) {
               <span className="font-bold text-charcoal">{k.nama}</span>
             </button>
           ))}
-          <div className="border-t-2 border-black bg-zinc-50/50 px-5 py-3">
+          <div className="border-t border-black/5 bg-zinc-50/50 px-5 py-3">
             <button
               type="button"
               onClick={() => {

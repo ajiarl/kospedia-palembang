@@ -250,44 +250,33 @@ export default async function HalamanListingKos({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(listJsonLd) }}
       />
-      <div className="surface-panel mb-6 rounded-[2rem] border border-white/80 px-6 py-7 shadow-[0_18px_46px_rgba(17,17,16,0.07)] md:px-8 md:py-8">
-        <div className="flex flex-col gap-6 xl:flex-row xl:items-end xl:justify-between">
+      <div className="mb-8 space-y-3">
+        <div className="flex flex-col gap-5 xl:flex-row xl:items-end xl:justify-between">
           <div className="space-y-2">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">
               Direktori kos mahasiswa Palembang
             </p>
-            <h1 className="text-4xl font-bold leading-none text-charcoal md:text-5xl">
+            <h1 className="text-3xl font-bold leading-tight text-charcoal md:text-4xl">
               Temukan kos yang terasa pas, bukan sekadar tersedia.
             </h1>
-            <p className="max-w-2xl text-sm leading-7 text-muted-foreground md:text-base">
+            <p className="max-w-2xl text-sm leading-7 text-muted-foreground">
               Temukan kos berdasarkan kampus, jenis, rentang harga, dan jarak yang paling cocok
               dengan ritme kuliahmu.
             </p>
           </div>
 
-          <div className="grid gap-3 sm:grid-cols-3">
-            <div className="rounded-[1.35rem] border border-white/80 bg-white/75 px-4 py-4">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-                Total Hasil
-              </p>
-              <p className="mt-2 text-2xl font-bold text-charcoal">{daftarKos.length}</p>
-            </div>
-            <div className="rounded-[1.35rem] border border-white/80 bg-white/75 px-4 py-4">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-                Kampus
-              </p>
-              <p className="mt-2 text-sm font-semibold text-charcoal">
-                {selectedKampus?.nama ?? "Semua kampus"}
-              </p>
-            </div>
-            <div className="rounded-[1.35rem] border border-white/80 bg-white/75 px-4 py-4">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-                Urutan
-              </p>
-              <p className="mt-2 text-sm font-semibold capitalize text-charcoal">
-                {filters.sort ?? "termurah"}
-              </p>
-            </div>
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-1 text-sm text-muted-foreground">
+            <span>
+              <span className="font-bold text-charcoal">{daftarKos.length}</span> kos
+            </span>
+            <span className="hidden sm:inline text-black/10">|</span>
+            <span className="font-medium text-charcoal">
+              {selectedKampus?.nama ?? "Semua kampus"}
+            </span>
+            <span className="hidden sm:inline text-black/10">|</span>
+            <span className="capitalize">
+              {filters.sort ?? "termurah"}
+            </span>
           </div>
         </div>
       </div>
@@ -296,7 +285,7 @@ export default async function HalamanListingKos({
         <FilterSidebar kampus={daftarKampus} maxHarga={hargaMaxTersedia} />
 
         <section className="min-w-0 space-y-4">
-          <div className="surface-panel flex flex-col gap-4 rounded-[1.6rem] border border-white/80 px-5 py-4 shadow-[0_12px_30px_rgba(17,17,16,0.06)] sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <p className="text-sm text-muted-foreground">
               <span className="font-semibold text-foreground">{daftarKos.length}</span> kos ditemukan
               {selectedKampus ? ` di sekitar ${selectedKampus.nama}` : ""}
@@ -335,8 +324,8 @@ export default async function HalamanListingKos({
             </div>
           ) : daftarKos.length > 0 ? (
             <>
-              <div className="overflow-hidden rounded-[1.8rem] border border-white/80 bg-white/75 p-3 shadow-[0_18px_40px_rgba(17,17,16,0.08)] backdrop-blur-sm">
-                <MapViewClient markers={mapMarkers} className="h-80 rounded-[1.2rem]" />
+              <div className="overflow-hidden rounded-xl">
+                <MapViewClient markers={mapMarkers} className="h-80 rounded-xl" />
               </div>
               {hiddenKosCount > 0 ? (
                 <p className="text-xs text-muted-foreground">
@@ -364,9 +353,9 @@ export default async function HalamanListingKos({
               </div>
             </>
           ) : (
-            <div className="surface-panel rounded-[1.8rem] border border-white/80 p-10 text-center shadow-[0_18px_40px_rgba(17,17,16,0.06)]">
+            <div className="py-10 text-center">
               <svg
-                className="mx-auto mb-4 h-12 w-12 text-muted-foreground/40"
+                className="mx-auto mb-4 h-12 w-12 text-muted-foreground/30"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
