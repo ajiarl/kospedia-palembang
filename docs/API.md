@@ -50,7 +50,7 @@ Logika pencarian diimplementasikan di `src/app/(main)/kos/page.tsx`. Perilaku ut
 1.  **Price Overlap**: Pencarian untuk rentang harga `[min, max]` menggunakan:
     *   `.gte('harga_max', min)`
     *   `.lte('harga_min', max)`
-    Ini memastikan kami menemukan item Kos yang rentang harganya *beririsan* dengan rentang yang diinginkan pengguna.
+    Ini memastikan pencarian menemukan item Kos yang rentang harganya *beririsan* dengan rentang yang diinginkan pengguna.
 2.  **Facility Filter**: Menggunakan operator `.contains()` PostgreSQL untuk pencocokan array. Jika beberapa fasilitas dipilih, Query akan mengembalikan item Kos yang memiliki **semua** fasilitas yang dipilih.
 3.  **Distance Calculation**: Jarak dihitung di sisi aplikasi menggunakan **Haversine Formula** (`src/lib/haversine.ts`). Hal ini memungkinkan pemfilteran radius dinamis berdasarkan koordinat override.
 

@@ -3,10 +3,10 @@
 Dokumen ini mencatat keputusan teknis utama yang diambil selama pengembangan KosPedia Palembang.
 
 ## ADR 1: Application-Level Distance Filtering
-*   **Konteks**: Kami perlu memfilter Kos berdasarkan jarak dari kampus yang dipilih.
+*   **Konteks**: Diperlukan fitur untuk memfilter Kos berdasarkan jarak dari kampus yang dipilih.
 *   **Keputusan**: Mengimplementasikan perhitungan jarak (Haversine) di TypeScript pada sisi aplikasi (`src/lib/haversine.ts`) alih-alih menggunakan `ST_Distance` PostGIS di database.
 *   **Rasional**:
-    *   **Coordinate Overrides**: Kami memiliki sistem di `src/lib/kosCoordinates.ts` yang menimpa koordinat database dengan hasil audit geocoding. Melakukan pemfilteran di aplikasi memastikan perhitungan selalu menggunakan koordinat yang sudah *dikoreksi*.
+    *   **Coordinate Overrides**: Terdapat sistem di `src/lib/kosCoordinates.ts` yang menimpa koordinat database dengan hasil audit geocoding. Melakukan pemfilteran di aplikasi memastikan perhitungan selalu menggunakan koordinat yang sudah *dikoreksi*.
     *   **Kesederhanaan**: Menghindari ketergantungan pada ekstensi PostGIS dalam setup dasar Supabase.
 *   **Konsekuensi**: Frontend harus mengambil semua Kos yang relevan untuk suatu kampus terlebih dahulu, lalu memfilter array tersebut. Ini berperforma baik untuk volume data saat ini (~ratusan baris).
 

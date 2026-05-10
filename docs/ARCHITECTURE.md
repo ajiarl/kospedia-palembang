@@ -32,7 +32,7 @@ KosPedia menggunakan arsitektur **Full-stack React** modern:
 ## 📊 Data Fetching & State Management
 
 ### Server-Side Strategy
-Sebagian besar data (listing Kos, daftar Kampus) di-fetch di dalam **Server Components** (`src/app/(main)/kos/page.tsx`). Kami menggunakan **Parallel Data Fetching** (`Promise.all`) untuk menghilangkan waterfall:
+Sebagian besar data (listing Kos, daftar Kampus) di-fetch di dalam **Server Components** (`src/app/(main)/kos/page.tsx`). Digunakan **Parallel Data Fetching** (`Promise.all`) untuk menghilangkan waterfall:
 ```typescript
 const [{ data: kampusData }, { data: maxHargaData }] = await Promise.all([
   supabase.from("kampus").select("*"),

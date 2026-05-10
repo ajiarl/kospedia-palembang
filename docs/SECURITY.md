@@ -5,15 +5,15 @@ KosPedia Palembang menerapkan strategi "Defense in Depth" di seluruh lapisan sta
 ## 🛡️ Lapisan Keamanan
 
 ### 1. Input Validation (Zod)
-Kami menggunakan validasi schema **Zod** untuk environment variable dan request body API.
+Aplikasi ini menggunakan validasi schema **Zod** untuk environment variable dan request body API.
 *   **Env Validation**: `src/env.ts` memastikan aplikasi gagal dijalankan jika kunci kritikal hilang atau salah format.
 *   **API Validation**: Route seperti `/api/favorit` dan `/api/review` menggunakan `safeParseJson` dan schema Zod untuk mencegah payload injection dan memastikan keamanan tipe data.
 
 ### 2. CSRF & Origin Protection
-Kami melindungi mutasi state (POST, DELETE) dengan memvalidasi header `Origin` di middleware `validateOrigin` (`src/lib/csrf.ts`). Ini mencegah serangan Cross-Site Request Forgery (CSRF) dengan memastikan permintaan hanya datang dari domain kami sendiri atau host pengembangan lokal yang diizinkan.
+Mutasi state (POST, DELETE) dilindungi dengan memvalidasi header `Origin` di middleware `validateOrigin` (`src/lib/csrf.ts`). Ini mencegah serangan Cross-Site Request Forgery (CSRF) dengan memastikan permintaan hanya datang dari domain aplikasi sendiri atau host pengembangan lokal yang diizinkan.
 
 ### 3. Rate Limiting
-Untuk mencegah spam dan serangan brute-force pada mutasi (Favorit/Review), kami menerapkan rate limiter berbasis database:
+Untuk mencegah spam dan serangan brute-force pada mutasi (Favorit/Review), diterapkan rate limiter berbasis database:
 *   **Penyimpanan**: Tabel `rate_limit_log` di Supabase.
 *   **Logika**: `checkRateLimit` di `src/lib/security.ts`.
 *   **Config**: 
